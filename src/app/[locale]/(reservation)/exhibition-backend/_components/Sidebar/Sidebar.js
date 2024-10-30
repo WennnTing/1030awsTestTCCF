@@ -13,6 +13,8 @@ import { CgExtension } from "react-icons/cg";               // Project管理
 import { FaRegMessage } from "react-icons/fa6";             // 會議管理
 import { BsBox } from "react-icons/bs";                     // 活動管理 
 import { BiBarChartAlt2 } from "react-icons/bi";            // 日誌記錄
+import { TbDatabaseImport } from "react-icons/tb";          // 匯入管理
+
 
 
 export default function BackSidebar() {
@@ -56,6 +58,14 @@ export default function BackSidebar() {
             id: 5,
             color: "#33A6B8"
         },
+        {
+            path: "import-manege",
+            title: "匯入管理",
+            icon: <TbDatabaseImport />,
+            id: 6,
+            color: "#33A6B8"
+        },
+
     ]);
 
     const toggleSubMenu = (e, id) => {

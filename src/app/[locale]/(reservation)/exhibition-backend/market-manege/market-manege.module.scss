@@ -8,6 +8,23 @@
         width: 80px;
     }
 
+    &__backButton {
+        background-color: transparent;
+        width: 100px;
+        padding: 4px 12px;
+        margin: 40px auto;
+        margin: 40px 20px;
+        gap: 8px;
+        cursor: pointer;
+        color: #4DAC86;
+    }
+
+    &__buttonWrapper {
+        display: flex;
+        justify-content: space-between
+    }
+
+
     &__actionIcon {
         font-size: 20px;
         cursor: pointer;
@@ -121,4 +138,88 @@
         font-size: 20px;
         color: #bababa;
     }
+
+    // ==================== 方形卡片按鈕 ====================
+
+    &__squareBtnWrapper {
+        margin-top: 20px;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        height: 100%;
+
+        align-items: center;
+    }
+
+    &__squareButton {
+        border: 1px solid #e8e8e8;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(81, 186, 151, .1);
+            border-color: #51ba97;
+        }
+    }
+
+    &__squareBtnIcon {
+        font-size: 50px;
+        margin: 0
+    }
+
+    &__squareBtnText {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    &__squareBtnSubTitle {
+        color: #6c6c6c;
+    }
+
+    &__importActions {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__downloadButton,
+    &__uploadButton {
+        border: 1px solid #e8e8e8;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(81, 186, 151, .1);
+            border-color: #51ba97;
+        }
+    }
+
+    &__backButton {
+        padding: 4px 12px;
+        margin: 40px auto;
+        gap: 8px;
+        cursor: pointer;
+        color: #4DAC86;
+        font-size: 16px;
+        transition: all 0.3s;
+        border-radius: 20px;
+        border: 1px solid #4DAC86;
+
+        &:hover {
+            background-color: #4DAC86;
+            color: white;
+        }
+    }
+
 }
