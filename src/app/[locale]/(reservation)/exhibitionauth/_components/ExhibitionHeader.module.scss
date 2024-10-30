@@ -1,0 +1,265 @@
+@import '@/styles/style.scss';
+
+.header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 5;
+    font-size: clamp(15px, 0.833vw, 16px);
+    // box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+    &__container {
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10%;
+
+        @include RWD(sp820) {
+
+
+            justify-content: space-between;
+
+        }
+
+
+        &_logoWrapper {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            &__logo {
+                width: 200px;
+                display: inline-flex;
+
+                a {
+                    display: inline-flex;
+                }
+            }
+        }
+
+
+
+
+        &_nav {
+
+            display: flex;
+            height: 100%;
+            width: calc(100% - 200px);
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            gap: 1vw;
+
+
+            @include RWD(sp820) {
+                position: fixed;
+                top: 100px;
+                right: 0;
+                width: clamp(280px, 50vw, 500px);
+                background-color: $black;
+                flex-direction: column;
+                justify-content: flex-start;
+                color: $white;
+                height: calc(100vh - 100px);
+                height: calc((var(--vh, 1vh) * 100) - 100px);
+                z-index: 2;
+                gap: 0;
+                padding-bottom: 15vh;
+                transform: translateX(100%);
+
+            }
+
+            &__container {
+
+
+                display: flex;
+                gap: 1.5vw;
+
+                @include RWD(sp820) {
+                    flex-direction: column;
+                    gap: 0;
+
+                }
+
+
+                &_mainLink {
+
+                    display: inline-flex;
+                    height: 100%;
+                    align-items: center;
+                    white-space: nowrap;
+                    justify-content: center;
+                    padding: 0 10px 0px 10px;
+
+
+                    border-bottom: 1px solid transparent;
+
+                    @include RWD(sp820) {
+                        border-bottom: 1px solid $gray;
+                        height: auto;
+                        padding: 20px;
+                        width: 100%;
+                        justify-content: space-between;
+
+                    }
+                }
+
+                width: 100%;
+
+                &_subMenu {
+
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: none;
+
+                    @include RWD(sp820) {
+                        display: block;
+
+                    }
+
+                    li {
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+                        a {
+                            padding: 20px 0 20px 60px;
+                            display: inline-flex;
+                            width: 100%;
+
+                        }
+                    }
+
+
+
+
+
+
+                }
+
+                &_arrowIcon {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s;
+
+
+                    @include RWD(sp820) {
+                        display: inline-flex;
+
+                    }
+                }
+
+
+            }
+
+            &__languageWrapper {
+
+
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.3s;
+                width: 100px;
+                white-space: nowrap;
+
+
+                @include RWD(sp820) {
+
+
+                    margin-top: auto;
+                    width: 100%;
+                    padding: 20px;
+
+
+                }
+
+                &:hover {
+                    color: $primary-green;
+                }
+
+                &__icon {
+                    font-size: 20px;
+                    margin-right: 10px;
+                    display: inline-flex;
+                }
+
+            }
+
+
+
+
+            &__icon {
+
+                display: inline-flex;
+                align-items: center;
+                position: absolute;
+                opacity: 0;
+                font-size: 20px;
+                margin-bottom: 10px;
+
+            }
+
+
+
+
+        }
+
+
+
+        &_hambugerWrapper {
+
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            position: relative;
+            display: none;
+            right: 0;
+
+            @include RWD(sp820) {
+                display: block;
+            }
+
+            &__container {
+                transition: all .4s;
+
+
+
+                span {
+                    position: absolute;
+                    background: $black;
+                    display: inline-block;
+                    left: 12px;
+                    height: 2px;
+                    transition: all .4s;
+                    width: 50%;
+
+                    &:nth-of-type(1) {
+                        top: 16px;
+                    }
+
+                    &:nth-of-type(2) {
+                        top: 24px;
+                    }
+
+                    &:nth-of-type(3) {
+                        top: 32px;
+                    }
+                }
+            }
+
+
+
+        }
+    }
+
+
+}

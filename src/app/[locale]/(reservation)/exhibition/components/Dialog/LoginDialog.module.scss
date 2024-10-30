@@ -1,0 +1,127 @@
+@import '@/styles/style.scss';
+
+.loginDialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // max-height: 800px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    &__container {
+        border: 1px solid $gray;
+        background-color: white;
+        padding: 24px;
+        overflow-y: scroll;
+        width: 80vw;
+        max-height: 84vh;
+
+        @include RWD(sm) {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(208, 208, 208, 0.5);
+
+        // border: 1px solid purple;
+    }
+
+    &__title {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    &__close {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    &__mainContainrer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        // border: 1px solid orange;
+
+        @include RWD(sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__remindArea {
+        // border: 1px solid green;
+        background-color: #F5F5F5;
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+        height: 500px;
+        overflow-y: scroll;
+
+        h4 {
+            padding-left: 12px;
+            margin: 8px 0;
+            // border: 1px solid purple;
+        }
+
+        span {
+            padding-left: 12px;
+            // border: 1px solid green;
+            margin: 4px 0;
+        }
+
+        ul {
+            // border: 1px solid yellow;
+            padding-left: 12px;
+            margin: 0;
+
+            li {
+                list-style: none;
+                // border: 1px solid red;
+                margin: 16px 0;
+            }
+        }
+    }
+
+    &__btnContainer {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding-top: 14px;
+
+
+        &__save {
+            padding: 0 24px;
+            border: none;
+            background-color: $primary-green;
+            color: $white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        &__cancel {
+            padding: 0 24px;
+            border: none;
+            background-color: $gray;
+            color: #717171;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    }
+}

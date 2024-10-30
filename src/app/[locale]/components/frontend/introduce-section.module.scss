@@ -1,0 +1,185 @@
+@import '@/styles/style.scss';
+
+.introduceSection {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:  calc((var(--vh, 1vh) * 100) - 100px);
+    height: 100%;
+    position: relative;
+    padding: 100px 0 125px 0;
+
+    @include RWD(sp820){
+
+       
+       padding: 100px 0;
+        
+    }
+    
+    
+
+    &__container {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        
+       
+
+        @include RWD(sp820){
+
+       
+            flex-direction: column-reverse;
+            align-items: center;
+            
+        }
+
+        @include RWD(sm){
+
+           width: 90%;
+           
+            
+        }
+   
+
+
+        &_image {
+            
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include RWD(sp820){
+
+                padding: 60px 0;
+                
+                 
+             }
+           
+            
+           
+
+        }
+
+        &_intro {
+
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+
+            @include RWD(sp820){
+
+               width: 100%;
+                
+            }
+
+
+        
+
+            &__title {
+
+                font-size: 30px;
+                font-weight: 500;
+                text-align: center;
+                margin-bottom: 30px;
+
+            }
+
+            &__content {
+                text-align: justify;
+            }
+
+            &__buttonWrapper {
+                margin-top: 40px;
+                text-align: center;
+
+                @include RWD(sp820){
+
+                    margin-top: 30px;
+                     
+                 }
+            }
+        }
+    }
+
+    &__progressBarWrapper {
+
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+       
+
+
+        &_progressBarList {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            gap: 5px;
+            padding: 0;
+            margin: 0;
+            position: sticky;
+            top: 0;
+
+            &__progressBarItem {
+                background-color: #f3f3f3;
+                width: 100%;
+                padding: 10px 0;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                text-align: center !important;
+
+               
+
+                @include RWD(sm){
+
+                   
+                    flex-direction: column;
+                    font-size: 12px;
+                    align-items: center;
+                    
+                }
+
+                &_icon {
+                    
+                    display: inline-flex;
+                    align-items: center;
+                    margin-right: 10px;
+                    font-size: 20px;
+
+                    @include RWD(sm){
+                        margin: 0;
+                       
+                        
+                    }
+                }
+
+                
+            }
+        }
+
+        &_progressBar {
+    
+           position: relative;
+
+
+            &__progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 10px;
+                background: rgb(210, 59, 210);
+                transform-origin: 0%;
+            }
+        }
+
+
+    }
+
+   
+}

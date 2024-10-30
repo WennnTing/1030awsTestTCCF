@@ -1,0 +1,60 @@
+.customSweetAlert {
+
+    &__buttonWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__title {
+        margin: 0;
+    }
+
+    &__text {
+        font-size: 16px;
+        margin-top: 0;
+    }
+
+    &__delete {
+        background-color: red;
+        border: none;
+        width: 120px;
+        height: 36px;
+        color: $white;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__confirm {
+        background-color: $primary-green;
+        border: none;
+        width: 120px;
+        height: 36px;
+        color: $white;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__cancel {
+        background-color: #ccc;
+        border: none;
+        width: 120px;
+        height: 36px;
+        color: $white;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

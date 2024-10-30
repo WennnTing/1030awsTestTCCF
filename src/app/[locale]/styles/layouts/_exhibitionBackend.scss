@@ -1,0 +1,362 @@
+.exhibitionBackend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 128px);
+
+    @include RWD(sp820) {
+        width: 100%;
+    }
+
+    &__container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        padding: 50px 0 50px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__noCompany {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    &__headerButton {
+        padding: 24px;
+    }
+
+    &__contentWrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        @include RWD(sp820) {
+            width: 90%;
+        }
+
+        &__title {
+            font-size: clamp(24px, 0.313vw, 30px);
+            margin-top: 0;
+            line-height: 1.5;
+            text-align: left;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(208, 208, 208, 0.5);
+        }
+
+        &__innertitle {
+            font-size: clamp(24px, 0.313vw, 30px);
+            margin-top: 0;
+            line-height: 1.5;
+            text-align: left;
+            padding-bottom: 16px;
+        }
+    }
+
+    &__headerBlock {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__calendarBlock {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+        &_textBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        span {
+            font-size: 14px;
+            color: $remind;
+        }
+    }
+
+    &__mainWrapper {
+        display: flex;
+        gap: 24px;
+
+        @include RWD(lg) {
+            flex-direction: column;
+        }
+    }
+
+
+    &__leftBlock {
+        width: 100%;
+
+        @include RWD(lg) {
+            width: 100%;
+        }
+    }
+
+    &__teamBLock {
+        width: 90%;
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 200px;
+        padding: 12px;
+        border: 1px solid rgba(208, 208, 208, 0.5);
+        border-radius: 4px;
+        margin-top: 32px;
+    }
+
+    &__memberPage {
+        h2 {
+            margin: 0;
+        }
+
+        margin-bottom: 36px;
+        padding-bottom: 12px;
+        padding: 20px;
+        border: 1px solid rgba(208, 208, 208, 0.5);
+    }
+
+    &__titleBlock {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:lang(en) {
+            @include RWD(sm) {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 24px;
+
+                h2 {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    &__infoBlock {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    &__inputBlock {
+        width: 100%;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+
+
+
+        @media (max-width: 1600px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include RWD(sm) {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+        }
+    }
+
+
+    //展證預覽 
+    &__certificate {
+        width: 36%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include RWD(lg) {
+            width: 100%;
+        }
+
+        &__main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid rgba(208, 208, 208, 0.5);
+        }
+
+        &__image-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+
+            &:hover .exhibitionpage__certificate__edit-icon {
+                display: flex;
+            }
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid #959595;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        &__edit-icon {
+            position: absolute;
+            display: none;
+            bottom: 20px;
+            right: 12px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 12px;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        &__content {
+            padding: 24px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        &__item {
+            display: flex;
+
+            &:nth-child(odd) {
+                color: #5a5a5a;
+            }
+
+            @include RWD(lg) {
+                &:nth-child(odd) {
+                    justify-content: flex-start;
+                }
+            }
+        }
+
+    }
+
+    &__welcomeText {
+        color: #9095A1;
+    }
+
+    &__link {
+        color: #123166;
+
+        &:hover {
+            color: #4b6ea9;
+        }
+    }
+
+    // dialog 換頭貼的input
+    &__imageInput {
+        display: none;
+    }
+
+    // 有圖片時
+    &__imagePreviewContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px dashed #CCC;
+    }
+
+    &__imageContainer {
+        width: 100%;
+        height: 200px;
+        border: 1px dashed #CCC;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__customFileUploadButton {
+        margin: 0 auto;
+        padding: 0 12px;
+    }
+
+    &__customFileUpload {
+        background-color: #4EAC85;
+        color: white;
+        padding: 0 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+        margin: 20px;
+        text-align: center;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    &__imagePreview {
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    // reserve頁面 Wrapper
+
+    &__reserveWrapper {
+        // z-index: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        @include RWD(sp820) {
+            width: 90%;
+        }
+
+        &__title {
+            font-size: clamp(30px, 1.822vw, 35px);
+            margin-top: 0;
+            line-height: 1.5;
+            text-align: left;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(208, 208, 208, 0.5);
+        }
+
+        &__innertitle {
+            font-size: clamp(30px, 1.822vw, 35px);
+            margin-top: 0;
+            line-height: 1.5;
+            text-align: left;
+            padding-bottom: 16px;
+        }
+    }
+
+    &__memberinfoDialog {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__dialogLabel {
+        font-size: clamp(14px, 1.40625vw, 16px);
+        font-weight: 600;
+    }
+
+
+
+}

@@ -1,0 +1,132 @@
+@import '../../styles/style.scss';
+
+.exhibitionBackendPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 128px);
+
+    @include RWD(sp820) {
+        width: 100%;
+    }
+
+    &__container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        padding: 50px 0 50px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__contentWrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        @include RWD(sp820) {
+            width: 90%;
+        }
+
+        &__title {
+            font-size: clamp(30px, 1.822vw, 35px);
+            margin-top: 0;
+            line-height: 1.5;
+            text-align: left;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(208, 208, 208, 0.5);
+        }
+
+        &__innertitle {
+            font-size: clamp(30px, 1.822vw, 35px);
+            margin-top: 0;
+            line-height: 1.5;
+            text-align: left;
+            padding-bottom: 16px;
+        }
+    }
+
+    &__mainWrapper {
+        display: flex;
+        gap: 24px;
+
+        @include RWD(lg) {
+            flex-direction: column;
+        }
+    }
+
+    &__leftBlock {
+        width: 100%;
+
+        @include RWD(lg) {
+            width: 100%;
+        }
+    }
+
+    &__teamBLock {
+        width: 90%;
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 200px;
+        padding: 12px;
+        border: 1px solid rgba(208, 208, 208, 0.5);
+        border-radius: 4px;
+        margin-top: 32px;
+    }
+
+    &__memberPage {
+        h2 {
+            margin: 0;
+        }
+
+        margin-bottom: 36px;
+        padding-bottom: 12px;
+        padding: 20px;
+
+        border: 1px solid rgba(208, 208, 208, 0.5);
+
+    }
+
+    &__titleBlock {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:lang(en) {
+            @include RWD(sm) {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 24px;
+
+                h2 {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    &__infoBlock {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__inputBlock {
+        width: 100%;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+
+        @media (max-width: 1600px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include RWD(sm) {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+        }
+    }
+}

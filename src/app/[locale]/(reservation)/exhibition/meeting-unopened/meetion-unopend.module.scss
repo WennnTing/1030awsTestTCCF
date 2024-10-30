@@ -1,0 +1,53 @@
+@import '@/styles/style.scss';
+
+.reservationMeetingUnopened {
+    height: 100%;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+
+
+    h2 {
+
+        font-size: clamp(25px, 1.6667vw, 32px);
+        margin-top: 0;
+        line-height: 1.5;
+        border-bottom: 1px solid $gray;
+        padding-bottom: 15px;
+        
+    }
+
+    &__container  {
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+
+        h3 {
+
+            margin-bottom: 0px;
+        }
+
+        &_icon {
+
+           
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            border: 1px solid $gray;
+            border-radius: 50%;
+            padding: 35px;
+            background: $gray;
+            color: $dark-gray;
+        }
+
+        &_text {
+
+            color: $dark-gray;
+            font-size: 15px;
+        }
+    }
+}

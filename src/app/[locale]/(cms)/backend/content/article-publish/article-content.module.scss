@@ -1,0 +1,162 @@
+@import '@/styles/style.scss';
+.cmsArticleContent {
+    border: 1px solid $gray;
+    padding: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+
+    h3 {
+        margin-top: 0;
+        border-bottom: 1px solid $gray;
+        padding-bottom: 5px;
+        
+    }
+
+    &__container {
+
+
+        margin-bottom: 50px;
+
+        &_notice {
+            display: flex;
+            color: $dark-gray;
+            font-size: 12px;
+            margin-top: -15px;
+            padding-bottom: 20px;
+
+            &__icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 10px;
+            }
+        }
+
+        &_increase {
+            display: flex;
+            justify-content: center;
+            color: $dark-gray;
+            cursor: pointer;
+            background: $light-gray;
+            padding: 5px 0;
+            transition: all 0.3s;
+
+            &:hover {
+                color: $black;
+            }
+            
+
+            &__icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+               
+               
+               
+                padding: 5px;
+                font-size: 20px;
+            }
+        }
+
+        &_increaseBlockContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &_increaseBlock {
+       
+            padding: 20px;
+            border: 1px solid $gray;
+            
+
+
+            h4 {
+                margin: 0 auto 0 0;
+             
+            }
+
+            &__action {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                margin-bottom: 10px;
+
+                &_icon {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $light-gray;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    color: $dark-gray;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        color: $black;
+                    }
+                    
+                    svg {
+                        transition: transform 0.3s;
+                    }
+                }
+            }
+
+            &__content {
+               
+                display: grid;
+                grid-template-rows: 0fr;
+                transition: 500ms grid-template-rows ease;
+
+                &_container {
+                    overflow: hidden;
+                }
+            }
+        }
+
+        &_twoColumn {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        &_calendar {
+        
+            display: flex;
+            align-items: stretch;
+            gap: 20px;
+        }
+
+
+        &_confirmButton {
+     
+            display: flex;
+            justify-content: flex-end;
+
+            &__button {
+
+          
+                cursor: pointer;
+                background: $black;
+                color: $white;
+                padding: 5px 10px;
+            
+                
+            }
+
+            
+        }
+
+        &_tableRow {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            // border-bottom: 1px solid $gray;
+           
+            
+        }
+    }
+
+
+}

@@ -1,0 +1,8 @@
+@import '@/styles/style.scss';
+.cmsSubmitButton {
+    background: $primary-green;
+    border: 1px solid $primary-green;
+    color: $white;
+    padding: 5px 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,48 @@
+@import '@/styles/style.scss';
+ 
+
+.cmsSwal {
+    // border: 1px solid red;
+
+  
+
+    &__content {
+        margin-bottom: 20px;
+        
+        h2, p {
+            margin: 0;
+        }
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+        
+
+        &_cancel {
+
+            background-color: $light-gray;
+            padding: 5px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+
+            
+        }
+
+        &_confirm {
+            background: $primary-green;
+            color: $white;
+            padding: 5px 20px;
+    
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+
+           
+        }
+
+    }
+}

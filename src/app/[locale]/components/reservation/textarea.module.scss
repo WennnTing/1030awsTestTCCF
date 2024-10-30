@@ -1,0 +1,27 @@
+@import '@/styles/style.scss';
+.reservationTextarea {
+
+    // border: 1px solid red;
+
+    label {
+
+        
+    }
+
+    textarea {
+        background-color: $light-gray;
+        padding: 5px 10px;
+        border: none;
+        width: 100%;
+        resize: none;
+        height: 200px;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__required {
+        color: $red;
+    }
+}

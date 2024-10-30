@@ -1,0 +1,63 @@
+@import '@/styles/style.scss';
+
+.cmsSwitchButton {
+ 
+    display: flex;
+
+    input[type="checkbox"]:checked + label {
+        background: $primary-green;
+    }
+
+    input[type="checkbox"]:checked + label::before {
+        left: 34px;
+        background: #fff;
+    }
+
+    input[type="checkbox"]:checked + label::after {
+        content: '顯示';
+        left: 8px;
+        font-size: 10px;
+    }
+
+    input[type="checkbox"]:checked + label:active::before {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(0,150,136,0.2);
+    }
+
+    label {
+        display: inline-block;
+        position: relative;
+        width: 62px;
+        height: 30px;
+        border-radius: 25px;
+        background: $gray;
+        transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        vertical-align: middle;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 2.5px;
+            left: 3px;
+            width: 25px;
+            height: 25px;
+            background: $white;
+            border-radius: 50%;
+            transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        &::after {
+            content: '隱藏';
+            position: absolute;
+            top: 5px;
+            right: 6px;
+            font-size: 10px;
+            color:  $white;
+        }
+
+        &:active::before {
+            width: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(128,128,128,0.1);
+        }
+    }
+}

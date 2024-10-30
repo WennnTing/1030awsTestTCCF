@@ -1,0 +1,217 @@
+@import '@/styles/style.scss';
+
+.reservationSetting {
+    
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    h1{
+        margin-top: 0;
+        line-height: normal;
+    }
+
+   
+
+   
+
+    &__header {
+
+           
+        border-bottom: 1px solid $gray;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+       
+
+        &_container {
+          
+            font-size: 14px;
+            margin-bottom: 20px;
+
+            h2 {
+                margin-bottom: 20px;
+                margin-top: 0;
+                font-size: clamp(25px, 1.6667vw, 32px);
+                line-height: 1.5;
+            }
+        }
+
+      
+
+     
+
+        &_icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            background: $primary-green;
+            border-radius: 4px;
+            height: 40px;
+            width: 40px;
+            cursor: pointer;
+        }
+       
+    }
+
+    &__timeLimit {
+
+       
+        display: flex;
+        gap: 20px;
+
+        &_list {
+
+        
+            display: flex;
+            background: $light-gray;
+            padding: 5px 10px;
+            align-items: center;
+
+            &__icon {
+
+
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                margin-right: 10px;
+            }
+
+            &__date {
+                margin-right: 10px;
+                // border: 1px solid blue;
+            }
+
+            &__time {
+
+                // border: 1px solid yellow;
+            }
+        }
+    }
+
+    &__container {
+
+     
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        &_increase {
+
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+
+            h2 {
+                margin: 0;
+                line-height: normal;
+            }
+
+            &__icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: $primary-green;
+                background-color:  rgba($color: $primary-green, $alpha: 0.05);
+                border-radius: 4px;
+                height: 40px;
+                width: 40px;
+                cursor: pointer;
+            }
+        }
+        
+
+        form {
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        &_box {
+
+            border: 1px solid $gray;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            gap: 30px;
+            border-radius: 6px;
+
+            @include RWD(lg) {
+                align-items: flex-start;
+                
+            }
+        }
+
+        &_icon {
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        
+            color: $red;
+            height: 40px;
+            min-width: 40px;
+            margin-bottom: 15px;
+     
+            background-color:  rgba($color: $red, $alpha: 0.05);
+            border-radius: 4px;
+            cursor: pointer;
+
+          
+        }
+
+        &_error {
+            color: $red;
+            font-size: 14px;
+            margin-top: 5px;
+            list-style: none;
+            padding-left: 0;
+        }
+    }
+
+    &__button {
+
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+        padding-top: 40px;
+
+
+        &_actionButtons {
+
+            display: flex;
+            gap: 20px;
+
+            &__skip {
+
+                background: $white;
+                border: 1px solid $primary-green;
+                color: $primary-green;
+                padding: 5px 20px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+        }
+        
+
+
+        &_back {
+            background: $gray;
+            border: 1px solid $gray;
+            color: $dark-gray;
+            padding: 5px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    }
+}

@@ -1,0 +1,156 @@
+@import '@/styles/style.scss';
+
+.mainFooter {
+    background-color: $black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    padding: 40px 0;
+    width: 100%;
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+
+        @include RWD(sm) {
+            width: 90vw;
+        }
+
+        &_subscribeWithList {
+            display: flex;
+        }
+
+        &_listWrapper {
+
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid $white;
+            align-items: center;
+            padding-bottom: 20px;
+
+
+            &__logo {
+
+
+                @include RWD(sm) {
+                    width: 150px;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+            }
+
+            &__menu {
+                color: $white;
+                margin: 0;
+                display: flex;
+                gap: 10px;
+
+                @include RWD(sm) {
+                    flex-direction: column;
+                    align-items: flex-end;
+
+                }
+
+                li {
+                    display: inline-block;
+                    text-align: end !important;
+                    font-size: clamp(12px, 0.833vw, 16px);
+
+
+
+
+                    a {
+
+                        text-decoration: none;
+
+                        &:hover {
+                            color: $primary-green;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        &_socialWrapper {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            padding-top: 10px;
+
+            span {
+
+                font-size: clamp(12px, 0.833vw, 16px);
+            }
+
+            &__social {
+
+                display: flex;
+                align-items: baseline;
+                list-style: none;
+                right: 0;
+                gap: 15px;
+                margin: 0;
+
+                @include RWD(sm) {
+                    gap: 10px;
+                }
+
+
+                li {
+                    display: inline-flex;
+                    align-items: center;
+                    font-size: 25px;
+
+                    @include RWD(sm) {
+                        font-size: 20px;
+                    }
+
+
+
+                    a {
+                        display: inline-flex;
+                        align-items: center;
+                    }
+                }
+            }
+
+        }
+
+
+        &_copyRightWrapper {
+
+            display: flex;
+            justify-content: center;
+
+            padding-top: 20px;
+            position: relative;
+
+
+            &__copyRight {
+
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.5);
+                text-align: center;
+                line-height: 1.5;
+
+                @include RWD(sm) {
+                    font-size: 10px;
+                }
+
+            }
+
+
+
+        }
+    }
+
+}

@@ -1,0 +1,110 @@
+.multiple-select {
+    position: relative;
+    width: 100%;
+    // margin: 1em;
+
+    ul {
+        padding-left: 0;
+    }
+
+    &__label {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        font-size: clamp(14px, 1.40625vw, 16px);
+        font-weight: 600;
+    }
+
+    &__icon {
+        font-size: 20px;
+    }
+
+    &__toggle {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 40px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        &.error {
+            border: 1px solid red;
+        }
+
+        &--disabled {
+            cursor: not-allowed;
+            background-color: #f3f3f3;
+            border-color: #ddd;
+            color: #a1a1a1;
+        }
+    }
+
+    &--disabled {
+        pointer-events: none;
+
+        .multiple-select__toggle {
+            background-color: #f3f3f3;
+            border-color: #ddd;
+            color: #a1a1a1;
+        }
+    }
+
+    &__requiredText {
+        color: red;
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    &__selected {
+        flex-grow: 1;
+
+        .multiple-select__option-item {
+            display: inline-block;
+            margin-right: 8px;
+            background-color: rgb(59, 59, 59);
+            color: #dfdddd;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+    }
+
+    &__options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1;
+        margin-top: 0.5em;
+        font-size: clamp(14px, 0.833vw, 16px);
+    }
+
+    &__option {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        background-color: #fff;
+
+        &--selected {
+            background-color: #e4e3e3;
+        }
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
+
+    &__checkbox {
+        pointer-events: none;
+    }
+
+    &__require {
+        color: red;
+    }
+}

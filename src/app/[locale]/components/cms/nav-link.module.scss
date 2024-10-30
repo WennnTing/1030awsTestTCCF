@@ -1,0 +1,29 @@
+@import '@/styles/style.scss';
+
+.cmsNavLink {
+    
+
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    width: 100%;
+       
+    &__main {
+        background: $light-gray;
+        padding: 5px 10px;
+        width: 100%;
+       
+        
+    }
+
+    &__sub {
+        background: $black;
+        color: $white;
+        padding: 5px 10px;
+        display: block;
+       width: 100%;
+       
+
+       
+    }
+}

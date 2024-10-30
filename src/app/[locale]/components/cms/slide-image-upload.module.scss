@@ -1,0 +1,122 @@
+@import '@/styles/style.scss';
+
+.cmsSlideImageUpload {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+    
+
+    &__required {
+        color: $red;
+    }
+
+    &__container {
+        
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        
+        gap: 40px;
+
+
+        &_box {
+
+         
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $light-gray;
+            position: relative;
+           
+
+            &__upload {
+                cursor: pointer;
+                width: 100%;
+                display: inline-flex;
+                align-items: center;
+                height: 100%;
+       
+               
+               
+
+
+                &_text {
+                    color: $dark-gray;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: center;
+
+                   
+               }
+
+
+                &_preview {
+                    display: flex;
+                    height: 100%;
+                    width: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    position: relative;
+
+                    &__delete {
+                        
+                        border-radius: 50%;
+                        padding: 5px;
+                        position: absolute;
+                        font-size: 15px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: -10px;
+                        right: -10px;
+                        z-index: 5;
+                        background-color: $light-gray;
+                        color: $dark-gray;
+                        cursor: pointer;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+                        
+
+                       
+                        
+                    }
+                }
+            }
+            
+        }
+
+        &_add {
+
+            border: 1px solid $gray;
+            border-style: dashed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: $dark-gray;
+            height: 200px;
+            cursor: pointer;
+        }
+
+
+        input[type="file"] {
+            display: none;
+        }
+
+        &_icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 5px;
+            color: $gray;
+            font-size: 50px;
+        
+        }
+    }
+
+
+}

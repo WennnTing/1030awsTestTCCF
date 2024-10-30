@@ -1,0 +1,53 @@
+@import '@/styles/style.scss';
+
+.cmsError {
+
+    height: 100%;
+    
+
+
+    &__container {
+
+     
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        font-family: var(--font-montserrat);
+        padding-top: 30px;
+    
+       
+
+        h1, h3 {
+
+            margin: 0;
+        }
+
+        &_buttons {
+
+          
+            margin-top: auto;
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+
+            &__goBack {
+
+                background: $white;
+                padding: 5px 20px;
+                color: $black;
+                cursor: pointer;
+                border: 1px solid $black;
+            }
+
+            &__button {
+
+                background: $black;
+                padding: 5px 20px;
+                color: $white;
+                cursor: pointer;
+                border: 1px solid $black;
+            }
+
+        }
+    }
+}

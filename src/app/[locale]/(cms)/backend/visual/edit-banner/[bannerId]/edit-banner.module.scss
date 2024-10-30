@@ -1,0 +1,27 @@
+@import '@/styles/style.scss';
+
+.cmsEditBanner {
+
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 40px;
+
+        &_actionButton {
+
+            text-align: right;
+        }
+
+        &_error {
+            color: $red;
+            font-size: 12px;
+            margin-top: 5px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+    }
+
+   
+}

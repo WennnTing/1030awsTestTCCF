@@ -1,0 +1,491 @@
+@import 'styles/style.scss';
+
+* {
+  box-sizing: border-box;
+  letter-spacing: 2px;
+  line-height: 2;
+
+}
+
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+
+body:lang(zh) {
+  font-family: var(--font-noto-sans-tc), "微軟正黑體";
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// .swiper-wrapper {
+
+//   padding: 20px 0;
+//   display: flex;
+// }
+
+// .swiper-slide {
+//   height: 100%;
+
+// }
+
+.active {
+
+  span {
+    &:nth-of-type(1) {
+      width: 45%;
+      top: 18px;
+      left: 14px;
+      transform: translateY(6px) rotate(-135deg);
+    }
+
+    &:nth-of-type(2) {
+      opacity: 0;
+    }
+
+    &:nth-of-type(3) {
+      width: 45%;
+      top: 30px;
+      left: 14px;
+      transform: translateY(-6px) rotate(135deg);
+    }
+  }
+}
+
+
+
+// ol {
+//   counter-reset: item li {
+//     display: block
+//   }
+
+//   li::before {
+//     content: counters(item, ".") " ";
+//     counter-increment: item
+//   }
+// }
+
+
+
+.frontend-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  
+}
+
+.frontend-layout-container {
+  display: flex;
+  gap: 10vw;
+
+  &:lang(en) {
+    font-family: var(--font-poppins), Arial;
+  
+    p,
+    li {
+      text-align: left;
+    }
+  }
+}
+
+.cms-layout-wrapper {
+ 
+  display: flex;
+  
+}
+
+.cms-layout-container {
+
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 200px);
+}
+
+.cms-layout-container-content {
+  height: 100%;
+  min-height: calc(100vh - 60px);
+  background-color: $light-gray;
+ 
+}
+
+.reservation-layout-wrapper {
+  display: flex;
+
+}
+
+.reservation-auth-layout {
+  width: 100%;
+}
+
+.reservation-layout-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 140px);
+
+  @include RWD(lg) {
+    width: 100%;
+    
+  }
+
+} 
+
+.reservation-layout-container-content {
+  height: 100%;
+  min-height: calc(100vh - 70px);
+  background: $white;
+  position: relative;
+} 
+
+.reservation-layout {
+  // border: 1px solid red;
+  padding: 40px 30px;
+}
+
+
+
+.react-datepicker-wrapper {
+  width: 100%;
+
+}
+
+.ck-editor__editable {
+  height: 500px;
+ 
+}
+
+.ck.ck-editor__main>.ck-editor__editable {
+  // background: $light-gray !important  ;
+  
+}
+
+.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content {
+  // border: 0px !important ;
+  // background: red !important ;
+}
+
+.ck-toolbar {
+  // background: $gray !important ;
+  // border: 0px !important ;
+}
+
+
+
+.react-datepicker__time-list-item--disabled {
+  display: none;
+}
+.react-datepicker__header {
+  background-color: $light-gray !important;
+  color: $white !important;
+
+}
+
+ .react-datepicker__triangle {
+  fill: $light-gray !important;
+}
+
+
+.react-datepicker__navigation {
+  display: flex !important;
+}
+.react-datepicker__navigation-icon {
+  font-size: 5px !important;
+}
+
+
+.react-datepicker__day--selected {
+  background-color: $black !important;
+  font-weight: bold;
+}
+.react-datepicker__time-list-item--selected {
+  background-color: $black !important;
+}
+
+.react-datepicker__day {
+  &:hover {
+    background-color: $light-gray !important;
+  }
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: $light-gray !important;
+  color: $black!important;
+  
+}
+.react-datepicker__time-container {
+ box-sizing: content-box;
+}
+
+/* .react-datepicker__day--today {
+background-color: none !important;
+} */
+
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header, .react-datepicker__day-name {
+  color: $black !important;
+}
+
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.swiper-wrapper {
+  padding: 10px 0;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fc-toolbar-title {
+  font-size: 20px !important;
+}
+
+.fc .fc-button-primary {
+  background-color: transparent !important;
+  border-color: transparent  !important;
+  color: $black !important;
+  text-transform: capitalize; 
+  
+}
+
+.fc-timegrid-slot-minor {
+  border-top: 1px solid transparent !important;
+}
+
+.fc {
+  
+  font-family: var(--font-inter) !important;
+}
+
+.fc-day-today {
+  background: $light-gray !important;
+
+
+} 
+
+
+.fc-timegrid-slot-label-cushion {
+  color: $dark-gray !important; /* 設置時間的顏色為藍色 */
+  font-size: 14px !important; /* 設置時間的字體大小 */
+}
+
+.fc-event:focus::after {
+  background: transparent !important;
+}
+
+
+
+
+.custom-calendar {
+  font-size: 1.5em; /* 調整字體大小 */
+  transform: scale(1.2); /* 放大整個日期選擇器 */
+  transform-origin: top left; /* 設定放大原點 */
+}
+
+
+/* time-slider.css */
+.rc-slider-rail {
+  background-color: $light-gray !important; /* 軌道顏色 */
+}
+
+ .rc-slider-track {
+  background-color:$primary-green !important; /* 選擇範圍的顏色 */
+}
+
+.rc-slider-handle {
+  border-color: $primary-green !important;; /* 把手邊框顏色 */
+  background-color: #ffffff !important; /* 把手背景顏色 */
+  opacity: 1 !important; /* 把手透明度 */
+}
+
+.rc-slider-dot-active {
+  border-color: $primary-green !important;; /* 點的顏色 */
+
+}
+
+ .rc-slider-mark-text {
+  color: $black !important; /* 標記文字顏色 */
+}
+
+
+
+.mainMobLabel {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  right: 0;
+  position: relative;
+}
+
+
+
+.mainMobMenu {
+  position: absolute;
+  top: 75px;
+  min-height: calc(100svh - 100px);
+  z-index: 1;
+  background: $black;
+  width: clamp(280px, 50vw, 500px);
+  transform: translateX(50%); 
+  transition: transform 0.5s ease-in-out; 
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+}
+
+.hambugerWrapper {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  right: 0;
+  position: relative;
+  display: flex;
+
+  span {
+    position: absolute;
+    background: $black;
+    display: inline-block;
+    left: 12px;
+    height: 2px;
+    transition: all .4s;
+    width: 50%;
+
+    &:nth-of-type(1) {
+        top: 16px;
+    }
+
+    &:nth-of-type(2) {
+        top: 24px;
+    }
+
+    &:nth-of-type(3) {
+        top: 32px;
+    }
+  }
+}
+
+#hambuger-menu:checked ~ .hambugerWrapper + .mainMobMenu {
+  transform: translateX(calc(-100% + 50px + 2.5vw));
+}
+
+#hambuger-menu:checked ~ .hambugerWrapper span {
+  &:nth-of-type(1) {
+    width: 45%;
+    top: 18px;
+    left: 14px;
+    transform: translateY(6px) rotate(-135deg);
+  }
+
+  &:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  &:nth-of-type(3) {
+    width: 45%;
+    top: 30px;
+    left: 14px;
+    transform: translateY(-6px) rotate(135deg);
+  }
+}
+
+
+
+
+.reservationHambugerWrapper {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  right: 0;
+  position: relative;
+  display: flex;
+
+  span {
+    position: absolute;
+    background: $black;
+    display: inline-block;
+    left: 12px;
+    height: 2px;
+    transition: all .4s;
+    width: 50%;
+
+    &:nth-of-type(1) {
+        top: 16px;
+    }
+
+    &:nth-of-type(2) {
+        top: 24px;
+    }
+
+    &:nth-of-type(3) {
+        top: 32px;
+    }
+  }
+}
+
+#reservation-hambuger-menu:checked ~ .reservationHambugerWrapper + .reservationMobMenu {
+  transform: translateX(-35%);
+}
+
+#reservation-hambuger-menu:checked ~ .reservationHambugerWrapper span {
+  &:nth-of-type(1) {
+    width: 45%;
+    top: 18px;
+    left: 14px;
+    transform: translateY(6px) rotate(-135deg);
+  }
+
+  &:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  &:nth-of-type(3) {
+    width: 45%;
+    top: 30px;
+    left: 14px;
+    transform: translateY(-6px) rotate(135deg);
+  }
+}
+
+.reservationMobMenu {
+  position: absolute;
+  top: 67px;
+  min-height: calc(100vh - 67px);
+  z-index: 1;
+  background: $white;
+  width: clamp(280px, 50vw, 500px);
+  transform: translateX(100%); 
+  transition: transform 0.5s ease-in-out; 
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  border: 1px solid $light-gray;
+}

@@ -1,0 +1,676 @@
+{
+  "Login": {
+    "title": "登入會員",
+    "siteTitle": "TCCF 創意內容大會官網平台",
+    "formItem": {
+      "email": "信箱",
+      "password": "密碼"
+    },
+    "button": {
+      "login": "登入",
+      "forgot": "忘記密碼？"
+    },
+    "LoginTitle": "登入會員",
+    "LoginSecTitle_1": "TCCF 創意內容大會官網平台",
+    "LoginSecTitle_2": "TCCF 創意內容大會官網平台",
+    "LoginLabel_1": "信箱",
+    "LoginLabel_2": "密碼",
+    "LoginButton": "登入",
+    "LoginForgetText": "忘記密碼",
+    "LoginThirdParty": "Or Log in with ",
+    "LoginRegister_1": "尚未開通TCCF創意內容大會服務嗎？前往<link>開通</link>",
+    "LoginRegister_2": "開通"
+  },
+  "Register": {
+    "RegisterTitle": "開通會員",
+    "RegisterSecTitle": "TCCF 創意內容大會官網平台",
+    "RegisterLabel_1": "信箱",
+    "RegisterLabel_2": "密碼",
+    "RegisterLabel_3": "確認密碼",
+    "RegisterButton": "開通",
+    "RegisterThirdParty": "Or Sign in with",
+    "RegisterRegister_1": "已經是會員嗎?<link>會員登入</link>",
+    "RegisterRegister_2": "會員登入",
+    "Registersuccess_1": "完成會員開通",
+    "Registersuccess_2": "您的會員資訊已更新，從現在起您可登入使用所有相關服務。",
+    "Registersuccess_3": "若無自動跳轉，請點擊此連結",
+    "Registersuccess_4": "若遇到任何問題，請聯絡我們的客服團隊以獲得進一步的協助：contact@tccf.tw。"
+  },
+  "ForgetPassWord": {
+    "ForgetPassWordTitle": "請前往您的信箱收信",
+    "ForgetPassWordSecTitle_1": "一封含有密碼重設指示的 Email 已發送至您的信箱，",
+    "ForgetPassWordSecTitle_2": "請按照 Email 上方指示，重設您的密碼。",
+    "ForgetPassWordSecTitle_3": "若您在幾分鐘內未收到此 Email，請先確認您的垃圾郵件，",
+    "ForgetPassWordSecTitle_4": "若仍未收到，請聯絡客服團隊 contact@tccf.tw，以獲得進一步的協助，謝謝。",
+    "ForgetPassWordLogin": "前往登入",
+    "ForgetPassWordFirstTitle": "忘記密碼",
+    "ForgetPassWordSecTitle": "TCCF 創意內容大會官網平台",
+    "ForgetPassWordLabel_1": "信箱",
+    "ForgetPassWordButton": "送出",
+    "ForgetPassWordLogin_1": "回到登入頁"
+  },
+  "SetNewPassWord": {
+    "SetNewPassWordTitle": "完成重設密碼",
+    "SetNewPassWordSecTitle_1": "您的密碼已完成更新！",
+    "SetNewPassWordSecTitle_2": "從現在起，請使用新密碼登入所有相關服務。",
+    "SetNewPassWordSecTitle_3": "若遇到任何問題，請聯絡我們的客服團隊以獲得進一步的協助：contact@tccf.tw。",
+    "SetNewPassWordLogin": "前往登入",
+    "SetNewPassWordFirstTitle": "請輸入新密碼",
+    "SetNewPassWordSecTitle": "TCCF 創意內容大會官網平台",
+    "SetNewPassWordLabel_1": "密碼",
+    "SetNewPassWordLabel_2": "確認密碼",
+    "SetNewPassWordButton": "送出",
+    "SetNewPassWordLogin_1": "回到登入頁"
+  },
+  "Landing": {
+    "Header": {
+      "login": "登入",
+      "badgePurchase": "展證購買"
+    },
+    "Introduce": {
+      "tccf": {
+        "title": "創意內容大會",
+        "description": "「TCCF 創意內容大會」是亞洲重要內容產業盛會，每年吸引全球多國買賣家齊聚交流洽商，共分成「PITCHING 提案大會」、「MARKET 市場展」與「FORUM 國際論壇」三大單元。TCCF 持續提供文化內容產業商務服務，媒合潛力 IP 提案與國際資金，帶動全球專業人士商務交易與開發，交流實務經驗及產業未來趨勢，為內容產製與專業人才對接資源。"
+      },
+      "pitching": {
+        "title": "提案大會",
+        "description": "TCCF PITCHING 提案大會」匯集國內外市場潛力內容提案，囊括長片、影集、動畫、紀錄片，乃至出版、漫畫、原創故事概念，吸引來自全球的內容產業人士參與，媒合提案與國際資源及資金，催生全球熱門作品。入選團隊將有機會競逐由文化內容策進院與其它單位所提供的冠名獎項和獎金。 <br></br><br></br>2024 年提案大會將分為「 企畫專場」及「 故事專場」兩大專場， 展示深具潛力的影視企畫與故事提案，為國際產業人士尋找亞洲原創內容的最佳選擇！"
+      },
+      "market": {
+        "title": "市場展",
+        "description": "「TCCF MARKET 市場展」聚焦國際影視內容與潛力 IP 的版權交易，擴大結合影視產業鏈，涵蓋內容開發、拍攝資源、影像技術等各領域業者與專業人士，探索商業合作與交流，拓展全球市場。"
+      },
+      "forum": {
+        "title": "國際論壇",
+        "description": "「TCCF FORUM 國際論壇」將從國際合作面向切入，探討國際策略思維、產業跨國合作經驗、IP 內容跨域與如何當地化，以及關注國際市場新興趨勢。綜觀內容產業，規劃國際合製、IP 力量及重點趨勢觀察，藉此洞悉前線最完整的國際多元合作及產業脈動，提供產業人士關鍵思維。"
+      }
+    },
+    "News": {
+      "title": "最新消息"
+    },
+    "Button": {
+      "readMore": "查看更多"
+    }
+  },
+  "Activity": {
+    "Info": {
+      "location": "地點",
+      "eventTime": "活動時間",
+      "registrationPeriod": "報名時間",
+      "totalSpots": "名額",
+      "remainingSpots": "剩餘名額",
+      "logline": "情節概要",
+      "team": "來賓介紹"
+    },
+    "EventType": {
+      "badge": "憑展證入場"
+    },
+    "Status": {
+      "upcoming": "尚未開放報名",
+      "closed": "結束報名",
+      "reserve": "報名",
+      "full": "已額滿"
+    },
+    "Alert": {
+      "errorTitle": "無法報名",
+      "overlapping": "此時段已有會議預約，請先確認您的會議行程表後再進行報名",
+      "repeat": "您已報名過此活動",
+      "full": "已額滿",
+      "closed": "報名時間已截止",
+      "successTitle": "報名成功"
+    }
+  },
+  "Error": {
+    "msg": {
+      "title": "登入失敗",
+      "description": "網路訊號不佳，請稍後再試",
+      "relogin": "重新登入",
+      "goback": "返回前頁",
+      "home": "返回首頁",
+      "refresh": "重新整理",
+      "unauthorized": "帳號或密碼錯誤，請重新登入"
+    }
+  },
+  "Alert": {
+    "Button": {
+      "confirm": "確認",
+      "cancel": "取消",
+      "login": "登入"
+    }
+  },
+  "Reservation": {
+    "Header": {
+      "logout": "登出",
+      "memberInfo": "我的頁面"
+    },
+    "Appointments": {
+      "Button": {
+        "confirm": "確認",
+        "back": "返回",
+        "activate": "啟動",
+        "deleteMeeting": "刪除會議"
+      },
+      "PermissionsPage": {
+        "title": "預約會議",
+        "subTitle": "開始設定",
+        "description": "您可以啟用會議預約功能",
+        "button": "啟用"
+      },
+      "UnopenedPage": {
+        "title": "預約會議",
+        "subTitle": "尚未開放",
+        "description": "會議預約尚未開放"
+      },
+      "ActivitiesPage": {
+        "title": "預約活動",
+        "subTitle": "尚未開放",
+        "description": "預約活動尚未開放"
+      },
+      "SettingsPage": {
+        "title": "預約會議設定",
+        "subTitle": "忙碌時段",
+        "description": {
+          "item_1": "請設定不希望被預約之時段。",
+          "item_2": "展會開放時間為 11 月 5 日至 11 月 7 日，每日 10:00-16:30；11 月 8 日當天則為 10:00-14:30。"
+        },
+        "button": {
+          "confirm": "確認送出",
+          "back": "返回",
+          "skip": "略過"
+        },
+        "formItem": {
+          "date": "忙碌日期",
+          "startTime": "忙碌開始時間",
+          "endTime": "忙碌結束時間",
+          "datePlaceholder": "請選擇忙碌日期",
+          "startTimePlaceholder": "請選擇開始時間",
+          "endTimePlaceholder": "請選擇結束時間"
+        }
+      },
+      "AppointmentsPage": {
+        "title": "會議行程表",
+        "statistic": {
+          "successfully": "預約成功的會議",
+          "invited": "您受邀約的會議",
+          "replay": "您需回覆的會議邀請",
+          "invitee": "受邀者尚未回覆的會議邀請"
+        },
+        "button": {
+          "go": "前往預約",
+          "setting": "預約會議設定"
+        },
+        "event": {
+          "appointment": "會議預約",
+          "time": "時間",
+          "participants": "人員",
+          "location": "地點",
+          "message": "訊息",
+          "occupied": "忙碌"
+        }
+      },
+      "ReservePage": {
+        "title": "我要預約",
+        "time": {
+          "title": "預約時段",
+          "formItem": {
+            "date": "會議日期",
+            "startTime": "開始時間",
+            "endTime": "結束時間"
+          }
+        },
+        "participants": {
+          "title": "預約人員",
+          "formItem": {
+            "engName": "英文姓名",
+            "zhName": "中文姓名",
+            "position": "職稱",
+            "mobNumber": "個人電話",
+            "email": "電子信箱"
+          }
+        },
+        "location": {
+          "title": "會議地點",
+          "formItem": {
+            "location": "會議地點"
+          }
+        },
+        "details": {
+          "title": "預約內容",
+          "formItem": {
+            "subject": "會議標題",
+            "message": "訊息"
+          }
+        },
+        "button": {
+          "confirm": "確認預約",
+          "searchDate": "查詢會議時間",
+          "searchTime": "查詢預約狀況"
+        },
+        "placeholder": {
+          "date": "請選擇會議日期",
+          "message": "請輸入內容"
+        }
+      }
+    },
+    "Activity": {
+      "Search": {
+        "placeholder": "請輸入搜尋內容"
+      },
+      "ActivitiesPage": {
+        "title": "活動行程表",
+        "button": {
+          "go": "前往報名",
+          "closed": "報名截止"
+        }
+      },
+      "ActivityPage": {
+        "button": {
+          "registration": "報名"
+        }
+      },
+      "UnopenedPage": {
+        "title": "預約活動",
+        "subTitle": "尚未開放",
+        "description": "預約活動尚未開放"
+      },
+      "PermissionsPage": {
+        "title": "預約活動",
+        "subTitle": "開始設定",
+        "description": "您可以啟用活動預約功能",
+        "button": "啟用"
+      }
+    },
+    "Portfolios": {
+      "Search": {
+        "placeholder": "請輸入搜尋內容"
+      },
+      "ProjectPage": {
+        "Tab": {
+          "overview": "作品簡介",
+          "crew": "主創團隊介紹"
+        },
+        "Unit": {
+          "min": "分鐘",
+          "episodes": "集"
+        },
+        "button": {
+          "invite": "預約"
+        },
+        "StoryToScreen_publications": {
+          "projectTitle": "作品類型",
+          "country": "國家",
+          "genre": "作品類型",
+          "concactPerson": "聯絡窗口姓名",
+          "jobTitle": "聯絡窗口職稱 ",
+          "concactPersonAndJobTitle": "聯絡窗口職稱 / 姓名",
+          "contactNumber": "聯絡窗口電話",
+          "emailAddress": "聯絡窗口信箱",
+          "logline": "情節概要",
+          "synopsis": "故事摘要",
+          "yearOfFirstPublicationOrRelease": "首刷出版年份 / 發表年份",
+          "holderOfAudiovisualAdaptationRights": "持有影視改編權之單位名稱",
+          "type": " 作品體裁",
+          "theme": "作品主題",
+          "rightsSold": "作品著作權交易情形",
+          "whyAdaptThisStory": "本案適合影視化之理由說明",
+          "comparableFilmAndTvWorks": "對標影視作品",
+          "awardsReceivedOrNumberOfCopiesSold": " 得獎紀錄或市場實績",
+          "backgroundSetting": "故事背景、時空設定",
+          "characterDescription": "主要角色",
+          "publisherName": "出版公司",
+          "companyName": "版權公司"
+        },
+        "StoryToScreen_original": {
+          "projectTitle": "作品類型",
+          "country": "國家",
+          "genre": "作品類型",
+          "concactPerson": "聯絡窗口姓名",
+          "jobTitle": "聯絡窗口職稱 ",
+          "concactPersonAndJobTitle": "聯絡窗口職稱 / 姓名",
+          "contactNumber": "聯絡窗口電話",
+          "emailAddress": "聯絡窗口信箱",
+          "logline": "情節概要",
+          "synopsis": "故事摘要",
+          "formats": "期望發形式",
+          "yearOfFirstPublicationOrRelease": "首刷出版年份 / 發表年份",
+          "holderOfAudiovisualAdaptationRights": "持有影視改編權之單位名稱",
+          "publisherName": "出版公司",
+          "type": " 作品體裁",
+          "theme": "作品主題",
+          "rightsSold": "作品著作權交易情形",
+          "whyAdaptThisStory": "本案適合影視化之理由說明",
+          "comparableFilmAndTvWorks": "對標影視作品",
+          "awardsReceivedOrNumberOfCopiesSold": " 得獎紀錄或市場實績",
+          "backgroundSetting": "故事背景、時空設定",
+          "characterDescription": "主要角色"
+        },
+        "ProjectToScreen": {
+          "projectTitle": "企畫案名稱",
+          "country": "製作國家",
+          "genre": "類型",
+          "concactPerson": "聯絡窗口姓名",
+          "jobTitle": "聯絡窗口職稱",
+          "concactPersonAndJobTitle": "聯絡窗口職稱 / 姓名",
+          "contactNumber": "聯絡窗口電話",
+          "emailAddress": "聯絡窗口信箱",
+          "logline": "企畫案概要",
+          "productionStatement": "製作理念",
+          "synopsis": "故事大綱",
+          "originalIdeaAndAdaptation": "原創 / 改編作品",
+          "holderOfAudiovisualAdaptationRights": "持有影視改編權之單位名稱",
+          "publisherName": "出版公司",
+          "goalAtTccf": "參與目標",
+          "projectStatus": "發展階段",
+          "totalBudget": "製作金額（美元）",
+          "financingAlreadyInPlace": "已募資金（美元）",
+          "numberOfEpisodes": "總集數",
+          "duration": "單集長度"
+        },
+        "TaiccaSchool": {
+          "projectTitle": "企畫案名稱",
+          "country": "製作國家",
+          "genre": "類型",
+          "concactPerson": "聯絡窗口姓名",
+          "jobTitle": "聯絡窗口職稱",
+          "concactPersonAndJobTitle": "聯絡窗口職稱 / 姓名",
+          "contactNumber": "聯絡窗口電話",
+          "emailAddress": "聯絡窗口信箱",
+          "logline": "企畫案概要",
+          "creatorStatement": "創作理念",
+          "synopsis": "故事大綱",
+          "originalIdeaAndAdaptation": "原創 / 改編作品",
+          "goalAtTccf": "參與目標",
+          "projectStatus": "發展階段",
+          "totalBudget": "製作金額（美元）",
+          "financingAlreadyInPlace": "已募資金（美元）",
+          "numberOfEpisodes": "總集數",
+          "duration": "單集長度"
+        }
+      },
+      "MarketPage": {
+        "type": "類別",
+        "work": "作品"
+      },
+      "CollectionPage": {
+        "completionDate": "完成時間",
+        "Unit": {
+          "min": "分鐘",
+          "episodes": "集"
+        },
+        "overview": "作品簡介",
+        "crew": "主創成員簡介",
+        "awards": "提案、參展與獲獎紀錄",
+        "director": "導演",
+        "producer_film": "製片",
+        "producer_tv": "製作人",
+        "creator": "創作者",
+        "cast": "卡司"
+      },
+      "BadgePage": {
+        "jobTitle": "職稱",
+        "participationGoal": "參展目標",
+        "contactPerson": "姓名",
+        "contactNumber": "聯絡電話"
+      }
+    }
+  },
+  "DialogBtn": {
+    "confirm": "儲存",
+    "cancel": "取消"
+  },
+  "SwalButton": {
+    "delete": "刪除",
+    "confirm": "確認",
+    "cancel": "取消",
+    "submit": "送出"
+  },
+  "BaseInfo": {
+    "alert": {
+      "title": "確認送出資訊？",
+      "content": "注意該筆資料將更新您展證之公司名稱,若開始進行預約後即不得更換展證資訊",
+      "confirm": "確認",
+      "cancel": "取消",
+      "successTitle": "儲存成功"
+    },
+    "saveBtn": "儲存"
+  },
+  "ExhibitionNav": {
+    "accountInfo": "我的頁面",
+    "notice": "通知",
+    "logout": "登出"
+  },
+  "LoginDialog": {
+    "title": "開通 TCCF 官網帳戶須知",
+    "content": "請填寫以下基本資訊，這將幫助我們更加理解您的需求與偏好，並提供您更個人化及高效率的服務。",
+    "roletype": "參展身分",
+    "phone": "手機號碼",
+    "phone_placeholder": "請輸入手機號碼",
+    "mandarinName": "中文姓名",
+    "mandarinName_placeholder": "請輸入中文姓名",
+    "englishName": "英文姓名",
+    "englishName_placeholder": "請輸入英文姓名",
+    "position": "職稱",
+    "position_placeholder": "請輸入職稱",
+    "goal": "參展目標",
+    "goal_placeholder": "請選擇參展目標",
+    "notice_paragraph_1": "非常歡迎您註冊「2024 TCCF 創意內容大會」（下稱 本商展）會員。本商展由文化內容策進院（下稱 TAICCA）主辦，將於 2024 年 11 月 5 日至 11 月 8 日於南港展覽館二館 7 樓盛大舉行。本商展每年吸引全球各地的買、賣家齊聚臺灣，促進交流與洽商，展示影視與故事提案，推動國際合作與發展。",
+    "notice_paragraph_2": "以下是參加本商展及使用 TCCF 網站（本平台）須遵守的用戶條款，請詳細閱讀：",
+    "notice_list": {
+      "list_item_1": "1.資料真實性：您在使用本平台時，須保證您填寫的所有資料均為真實、準確、完整且及時的，禁止提供虛假、不實或誤導性的資料，尤其是關於公司名稱、聯絡方式及其它關鍵資訊。",
+      "list_item_2": "2.資料責任：您對您在本平台提交的所有資料須負全部責任，若由於您提供虛假資料而導致任何損失或損害，TAICCA 將不負任何責任。 若發現您提供虛假或誤導性的資料，TAICCA 有權立即取消您的參展資格，並禁止您參加未來的活動。",
+      "list_item_3": "3.資料隱私：您所提供的資料將僅用於本商展的相關服務及功能，TAICCA 將依照相關法律法規保護您的個人隱私。",
+      "list_item_4": "4.法律遵循：您在使用本平台及參加本商展時，須遵守所有適用的法律法規及本條款。",
+      "list_item_5": "5.條款更新：TAICCA 保留隨時修改或更新用戶條款的權利，任何更改將會在本平台公布，您有責任定期查閱更新的內容。"
+    },
+    "notice_paragraph_3": "感謝您對「2024 TCCF 創意內容大會」的支持與參與，期待與您見面！",
+    "notice_paragraph_4": "若您有任何問題或需要進一步的協助，請不吝聯繫我們的客服團隊 contact@tccf.tw。",
+    "notice_paragraph_5": "謝謝您！",
+    "button": "我已閱讀並同意",
+    "button_2": "取消",
+    "goal_list": {
+      "list_item_1": "籌募資金",
+      "list_item_2": "版權交易",
+      "list_item_3": "聯合監製",
+      "list_item_4": "國際發行",
+      "list_item_5": "影展放映",
+      "list_item_6": "開拓業務市場",
+      "list_item_7": "瞭解市場及產業動態",
+      "list_item_8": "機構服務內容推廣",
+      "list_item_9": "其他"
+    }
+  },
+  "MemberInfo": {
+    "title": "基本資訊",
+    "sectitle": "個人資訊",
+    "editButton": "修改個人資訊",
+    "mandarinName": "中文姓名",
+    "mandarinRadio": "預設為展證顯示中文姓名",
+    "exhibitionName": "中文姓名",
+    "englishName": "英文姓名",
+    "englishRadio": "預設為展證顯示英文姓名",
+    "exhibitionEnglishName": "展證顯示英文姓名",
+    "email": "電子信箱",
+    "phone": "手機號碼",
+    "position": "職稱",
+    "exhibitionRole": "展證身分",
+    "roletype": "參展角色",
+    "photo": "照片",
+    "choosePhoto": "選擇照片",
+    "goal": "參展目標",
+    "password_title": "個人密碼",
+    "password": "密碼",
+    "editpassword": "修改密碼",
+    "newPassword": "再次輸入新密碼",
+    "passwordRemind": "新密碼，8~16字元含大小寫英文、數字和一個特殊符號",
+    "submit": "送出",
+    "cancel": "取消",
+    "alert_title": "確認送出資訊?",
+    "alert_remind": "注意若您開始進行預約後即不得更換展證資訊",
+    "message": {
+      "label_1": "填寫範例：+886-x-xxxx-xxxx ext. xxxx <br/> +886-xxx-xxx-xxx",
+      "label_2": "複選，至多三項"
+    },
+    "placeholder": {
+      "label_1": "請輸入中文姓名",
+      "label_2": "請輸入英文姓名",
+      "label_3": "請輸入職稱",
+      "label_4": "請選擇參展目標"
+    }
+  },
+  "ExhibitionInfo": {
+    "title": "參展資訊",
+    "sectitle": "參展資訊 / MARKET",
+    "infobox": {
+      "booth": "展位號碼",
+      "BadgeQuantity": "展證張數",
+      "ChineseCompanyName": "公司名稱",
+      "EnglishCompanyName": "Company Name"
+    },
+    "member": "成員",
+    "badges": "展證",
+    "admin": "管理員",
+    "submit": "確認展證",
+    "marketInfo": "市場展參展資訊",
+    "yes": "是",
+    "no": "否",
+    "save": "儲存資訊",
+    "goExhibit": "前往作品",
+    "noOhterProduct": "尚無參展資料",
+    "labelTitle": {
+      "label_1": "國別",
+      "label_2": "參展目標",
+      "label_3": "Company Profile",
+      "label_4": "Sales Contact Name",
+      "label_5": "版權聯絡窗口Email",
+      "label_6": "公司行業別"
+    },
+    "swalError": {
+      "title": "儲存失敗",
+      "label_1": "為必填欄位"
+    },
+    "inviteDialog": {
+      "label_1": "邀請成員",
+      "label_2": "信箱"
+    },
+    "preview": "預覽"
+  },
+  "companyProduct": {
+    "addExhibit": "新增作品",
+    "mainExhibit": "設定主打作品",
+    "information": "作品基本資訊",
+    "submit": "送出",
+    "cancel": "取消",
+    "select": "選擇最佳代表作",
+    "nowork": "尚無作品",
+    "nowork_content": "點擊右上方新增作品",
+    "type": "類別",
+    "productType": "作品類別",
+    "Save": "儲存",
+    "saveDraft": "預覽",
+    "swalDelete": {
+      "label_1": "確定刪除此作品？",
+      "label_2": "刪除後將無法復原",
+      "label_3": "確認",
+      "label_4": "取消"
+    },
+    "swalSuccess": {
+      "label_1": "刪除成功",
+      "label_2": "設定成功",
+      "label_3": "刪除失敗",
+      "label_4": "設定失敗"
+    },
+    "swalError": {
+      "label_1": "作品限制為最多5件"
+    }
+  },
+  "firstDialog": {
+    "label_1": "第一步驟 完成登入資訊",
+    "label_2": "請先填寫公司資料",
+    "title": "歡迎您使用本系統，首先您需要完成右上方帳戶資訊的資料輸入，方可進行步驟二的建立作品。請前往完成以下資訊",
+    "content": "點我前往填寫資料"
+  },
+  "MoviePlaceholder": {
+    "type": "請選擇作品類別",
+    "theme": "請選擇主題/類型",
+    "originaltitle": "請輸入作品名稱",
+    "status": "請選擇製作進度",
+    "runningtime": "請輸入影片片長（分鐘)",
+    "trailer": "請輸入預告片連結，瀏覽權限須設為公開"
+  },
+  "TVPlaceholder": {
+    "type": "請選擇作品類別",
+    "theme": "請選擇主題/類型",
+    "status": "請選擇製作進度",
+    "runningtime": "請輸入影片片長（分鐘)",
+    "ep": "請輸入影片集數(集數)",
+    "trailer": "請輸入預告片連結，瀏覽權限須設為公開"
+  },
+  "IPplaceholder": {
+    "type": "請選擇作品類別",
+    "theme": "請選擇主題/類型",
+    "years": "請輸入年分",
+    "runningtime": "請輸入影片片長（分鐘)",
+    "trailer": "請輸入預告片連結，瀏覽權限須設為公開"
+  },
+  "MeetingPage": {
+    "title": "預約會議",
+    "label_1": "尚未開放",
+    "label_2": "會議預約尚未開放",
+    "label_button": "前往設定日曆"
+  },
+  "ActivitiesPage": {
+    "title": "預約活動",
+    "label_1": "尚未開放",
+    "label_2": "會議預約尚未開放",
+    "label_button": "前往設定日曆"
+  },
+  "InputMessage": {
+    "label_1": "上傳檔案至多三張。如參展作品為一部以上，請自其中挑選一部作品，上傳該作品海報或直式視覺，以供製作市場展參展商名錄。<br></br>上傳檔案規格：<br></br>格式：TIFF、JPG、PNG。<br></br>尺寸： 25mmx35mm。<br></br> 解析度：300 dpi。<br></br>檔案大小2Mb以下"
+  },
+  "worksPopup": {
+    "label_1": "類別",
+    "label_2": "主題/類型",
+    "label_3": "製作進度",
+    "label_4": " 影片（預計）完成年分/月分",
+    "label_5": "影片片長（分鐘）",
+    "label_6": "Synopsis",
+    "label_7": "Director",
+    "label_8": "Producer",
+    "label_9": "Key Cast",
+    "label_10": "標題",
+    "label_11": "年分"
+  },
+  "Accupass": {
+    "title": "Accupass 會員開通",
+    "label_1": "TCCF 創意內容大會官網平台",
+    "Inputdata": {
+      "label_1": "姓名",
+      "label_2": "聯絡電話",
+      "label_3": "信箱",
+      "label_4": "密碼",
+      "label_5": "確認密碼",
+      "label_6": "開通"
+    }
+  },
+  "PitchingInfo": {
+    "label_1": "桌號",
+    "label_2": "展證張數",
+    "label_3": "Project Name",
+    "label_4": "提案名稱",
+    "label_5": "成員",
+    "label_6": "展證",
+    "label_7": "是",
+    "label_8": "否",
+    "label_9": "邀請成員",
+    "label_10": "信箱",
+    "label_11": "設定代表號",
+    "label_12": "查看我的提案",
+    "label_13": "管理員"
+  },
+  "ContactUs": {
+    "subscribeTitle": "訂閱電子報",
+    "subscribeContent": "訂閱我們即時獲得TCCF最新消息",
+    "subscribeBtnText": "訂閱",
+    "subscribeThxTitle": "訂閱成功"
+  }
+}

@@ -1,0 +1,150 @@
+@import '@/styles/style.scss';
+
+.mainMobMenu {
+
+    position: absolute;
+    top: 100px;
+    right: 0;
+    min-height: calc(100vh - 100px);
+    width: clamp(280px, 50vw, 500px);
+    background: $black;
+    
+
+    &__container {
+
+   
+
+        &_headerList {
+
+         
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            
+            &__item {
+
+               border-bottom: 1px solid $light-gray;
+
+
+                &_mainItem {
+
+                    padding: 20px 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    color: #fff;
+
+                    &__text {
+
+                       
+                    }
+
+                    &__icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        
+                        svg {
+                            transition: all 0.3s;
+                        }
+                        
+                    }
+                }
+
+                
+            }
+
+           
+        }
+
+        &_sidebarList {
+            
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            transition: all 0.3s;
+
+
+            &__container {
+
+                overflow: hidden;
+            }
+
+            &__item {
+
+    
+                
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+
+                &_mainItem {
+
+                   
+                    padding: 20px 20px 20px 40px;
+                    display: flex;
+                    justify-content: space-between;
+                    color: #fff;
+                   
+
+                    &__text {
+
+                        
+                    }
+
+                    &__icon {
+
+                        svg {
+                            transition: all 0.3s;
+                        }
+                        
+                    }
+                }
+
+                
+            }
+        }
+
+        &_branchList {
+         
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            transition: all 0.3s;
+            
+            &__container {
+
+                overflow: hidden;
+            }
+
+            &__item {
+
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+          
+
+                &_mainItem {
+
+                    padding: 20px 20px 20px 60px;
+                    display: flex;
+                    justify-content: space-between;
+                    color: #fff;
+
+                    &__text {
+
+                        // border: 1px solid purple;
+                    }
+
+                    &__icon {
+                        border: 1px solid orange;
+                    }
+                }
+
+                
+            }
+        }
+    }
+    
+
+
+}

@@ -1,0 +1,25 @@
+.cmsPage {
+
+    height: 100%;
+    padding: 20px 50px;
+    position: relative;
+
+    &__container {
+        background: $white;
+        padding: 20px 30px;
+    }
+
+}
+
+
+.reservationPage {
+    
+    height: 100%;
+    background: $white;
+    position: relative;
+
+    &__container {
+        background: $white;
+        padding: 20px 30px;
+    }
+}

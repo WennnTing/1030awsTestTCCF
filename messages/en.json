@@ -1,0 +1,672 @@
+{
+    "Login": {
+        "title": "Login",
+        "siteTitle": "TCCF Official Website Portal",
+        "formItem": {
+            "email": "Email",
+            "password": "Password"
+        },
+        "button": {
+            "login": "Login",
+            "forgot": "Forgot Password?"
+        },
+        "LoginTitle": "Login",
+        "LoginSecTitle_1": "TCCF Official Website Portal",
+        "LoginSecTitle_2": "TCCF Official Website Portal",
+        "LoginLabel_1": "Email",
+        "LoginLabel_2": "Password",
+        "LoginButton": "LOGIN",
+        "LoginForgetText": "Forgot Password",
+        "LoginThirdParty": "Or Log in with",
+        "LoginRegister_1": "Haven't activated TCCF Creative Content Fest services yet?Please go to <link>Activate Membership</link> ",
+        "LoginRegister_2": ""
+    },
+    "Register": {
+        "RegisterTitle": "Activate Membership",
+        "RegisterSecTitle": "TCCF Official Website Portal",
+        "RegisterLabel_1": "Email",
+        "RegisterLabel_2": "Password",
+        "RegisterLabel_3": "Confirm Password",
+        "RegisterButton": "Activate Account",
+        "RegisterThirdParty": "or sign in with",
+        "RegisterRegister_1": "Already a member? Please go to <link>Member Login</link>",
+        "RegisterRegister_2": "Login",
+        "Registersuccess_1": "Account Activated",
+        "Registersuccess_2": "Your membership information has been successfully updated! You can now log in and use all related services.",
+        "Registersuccess_4": "If you encounter any issues, please contact our support team for further assistance: product@tccf.tw."
+    },
+    "ForgetPassWord": {
+        "ForgetPassWordTitle": "Please check your email inbox",
+        "ForgetPassWordSecTitle_1": "An email with instructions to reset your password has been sent to your inbox.",
+        "ForgetPassWordSecTitle_2": "Please follow the instructions in the email to reset your password",
+        "ForgetPassWordSecTitle_3": "If you have not received this email within a few minutes, please check your spam folder.",
+        "ForgetPassWordSecTitle_4": "If you still have not received it, please contact our customer service time at contact@tccf.tw for assistance.",
+        "ForgetPassWordLogin": "Go to login",
+        "ForgetPassWordFirstTitle": "Login Password Reset",
+        "ForgetPassWordSecTitle": "TCCF Official Website Portal",
+        "ForgetPassWordLabel_1": "Email",
+        "ForgetPassWordButton": "Submit",
+        "ForgetPassWordLogin_1": "Back to login"
+    },
+    "SetNewPassWord": {
+        "SetNewPassWordTitle": "Password Reset Complete",
+        "SetNewPassWordSecTitle_1": "Your password has been successfully updated!",
+        "SetNewPassWordSecTitle_2": "From now on, please use your new password to log in to all related services.",
+        "SetNewPassWordSecTitle_3": "If you encounter any issues, or if you did not request a password change, please contact our support team for further assistance: product@tccf.tw.",
+        "SetNewPassWordLogin": "GO to login",
+        "SetNewPassWordFirstTitle": "Please Enter New Password",
+        "SetNewPassWordSecTitle": "TCCF Official Website Portal",
+        "SetNewPassWordLabel_1": "Password",
+        "SetNewPassWordLabel_2": "Confirm Password",
+        "SetNewPassWordButton": "Submit",
+        "SetNewPassWordLogin_1": "Back to Login"
+    },
+    "Landing": {
+        "Header": {
+            "login": "Login",
+            "badgePurchase": "Badge Purchase"
+        },
+        "Introduce": {
+            "tccf": {
+                "title": "ABOUT TCCF",
+                "description": "Taiwan Creative Content Fest (TCCF)” is a major annual event in the Asian creative content industry, attracting buyers and sellers internationally to converge and engage in networking and commercial negotiations. Divided into three main sections⸺PITCHING, MARKET, and FORUM⸺TCCF provides business services for the cultural content industry. By matching promising IPs with international financiers, driving commercial transactions and development between professionals worldwide, and facilitating the exchange of practical experiences and future industry trends, TCCF acts as a bridge that connects content creators and professional talents with industry resources."
+            },
+            "pitching": {
+                "title": "PITCHING",
+                "description": "TCCF PITCHING brings together promising content proposals from domestic and international markets, including feature films, series, animations, documentaries, publishing, comics, and original story concepts. It attracts professionals from the global content industry, facilitating the matching of proposals with international resources and funding, thereby fostering the creation of globally popular works. Selected teams will have the opportunity to compete for sponsored awards and prizes provided by TAICCA and other organizations.<br></br><br></br>The 2024 TCCF PITCHING conference will officially take place from November 5th (Tuesday) to November 8th (Friday) at Taipei’s Skylight Convention Center, Nangang Exhibition Center, Hall 2, 7F. It will be divided into two main sections: “Project to Screen” and “Story to Screen”. Showcasing highly promising film and television projects and story proposals, TCCF PITCHING is the premier destination for international industry professionals seeking original content from Asia!"
+            },
+            "market": {
+                "title": "MARKET",
+                "description": "“TCCF MARKET” focuses on facilitating rights transactions of international audiovisual content and promising IPs, expanding integration within the industry chain. MARKET encompasses operators and professionals from sectors as exemplified by content development, filming resources, and visual technologies, serving as a platform to explore opportunities for commercial collaboration and networking, thereby expanding the global market."
+            },
+            "forum": {
+                "title": "FORUM",
+                "description": "The FORUM section delves into international collaboration and invites key figures from the domestic and international content industries to share practical experiences and future industry trends, offering insights into the forefront of diverse international collaborations and industry dynamics."
+            }
+        },
+        "News": {
+            "title": "NEWS"
+        },
+        "Button": {
+            "readMore": "Read More"
+        }
+    },
+    "Activity": {
+        "Info": {
+            "location": "Location",
+            "eventTime": "Event Time",
+            "registrationPeriod": "Registration Period",
+            "totalSpots": "Total spots available",
+            "remainingSpots": "Remaining spots",
+            "logline": "Logline",
+            "team": "Guest Introductions"
+        },
+        "EventType": {
+            "badge": "Free Admission with Badge"
+        },
+        "Status": {
+            "upcoming": "Registration not yet open",
+            "closed": "Closed",
+            "reserve": "Reserve",
+            "full": "No spots available"
+        },
+        "Alert": {
+            "errorTitle": "Register failed",
+            "overlapping": "You are preoccupied at the moment. Please check your appointment schedule.",
+            "repeat": "You had register this session.",
+            "full": "Sorry, there are no more spots available.",
+            "closed": "Sorry, this session registration is closed.",
+            "successTitle": "Success"
+        }
+    },
+    "Error": {
+        "msg": {
+            "title": "Login Fail",
+            "description": "The internet signal is poor, please try again later.",
+            "relogin": "Re-login",
+            "goback": "Go Back",
+            "home": "Home",
+            "refresh": "Refresh",
+            "unauthorized": "Incorrect username or password, please try again."
+        }
+    },
+    "Alert": {
+        "Button": {
+            "confirm": "Confirm",
+            "cancel": "Cancel",
+            "login": "Login"
+        }
+    },
+    "Reservation": {
+        "Header": {
+            "logout": "Log out",
+            "memberInfo": "My Page"
+        },
+        "Appointments": {
+            "Button": {
+                "confirm": "Confirm",
+                "back": "Back",
+                "activate": "Activate",
+                "deleteMeeting": "Delete"
+            },
+            "PermissionsPage": {
+                "title": "Appointment Scheduling",
+                "subTitle": "Start Setting Up",
+                "description": "You can now activate appointment scheduling functions.",
+                "button": "Activate"
+            },
+            "UnopenedPage": {
+                "title": "Appointment Scheduling",
+                "subTitle": "Coming Soon",
+                "description": "We will be ready to assist you Shortly."
+            },
+            "ActivitiesPage": {
+                "title": "Activity Registration",
+                "subTitle": "Coming Soon",
+                "description": "We will be ready to assist you Shortly."
+            },
+            "SettingsPage": {
+                "title": "Busy Time Slot Settings",
+                "subTitle": "Busy Time Slot",
+                "description": {
+                    "item_1": "Please set the time slots you do not want to be scheduled.",
+                    "item_2": "Opening hours are 10:00-16:30 from Nov. 5 to Nov. 7; and 10:00-14:30 on Nov. 8."
+                },
+                "button": {
+                    "confirm": "Confirm",
+                    "back": "Back",
+                    "skip": "Skip"
+                },
+                "formItem": {
+                    "date": "Busy Dates",
+                    "startTime": "Busy Start Times",
+                    "endTime": "Busy End Times",
+                    "datePlaceholder": "Busy Dates",
+                    "startTimePlaceholder": "Busy Start Times",
+                    "endTimePlaceholder": "Busy End Times"
+                }
+            },
+            "AppointmentsPage": {
+                "title": "Meeting Schedule",
+                "statistic": {
+                    "successfully": "Meeting Successfully Scheduled",
+                    "invited": "Meetings You Have Been Invited To",
+                    "replay": "Meeting Invites Still Awaiting Your Reply",
+                    "invitee": "Meeting Invites Still Awaiting A Reply From The Invitee"
+                },
+                "button": {
+                    "go": "Go To Scheduling",
+                    "setting": "Busy Time Slot Settings"
+                },
+                "event": {
+                    "appointment": "Appointment",
+                    "time": "Time",
+                    "participants": "Participants",
+                    "location": "Location",
+                    "message": "Message",
+                    "occupied": "Occupied"
+                }
+            },
+            "ReservePage": {
+                "title": "Set Up Meeting",
+                "time": {
+                    "title": "Time",
+                    "formItem": {
+                        "date": "Meeting Dates",
+                        "startTime": "Meeting Start Times",
+                        "endTime": "Meeting End Times"
+                    }
+                },
+                "participants": {
+                    "title": "Participants",
+                    "formItem": {
+                        "engName": "English Name",
+                        "zhName": "Chinese Name",
+                        "position": "Position",
+                        "mobNumber": "Mobile Number",
+                        "email": "Email"
+                    }
+                },
+                "location": {
+                    "title": "Location",
+                    "formItem": {
+                        "location": "Location"
+                    }
+                },
+                "details": {
+                    "title": "Meeting Details",
+                    "formItem": {
+                        "subject": "Subject",
+                        "message": "Message"
+                    }
+                },
+                "button": {
+                    "confirm": "Confirm",
+                    "searchDate": "Continue",
+                    "searchTime": "Continue"
+                },
+                "placeholder": {
+                    "date": "Please select a meeting date",
+                    "message": "Please enter the content"
+                }
+            }
+        },
+        "Activity": {
+            "Search": {
+                "placeholder": "Search"
+            },
+            "ActivitiesPage": {
+                "title": "Session Schedule",
+                "button": {
+                    "go": "Go To Registration",
+                    "closed": "Closed"
+                }
+            },
+            "ActivityPage": {
+                "button": {
+                    "registration": "Reserve"
+                }
+            },
+            "UnopenedPage": {
+                "title": "Session Schedule",
+                "subTitle": "Coming Soon",
+                "description": "We will be ready to assist you Shortly."
+            },
+            "PermissionsPage": {
+                "title": "Activity Registration",
+                "subTitle": "Start Setting Up",
+                "description": "You can now activate activity registration functions.",
+                "button": "Activate"
+            }
+        },
+        "Portfolios": {
+            "Search": {
+                "placeholder": "Search"
+            },
+            "ProjectPage": {
+                "Tab": {
+                    "overview": "Title Overview",
+                    "crew": "Main Crew"
+                },
+                "Unit": {
+                    "min": "mins",
+                    "episodes": "episodes"
+                },
+                "button": {
+                    "invite": "Invite"
+                },
+                "StoryToScreen_publications": {
+                    "projectTitle": "Title",
+                    "country": "Country / Countries",
+                    "genre": "Genre",
+                    "concactPerson": "Contact Person",
+                    "jobTitle": "Job title",
+                    "concactPersonAndJobTitle": "Contact Person / Job Title",
+                    "contactNumber": "Contact Number",
+                    "emailAddress": "Contact Email",
+                    "logline": "Logline",
+                    "synopsis": "Story Summary",
+                    "yearOfFirstPublicationOrRelease": "Year of First Publication / Release",
+                    "holderOfAudiovisualAdaptationRights": "Holder of Audiovisual Adaptation Rights",
+                    "type": " Type",
+                    "theme": "Theme",
+                    "rightsSold": "Rights Sold",
+                    "whyAdaptThisStory": "Why Adapt This Story?",
+                    "comparableFilmAndTvWorks": "Comparable Film & TV Works",
+                    "awardsReceivedOrNumberOfCopiesSold": "Awards Received or Number of Copies Sold",
+                    "backgroundSetting": "Background, Setting",
+                    "characterDescription": "Character",
+                    "publisherName": "Publisher’s Name",
+                    "companyName": "Company name"
+                },
+                "StoryToScreen_original": {
+                    "projectTitle": "Title",
+                    "country": "Country / Countries",
+                    "genre": "Genre",
+                    "concactPerson": "Contact Person",
+                    "jobTitle": "Job title",
+                    "concactPersonAndJobTitle": "Contact Person / Job Title",
+                    "contactNumber": "Contact Number",
+                    "emailAddress": "Contact Email",
+                    "logline": "Logline",
+                    "synopsis": "Story Summary",
+                    "format": "formats",
+                    "yearOfFirstPublicationOrRelease": "Year of First Publication / Release",
+                    "holderOfAudiovisualAdaptationRights": "Holder of Audiovisual Adaptation Rights",
+                    "type": " Type",
+                    "theme": "Theme",
+                    "rightsSold": "Rights Sold",
+                    "whyAdaptThisStory": "Why Adapt This Story?",
+                    "comparableFilmAndTvWorks": "Comparable Film & TV Works",
+                    "awardsReceivedOrNumberOfCopiesSold": "Awards Received or Number of Copies Sold",
+                    "backgroundSetting": "Background, Setting",
+                    "characterDescription": "Character"
+                },
+                "ProjectToScreen": {
+                    "projectTitle": "Project Title",
+                    "country": "Production Country / Countries",
+                    "genre": "Genre",
+                    "concactPerson": "Contact Person",
+                    "jobTitle": "Job title",
+                    "concactPersonAndJobTitle": "Contact Person / Job Title",
+                    "contactNumber": "Contact Number",
+                    "emailAddress": "Contact Email",
+                    "logline": "Logline",
+                    "productionStatement": "Production Statement",
+                    "synopsis": "Synopsis",
+                    "originalIdeaAndAdaptation": "Original Idea / Adaptation",
+                    "holderOfAudiovisualAdaptationRights": "Holder of Audiovisual Adaptation Rights",
+                    "publisherName": "Publisher’s Name",
+                    "goalAtTccf": "Goal at TCCF",
+                    "projectStatus": "Project Status",
+                    "totalBudget": "Total Budget (USD)",
+                    "financingAlreadyInPlace": "Financing Already in Place (USD)",
+                    "numberOfEpisodes": "Number of Episodes",
+                    "duration": "Duration"
+                },
+                "TaiccaSchool": {
+                    "projectTitle": "Project Title",
+                    "country": "Production Country / Countries",
+                    "genre": "Genre",
+                    "concactPerson": "Contact Person",
+                    "jobTitle": "Job title",
+                    "concactPersonAndJobTitle": "Contact Person / Job Title",
+                    "contactNumber": "Contact Number",
+                    "emailAddress": "Contact Email",
+                    "logline": "Logline",
+                    "creatorStatement": "Creator’s Statement",
+                    "synopsis": "Synopsis",
+                    "originalIdeaAndAdaptation": "Original Idea / Adaptation",
+                    "goalAtTccf": "Goal at TCCF",
+                    "projectStatus": "Project Status",
+                    "totalBudget": "Total Budget (USD)",
+                    "financingAlreadyInPlace": "Financing Already in Place (USD)",
+                    "numberOfEpisodes": "Number of Episodes",
+                    "duration": "Duration"
+                }
+            },
+            "MarketPage": {
+                "type": "類別",
+                "work": "作品"
+            },
+            "CollectionPage": {
+                "completionDate": "Completion Date",
+                "Unit": {
+                    "min": "mins",
+                    "episodes": "episodes"
+                },
+                "overview": "Title Overview",
+                "crew": "Main Crew",
+                "awards": "Proposals, Participation, and Awards",
+                "director": "Director",
+                "producer_film": "Producer",
+                "producer_tv": "Producer",
+                "creator": "Creator",
+                "cast": "Cast"
+            },
+            "BadgePage": {
+                "jobTitle": "Job title",
+                "participationGoal": "Participation Goal",
+                "contactPerson": "Name",
+                "contactNumber": "Contact Number"
+            }
+        }
+    },
+    "DialogBtn": {
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+    },
+    "SwalButton": {
+        "delete": "Delete",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "submit": "Submit"
+    },
+    "BaseInfo": {
+        "alert": {
+            "title": "Confirm Submission?",
+            "content": "This will update your company name on the badge. Once you start booking, you cannot change the badge info.",
+            "confirm": "Confirm",
+            "cancel": "Cancel",
+            "successTitle": "Save Successful"
+        },
+        "saveBtn": "Save"
+    },
+    "ExhibitionNav": {
+        "accountInfo": "My Page",
+        "notice": "Notification",
+        "logout": "Log out"
+    },
+    "LoginDialog": {
+        "title": "2024 TCCF Account User Terms",
+        "content": "Please fill in the following basic information. This will help us better understand your needs and preferences, allowing us to provide you with more personalized and efficient services.",
+        "roletype": "Participant’s  Role",
+        "phone": "Participant’s Mobile Number",
+        "phone_placeholder": "Please enter your phone number",
+        "mandarinName": "Participant’s Mandarin Name",
+        "mandarinName_placeholder": "Please enter your Mandarin name",
+        "englishName": "Participant’s English Name",
+        "englishName_placeholder": "Please enter your English name",
+        "position": "Participant’s Position",
+        "position_placeholder": "Please enter your position",
+        "goal": "Participation’s Goal",
+        "goal_placeholder": "participation goal",
+        "notice_paragraph_1": "Thank you for registering your 2024 Taiwan Creative Content Fest (TCCF) account. Organized by the Taiwan Creative Content Agency (TAICCA), the 2024 TCCF will be held from Nov. 5 to Nov. 8 at Nangang Exhibition Center, Hall 2, 7F. The event attracts buyers and sellers from all over the world to Taiwan every year to engage in networking and commercial negotiations, showcase audiovisual and story proposals, and promote international collaboration and development.",
+        "notice_paragraph_2": "Below are the user terms that must be adhered to when using the TCCF website (“this platform”). Please read them carefully:",
+        "notice_list": {
+            "list_item_1": "1.Data accuracy: When using this platform, you must ensure all information you provide is true, accurate, completely, and up to date. It is prohibited to provide false, inaccurate, or misleading information, especially company names, contact information, and other key details.",
+            "list_item_2": "2.Data responsibility: You are fully responsible for all information you submit on this platform. TAICCA is not liable for any loss or damage caused by the provision of false information. If it is discovered that you have provided false or misleading information, TAICCA reserves the right to immediately revoke your right to participate in the 2024 TCCF and ban you from future events.",
+            "list_item_3": "3.Data privacy: The information you provide will only be used for services and functions related to the 2024 TCCF. TAICCA will protect your personal privacy in accordance with relevant laws and regulations.",
+            "list_item_4": "4.Legal compliance: When using this platform and participating in the 2024 TCCF, you must comply with all applicable laws and regulations as well as these terms.",
+            "list_item_5": "5.Terms updates: TAICCA reserves the right to amend or update these user terms at any time. Any chances will be announced on this platform, and you are responsible for regularly checking for updated content."
+        },
+        "notice_paragraph_3": "Thank you for your support and participation in the 2024 TCCF. We look forward to seeing you there!",
+        "notice_paragraph_4": " If you have any questions or require further assistance, please contact our customer service team at contact@tccf.tw .",
+        "notice_paragraph_5": "Thank you!",
+        "button": "Agree",
+        "button_2": "Disagree",
+        "goal_list": {
+            "list_item_1": "Financing",
+            "list_item_2": "Copyright Transactions ",
+            "list_item_3": "Co-Production",
+            "list_item_4": "International Distribution ",
+            "list_item_5": "Festival Screening",
+            "list_item_6": "Business Development",
+            "list_item_7": "Insight into Market Trends & Industry Landscapes ",
+            "list_item_8": "Promote Our Services ",
+            "list_item_9": "Others"
+        }
+    },
+    "MemberInfo": {
+        "title": "Participant Information",
+        "sectitle": "Personal Information",
+        "editButton": "Edit Information",
+        "mandarinName": "Participant’s Mandarin Name",
+        "mandarinRadio": "Default Display on Badge",
+        "exhibitionName": "中文姓名",
+        "englishName": "Participant’s English Name",
+        "englishRadio": "Default Display on Badge",
+        "exhibitionEnglishName": "English Name the badge",
+        "email": "Participant’s Email",
+        "phone": "Participant’s Mobile Number",
+        "position": "Participant’s Position",
+        "exhibitionRole": "Badge Category",
+        "roletype": "Participant’s Role",
+        "photo": "Participant’s Picture",
+        "choosePhoto": "Upload Photo",
+        "goal": "Participation’s Goal",
+        "password_title": "Personal Password",
+        "password": "Password",
+        "editpassword": "Edit Password",
+        "newPassword": "Re-enter New Password",
+        "passwordRemind": "Password: 8-16 characters, including at least 1  uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "alert_title": "Confirm Submission?",
+        "alert_remind": "Please note that once you start making reservations, you will not be able to change the badge information.",
+        "message": {
+            "label_1": "Example: +886-x-xxxx-xxxx ext. xxxx or +886-xxx-xxx-xxx",
+            "label_2": "Multiple choice, up to three options."
+        },
+        "placeholder": {
+            "label_1": "Participant’s Mandarin Name",
+            "label_2": "Participant’s English Name",
+            "label_3": "Participant’s Position",
+            "label_4": "Participation’s Goal"
+        }
+    },
+    "ExhibitionInfo": {
+        "title": "Exhibition Information",
+        "sectitle": "Exhibit Info / MARKET",
+        "infobox": {
+            "booth": "Booth No.",
+            "BadgeQuantity": "Badge Quantity",
+            "ChineseCompanyName": "公司名稱",
+            "EnglishCompanyName": "Company Name"
+        },
+        "member": "Members",
+        "badges": "Badges",
+        "admin": "Admin",
+        "submit": "Submit",
+        "marketInfo": "MARKET COMPANY INFO",
+        "yes": "YES",
+        "no": "NO",
+        "save": "Save",
+        "goExhibit": "Enter Work Details",
+        "noOhterProduct": "No exhibition data available.",
+        "labelTitle": {
+            "label_1": "Country",
+            "label_2": "Participation Goal",
+            "label_3": "Company Profile",
+            "label_4": "Sales Contact Name",
+            "label_5": "Sales Contact Email",
+            "label_6": "Nature of Business"
+        },
+        "swalError": {
+            "title": "Save Failed",
+            "label_1": "is a required field"
+        },
+        "inviteDialog": {
+            "label_1": "Invite Member",
+            "label_2": "Email"
+        },
+        "preview": "Preview"
+    },
+    "companyProduct": {
+        "addExhibit": "Add Work",
+        "mainExhibit": "Main Work",
+        "information": "Information",
+        "submit": "Continue",
+        "cancel": "Cancel",
+        "select": "Select the best representative work.",
+        "nowork": "No works available.",
+        "nowork_content": "Click on “Add Work” to add a new work.",
+        "type": "Type",
+        "productType": "Work Type",
+        "Save": "Save",
+        "saveDraft": "Preview",
+        "swalDelete": {
+            "label_1": "Are you sure you want to delete this work?",
+            "label_2": "This action cannot be undone",
+            "label_3": "Confirm",
+            "label_4": "Cancel"
+        },
+        "swalSuccess": {
+            "label_1": "Deletion successful",
+            "label_2": "Setting successful"
+        },
+        "swalError": {
+            "label_1": "Maximum of 5 works allowed."
+        }
+    },
+    "firstDialog": {
+        "label_1": "Step 1: Complete Login Information",
+        "label_2": "Please fill in the company information first",
+        "title": "Welcome to our system. To proceed, please complete your account information in the top right corner first. After that, you can move on to step two to create your project. Please provide the following details.",
+        "content": "Click here to fill in your information"
+    },
+    "MoviePlaceholder": {
+        "type": "Select",
+        "theme": "Select",
+        "originaltitle": "Enter original title",
+        "status": "Select",
+        "runningtime": "Enter running time (minutes)",
+        "trailer": "Enter trailer link (must be public)"
+    },
+    "TVPlaceholder": {
+        "type": "Select",
+        "theme": "Select",
+        "status": "Select",
+        "runningtime": "Enter running time (minutes)",
+        "ep": "Enter number of episodes",
+        "trailer": "Enter trailer link (must be public)"
+    },
+    "IPplaceholder": {
+        "type": "Select",
+        "theme": "Select",
+        "years": "Enter year(YYYY)",
+        "runningtime": "Enter running time (minutes)",
+        "trailer": "Enter trailer link (must be public)"
+    },
+    "MeetingPage": {
+        "title": "Appointment Scheduling",
+        "label_1": "Coming Soon",
+        "label_2": "We will be ready to assist you Shortly.",
+        "label_button": "Go to Calendar Setup"
+    },
+    "ActivitiesPage": {
+        "title": "Activity Registration",
+        "label_1": "Coming Soon",
+        "label_2": "We will be ready to assist you Shortly.",
+        "label_button": "Go to Calendar Setup"
+    },
+    "InputMessage": {
+        "label_1": "Up to three posters. If there is more than one exhibited work, please select one of the works and upload its poster or vertical key art for the TCCF Market catalog.<br></br>File requirements:<br></br>Format: TIFF, JPG, PNG<br></br>Image Size: 25mm x 35mm<br></br>Resolution: 300 dpi<br></br>Size: Under 2MB"
+    },
+    "worksPopup": {
+        "label_1": "Type",
+        "label_2": "Theme / Genre",
+        "label_3": "Production Status",
+        "label_4": " (Expected) Completed Year",
+        "label_5": "Running Time(Min)",
+        "label_6": "Synopsis",
+        "label_7": "Director",
+        "label_8": "Producer",
+        "label_9": "Key Cast",
+        "label_10": "標題",
+        "label_11": "Year"
+    },
+    "Accupass": {
+        "title": "Accupass Activate",
+        "label_1": "TCCF Official Website Portal",
+        "Inputdata": {
+            "label_1": "Name",
+            "label_2": "Phone",
+            "label_3": "Email",
+            "label_4": "Password",
+            "label_5": "Confirm Password",
+            "label_6": "Activate Account"
+        }
+    },
+    "PitchingInfo": {
+        "label_1": "Booth No.",
+        "label_2": "Badge Quantity",
+        "label_3": "Project Name",
+        "label_4": "提案名稱",
+        "label_5": "Members",
+        "label_6": "Badges",
+        "label_7": "Yes",
+        "label_8": "No",
+        "label_9": "Invite Member",
+        "label_10": "Email",
+        "label_11": "Set Owner",
+        "label_12": "View Project",
+        "label_13": "Admin"
+    },
+    "ContactUs": {
+        "subscribeTitle": "Subscribe to Our Newsletter",
+        "subscribeContent": "Subscribe for TCCF updates",
+        "subscribeBtnText": "Subscribe",
+        "subscribeThxTitle": "Subscription Successful"
+    }
+}

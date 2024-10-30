@@ -1,0 +1,30 @@
+@import '@/styles/style.scss';
+
+.cmsAccountList {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    
+   
+
+    &__header{
+     
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+
+        &_title {
+           margin: 0;
+        }
+
+        &_addButton {
+            margin-left: auto;
+            background-color: $primary-green;
+            border: none;
+            color: $white;
+            padding: 2px 20px;
+            font-size: 14px;
+        }
+    }
+}

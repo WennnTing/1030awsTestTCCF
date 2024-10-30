@@ -1,0 +1,124 @@
+.marketWrapper {
+    // border: 1px solid blue;
+    display: flex;
+
+    &__actionButtons {
+        display: flex;
+        justify-content: space-between;
+        width: 80px;
+    }
+
+    &__actionIcon {
+        font-size: 20px;
+        cursor: pointer;
+
+        &:hover {
+            color: #4f8fd0;
+        }
+    }
+
+    &__mainTitleBlock {
+        // border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__btnBlock {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__tabBlock {
+        display: flex;
+        // justify-content: center;
+        gap: 16px;
+        margin: 0 0 20px 0;
+
+
+    }
+
+    &__tabButton {
+        border: 1px solid rgba(78, 172, 133, 0.5);
+        color: #4DAC86;
+        border-radius: 8px;
+        padding: 4px 8px;
+        width: 200px;
+        text-align: center;
+        transition: all 0.3s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #4DAC86;
+            color: white;
+        }
+
+        &.active {
+            background-color: #4DAC86;
+            color: white;
+        }
+    }
+
+    &__buttonContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    &__titleIcon {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-grow: 1;
+
+        // h3 {
+        //     width: 780px;
+        // }
+    }
+
+    &__icon {
+        font-size: 24px;
+        color: #1CD459;
+    }
+
+
+    // ==================== 搜尋框 ====================
+
+    &__searchWrapper {
+        margin-bottom: 16px; // 搜尋框和表格之間的間距
+        // border: 1px solid blue;
+        display: flex;
+        gap: 24px;
+    }
+
+    &__searchInputContainer {
+        position: relative;
+        width: 100%;
+    }
+
+    &__searchInput {
+        width: 100%;
+        padding: 4px 12px 4px 40px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 28px;
+
+        &:focus {
+            border: 1px solid #51BA97;
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #bababa;
+        }
+    }
+
+    &__searchIcon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #bababa;
+    }
+}

@@ -1,0 +1,46 @@
+@import '@/styles/style.scss';
+
+.buttonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    outline: none;
+    background-color: $primary-green ;
+    color: $white;
+    border: none;
+    padding: 2px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+    @include RWD(sm) {
+        font-size: 14px;
+        padding: 0 16px;
+    }
+
+    &__icon {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+
+        @include RWD(sm) {
+            font-size: 14px;
+        }
+    }
+
+    &.delete {
+        background-color: rgba(208, 16, 76, 0.05);
+        padding: 8px;
+    }
+
+    &__icon.deleteIcon {
+        color: #D0104C;
+
+        @include RWD(sm) {
+            font-size: 14px;
+        }
+    }
+
+}

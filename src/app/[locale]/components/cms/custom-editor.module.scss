@@ -1,0 +1,26 @@
+@import '@/styles/style.scss';
+
+.cmsCustomEditor {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    &__required {
+        color: $red;
+    }
+
+    &__notice {
+        display: flex;
+        color: $dark-gray;
+        font-size: 12px;
+
+        &_icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+    }
+
+   
+}

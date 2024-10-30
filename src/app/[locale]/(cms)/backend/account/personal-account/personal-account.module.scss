@@ -1,0 +1,50 @@
+@import '@/styles/style.scss';
+
+.cmsPersonalAccount {
+
+ 
+    display: flex;
+    gap: 50px;
+
+    h3 {
+        margin-top: 0;
+    }
+
+
+    form {
+        width: 100%;
+    }
+
+
+    &__header {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+       
+
+        &_actionButton {
+
+            text-align: right;
+            padding-top: 50px;
+        }
+
+        &_error {
+            color: $red;
+            font-size: 12px;
+            margin-top: 5px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+    }
+
+   
+}

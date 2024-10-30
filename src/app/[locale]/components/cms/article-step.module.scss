@@ -1,0 +1,88 @@
+@import '@/styles/style.scss';
+
+.cmsArticleStep {
+
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+
+        &.active {
+            color: $primary-green;
+            
+        }
+
+        &_step {
+            color: $gray;
+            border: 1px solid $gray;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-montserrat);
+
+            &__text {
+                color: $gray;
+
+                &.active {
+                    color: $primary-green;
+                    
+                }
+            }
+
+            &.active {
+                background-color: $primary-green;
+                border-color: $primary-green;
+                
+            }
+
+            span {
+                color: $gray;
+                display: inline-block;
+                margin-left: 1.3px;
+                
+
+                &.active {
+                    color: $white;
+                    
+                }
+                
+            }
+        }
+
+        &_arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    
+
+    &__activeStep {
+        background: $primary-green;
+        color: $white;
+        border-color: $primary-green;
+    }
+
+
+
+    &__activeText {
+        color: $primary-green;
+    }
+
+    
+    
+}
+
+

@@ -1,0 +1,282 @@
+@import '@/styles/style.scss';
+
+.mainPage {
+
+    width: 100%;
+    max-width: calc(100% - 200px - 12.5vw);
+
+
+
+    @include RWD(sp820) {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    &__container {
+        width: 90%;
+        height: 100%;
+        padding: 50px 0 100px 0;
+        display: flex;
+        justify-content: center;
+
+        @include RWD(sp820) {
+            width: 100%;
+        }
+        
+        
+    
+        
+        
+        
+
+        &_contentWrapper {
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+
+            @include RWD(sp820) {
+                width: 90%;
+            }
+
+
+
+            &__title {
+                font-size: clamp(30px, 1.822vw, 35px);
+                margin-top: 0;
+                line-height: 1.5;
+
+            }
+
+
+
+            &__content {
+
+                // text-align: justify;
+
+                min-height: calc(100vh - 300px);
+                min-height: calc((var(--vh, 1vh) * 100) - 300px);
+                width: 100%;
+        
+
+
+                p {
+                    margin: 30px 0;
+                }
+
+
+
+
+                &_paragraphWrapper {
+                    margin-bottom: 30px;
+
+                    &__title {
+                        margin-bottom: 0;
+                        line-height: 1.5;
+                        text-align: left;
+                        font-size: clamp(24.5px, 1.666vw, 32px);
+                    }
+
+
+
+
+                    &__paragraph {}
+                }
+
+                &_orderedList {
+                    counter-reset: item;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+
+                    &__title {
+
+                        font-size: clamp(22px, 1.5625vw, 30px);
+                        font-weight: 600;
+
+
+                        h3 {
+                            font-size: clamp(22px, 1.5625vw, 30px);
+                            margin-bottom: 0;
+                            line-height: 1.5;
+                            font-weight: 600;
+
+                        }
+
+                        ol {
+
+                            font-size: 16px;
+                            font-weight: normal;
+                        }
+                    }
+
+
+                    li {
+
+                        display: block;
+                        text-align: left;
+                    }
+
+                    li::before {
+                        content: counters(item, ".") " ";
+                        counter-increment: item
+                    }
+
+                    &__sublist {
+                        list-style: none;
+                        margin-left: 20px;
+                        padding-left: 0;
+
+                        li {
+                            margin-bottom: 5px;
+                        }
+
+                        li::before {
+                            content: "• ";
+                            counter-increment: none;
+                            font-weight: normal;
+                            display: inline-block;
+                            width: 1.5em;
+                        }
+                    }
+
+                }
+
+                &_listMainTitle {
+                    font-size: clamp(22px, 1.5625vw, 30px);
+                    margin-bottom: 0;
+                    line-height: 1.5;
+                    font-weight: 600;
+                }
+
+                &_list {
+
+                    text-align: left;
+                    padding-left: 20px;
+
+                    &__title {
+                        font-weight: 500;
+                        margin-left: -20px;
+
+                    }
+
+
+                    &__item {
+                        margin: 10px 0;
+                    }
+
+                    &__sublist {
+                        margin: 0;
+                        list-style-position: outside;
+
+                        &_sublistItem {
+                            list-style-type: disc;
+
+                        }
+
+                    }
+                }
+
+
+
+                &_noneList {
+
+                    text-align: left;
+                    list-style: none;
+                    padding: 0;
+
+                    &__title {
+                        font-weight: 500;
+                        color: rgb(43, 95, 117);
+                    }
+
+
+                    &__item {
+                        margin: 10px 0;
+                    }
+
+
+                    li::before {
+                        content: none;
+                        counter-increment: item
+                    }
+
+                    &__sublist {
+                        margin: 0;
+                        list-style-position: outside;
+
+                        &_sublistItem {
+                            list-style-type: disc;
+
+                        }
+
+                    }
+                }
+
+
+                &_numberList {
+                    counter-reset: none;
+                    padding-left: 22px;
+                    margin-bottom: 50px;
+
+
+                    &__nolistStyle {
+                        list-style: none;
+                        margin: 0;
+                    }
+
+                    &__testStyle {
+                        list-style: none;
+                        margin: 0;
+                    }
+
+                    &__title {
+                        font-weight: 500;
+                        margin-left: -20px;
+                        color: rgb(43, 95, 117);
+                    }
+
+                    li::before {
+                        content: none;
+                        counter-increment: item
+                    }
+
+                    &__sublist {
+                        margin: 0;
+                        list-style: disc;
+
+                        // &_sublistItem {
+                        //     list-style-type: circle;
+
+                        // }
+
+                    }
+                }
+
+                &_notice {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+
+
+                    &__item {}
+                }
+            }
+
+            &__buttonWrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                width: 100%;
+                margin-top: 50px;
+                flex-wrap: wrap;
+            }
+
+
+        }
+    }
+}

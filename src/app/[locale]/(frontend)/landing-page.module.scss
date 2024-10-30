@@ -1,0 +1,24 @@
+@import '@/styles/style.scss';
+
+.Landing {
+
+    height: 100%;
+
+    &:lang(en) {
+        font-family: var(--font-poppins), Arial;
+        
+        p,
+        li {
+            text-align: left;
+        }
+    }
+
+    &__hero {
+
+        display: flex;
+        height: calc(100vh - 100px);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+}

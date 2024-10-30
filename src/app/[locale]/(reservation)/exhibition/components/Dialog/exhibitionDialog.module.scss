@@ -1,0 +1,92 @@
+@import '@/styles/style.scss';
+
+.exhibitionDialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // max-height: 800px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+
+    &__container {
+        border: 1px solid $gray;
+        background-color: white;
+        padding: 24px;
+        overflow-y: scroll;
+        max-width: 600px;
+        min-width: 600px;
+        max-height: 680px;
+
+        @include RWD(sm) {
+            width: 100%;
+            min-width: 100%;
+            max-height: 70%;
+        }
+
+        &.exhibitionDialog__isSelected {
+            height: 360px;
+            max-height: none;
+
+            @include RWD(sm) {
+                height: 70%;
+            }
+        }
+    }
+
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(208, 208, 208, 0.5);
+    }
+
+    &__title {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    &__close {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__btnContainer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding-top: 14px;
+
+        &__btn {
+            padding: 0 16px;
+            border: 1px solid $gray;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        &__save {
+            padding: 0 16px;
+            border: none;
+            background-color: $primary-green;
+            color: $white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+    }
+}

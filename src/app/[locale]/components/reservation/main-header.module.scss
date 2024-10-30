@@ -1,0 +1,193 @@
+@import '@/styles/style.scss';
+.reservationMainHeader {
+    height: 70px;
+    position: sticky;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 30px;
+    top: 0;
+    z-index: 5;
+    background: $white;
+    border-bottom: 1px solid $gray;
+
+    @include RWD(lg) {
+        padding: 0 10px;
+        justify-content: space-between;
+    }
+
+    &__logo {
+       
+        display: none;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 150px;
+
+        a {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @include RWD(lg) {
+            display: flex;
+           
+        }
+    }
+
+    &__function {
+       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        @include RWD(sp820) {
+            display: none;
+        }
+
+
+        &_list {
+            list-style: none;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            &__item {
+               
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                font-size: 20px;
+                color: $dark-gray;
+                
+
+                &_locale {
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    gap: 5px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        color: $black;
+                    }
+
+                    &__icon {
+
+                        display: inline-flex;
+                        align-items: center;
+                        font-size: 20px;
+                    }
+                }
+
+                &_user {
+                    
+           
+
+                  &__container {
+                    display: grid;
+                    grid-template-rows: 0fr;
+                    transition: 0.2s grid-template-rows ease;
+                    position: absolute;
+                    right: 0;
+                    top: 100%;
+
+                    ul {
+
+                  
+                        list-style: none;
+                        background: $white;
+                        padding: 0;
+                        // top: 100%;
+                        border: 1px solid $gray;
+                        overflow: hidden;
+                        transition: all 0.5s ease;
+                        
+                        
+    
+                        li {
+    
+    
+                            padding: 5px 20px;
+                            width: 100%;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                            font-size: 14px;
+                           
+    
+                            &:hover {
+                                color: $primary-green;
+                            }
+        
+    
+                        }
+                      }
+                  
+                    
+                  }
+
+                  &__icon {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background-color: $primary-green;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $white;
+                    cursor: pointer;
+
+                    span {
+
+                        line-height: 1;
+                        margin: 0 0 0 2px;
+                        font-family: var(--font-poppins);
+                    }
+
+                    
+                  }
+
+                  
+                 
+               
+                   
+                }
+            }
+        }
+    }
+
+    &__hamburger {
+
+        display: flex;
+        position: relative;
+        align-items: center;
+        display: none;
+        justify-content: center;
+
+        @include RWD(sp820) {
+            display: flex;
+        }
+    }
+
+    &__hamLogOut {
+
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        
+
+        &_icon {
+
+            display: inline-flex;
+            align-items: center;
+            font-size: 20px;
+            
+        }
+    }
+}

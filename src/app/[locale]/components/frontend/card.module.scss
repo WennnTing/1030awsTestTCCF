@@ -1,0 +1,86 @@
+@import '@/styles/style.scss';
+
+
+
+.cardWrapper {
+    display: flex;
+    border: 1px solid #f3f3f3;
+    background-color: $white;
+    transition: all 0.3s;
+    border-radius: 10px;
+    overflow: hidden;
+   
+
+
+    &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transform: translate(-5px, -5px);
+    }
+    
+   
+
+    a {
+        display: inline-flex;
+        flex-direction: column;
+        width: 100%;
+
+      
+    }
+
+
+    &__image {
+        display: inline-flex;
+       position: relative;
+       height: 200px;
+      
+
+      
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 15px;
+        min-height: clamp(250px, 1.64vw , 315px);
+        height: auto;
+        flex: 1;
+        
+
+        @include RWD(sm) {
+            min-height: 220px
+        }
+
+       
+        &_title {
+            font-weight: 500;
+            font-size: clamp(18px, 1.25vw, 24px);
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        &_time {
+            color: #787878;
+            margin-top: auto;
+            font-size: 14px;
+            font-family: var(--font-montserrat);
+        }
+
+        &_tag {
+            
+        
+            font-size: clamp(14px, 0.833vw, 16px);
+           
+            // display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            border: 1px solid #656765;
+            color: #656765;
+
+        
+            
+            
+        }
+    }
+}

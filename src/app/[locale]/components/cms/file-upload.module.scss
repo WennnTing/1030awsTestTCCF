@@ -1,0 +1,55 @@
+
+@import '@/styles/style.scss';
+
+.cmsFileUpload {
+
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    
+    margin-bottom: 15px;
+
+    &__required {
+        color: $red;
+    }
+
+    &__container {
+
+        display: flex;
+        background-color: $light-gray;
+        width: 100%;
+        align-items: center;
+
+        &_upload {
+            cursor: pointer;
+            width: 100%;
+            padding: 5px 10px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+        
+            &__text {
+             color: $dark-gray;
+             font-size: 13px;
+            }
+          
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        &_icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 5px;
+            color: $dark-gray;
+        
+        }
+    }
+
+
+ 
+}

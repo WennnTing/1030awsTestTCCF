@@ -1,0 +1,24 @@
+@import '@/styles/style.scss';
+
+.activityRegisterForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+
+    &__cta {
+        display: inline-block;
+        width: 100%;
+        background: $black;
+        color: $white;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: 5px;
+        border: 1px solid $black;
+
+        &_text {
+            padding: 10px 0;
+            font-size: 15px;
+        }
+    }
+}

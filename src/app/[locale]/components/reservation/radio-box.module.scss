@@ -1,0 +1,72 @@
+@import '@/styles/style.scss';
+
+.reservationRadioBox {
+
+  
+    margin-bottom: 15px;
+
+    &__required {
+        color: $red;
+    }
+
+    &__options {
+
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+
+        &.location {
+           display: flex;
+           flex-wrap: wrap;
+           
+        }
+
+        &_box {
+            border: 1px solid $gray;
+            padding: 2px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $dark-gray;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 2px;
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;  
+        }
+
+        &_boxSpecial {
+            border: 1px solid rgba($color: $primary-green, $alpha: 0.05);
+            padding: 2px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary-green;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 2px;
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; 
+            background-color:  rgba($color: $primary-green, $alpha: 0.05); 
+        }
+
+        input[type="radio"]:checked + label {
+
+            
+            color: $white;
+            background-color: $black;
+            border-color: $black;
+
+        }
+
+        
+          
+    }
+
+    
+    
+}
+

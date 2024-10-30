@@ -1,0 +1,111 @@
+
+@import '@/styles/style.scss';
+
+.cmsImageUpload {
+
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+ 
+
+    &__required {
+        color: $red;
+    }
+
+    &__container {
+
+        display: flex;
+       
+        width: 100%;
+        align-items: center;
+
+        &_box {
+
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $light-gray;
+            position: relative;
+            width: 100%;
+
+            &__upload {
+                cursor: pointer;
+                width: 100%;
+                display: inline-flex;
+                align-items: center;
+                height: 100%;
+                
+            
+            
+            
+                &_text {
+                    color: $dark-gray;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: center;
+                }
+    
+                &_preview {
+    
+                    display: flex;
+                    height: 100%;
+                    width: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    position: relative;
+                    z-index: 2;
+    
+                    &__delete {
+                        border-radius: 50%;
+                        padding: 5px;
+                        position: absolute;
+                        font-size: 15px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: -10px;
+                        right: 0px;
+                        // top: -10px;
+                        // right: -10px;
+                        z-index: 5;
+                        background-color: $light-gray;
+                        color: $dark-gray;
+                        cursor: pointer;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+                    }
+                }
+              
+            }
+        }
+        
+       
+        
+
+        
+
+       
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        &_icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 5px;
+            color: $gray;
+            font-size: 100px;
+        
+        }
+    }
+
+
+ 
+}

@@ -1,0 +1,113 @@
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid green;
+    width: 400px;
+
+    @include RWD(sp414) {
+        width: 360px;
+    }
+
+    &__errorText {
+        color: red;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    &__text {
+        font-size: 16px;
+
+        &.dialog {
+            font-size: 14px;
+            color: #9095A1;
+        }
+    }
+
+    &__required {
+        color: red;
+    }
+
+    &__inputContainer {
+        position: relative;
+        // border: 1px solid red;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+    }
+
+    &__icon {
+        position: absolute;
+        right: 10px;
+        top: 40%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        // display: flex;
+        // align-items: center; // 確保圖標垂直居中
+        // height: 100%;
+
+        // border: 1px solid red;
+    }
+
+    &__input {
+        position: relative;
+
+        width: 400px;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 12px;
+        padding: 10px;
+        padding-right: 30px;
+
+        &.error {
+            border: 1px solid red;
+        }
+
+        &:focus {
+            border-color: black;
+            outline: none;
+        }
+
+        &:read-only {
+            background-color: transparent;
+            // border: none;
+            color: #777;
+            // padding: 4px;
+        }
+
+        @include RWD(sp414) {
+            width: 360px;
+        }
+    }
+
+    &__dropzone {
+        border: 1px dashed #ccc;
+        margin-bottom: 10px;
+        text-align: center;
+
+        p {
+            color: #777;
+        }
+
+        &__format {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+        &__fileName {
+            font-size: 12px;
+            margin: 0;
+        }
+    }
+
+    &__previewImage {
+        width: 100%;
+        border: 1px solid red;
+        // height: 100%;
+    }
+}

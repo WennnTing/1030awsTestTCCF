@@ -1,0 +1,205 @@
+@import '@/styles/style.scss';
+
+.cmsUpdateArticleContent {
+
+
+    width: 100%;
+
+
+
+    h3 {
+        margin: 0;
+        border-bottom: 1px solid $gray;
+        padding-bottom: 5px;
+    }
+
+    &__mode {
+
+        gap: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+        margin-bottom: 50px;
+
+        &_box {
+            border: 1px solid $gray;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px 20px;
+            min-width: 350px;
+            gap: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            height: 100%;
+
+            &:hover {
+                background: rgba($color: $primary-green, $alpha: 0.1);
+                border-color: $primary-green;
+            }
+
+            &.active {
+                background: rgba($color: $primary-green, $alpha: 0.1);
+                border-color: $primary-green;
+            }
+
+            &__icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 50px;
+               
+               
+            }
+        }
+    }
+
+    &__container {
+      
+        margin-bottom: 50px;
+       
+
+        &_confirmButton {
+     
+            display: flex;
+            justify-content: flex-end;
+            
+        }
+
+        &_increase {
+
+           display: flex;
+           flex-direction: column;
+           gap: 20px;
+
+            &__block {
+
+                border: 1px solid $gray;
+                padding: 20px 20px 10px 20px;
+                
+
+                &_action {
+
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 10px;
+                 
+                    margin-bottom: 10px;
+
+                    h4 {
+                        margin: 0 auto 0 0;
+                    }
+    
+                    &__icon {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: $light-gray;
+                        padding: 5px 10px;
+                        cursor: pointer;
+                        color: $secondary-gray;
+                        transition: all 0.3s;
+
+                        &:hover {
+                            
+                            color: $dark-gray;
+                        }
+                    }
+                }
+
+                &_content {
+                   
+                    display: grid;
+                    grid-template-rows: 1fr;
+                    transition: all 0.3s;
+
+                    &__container {
+                        overflow: hidden;
+                       
+                    }
+                }
+            }
+
+           
+        }
+
+        &_increaseButton {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background-color: $light-gray;
+            padding: 5px 0;
+            cursor: pointer;
+            color: $secondary-gray;
+            transition: all 0.3s;
+
+            &__icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: $secondary-gray;
+                transition: all 0.3s;
+                
+            }
+
+            &:hover {
+                    
+                color: $dark-gray;
+            }
+        }
+
+        &_twoColumn {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+       
+    }
+
+    &__step {
+      
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+    }
+
+    &__error {
+        color: $red;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    &__button {
+        padding: 5px 30px;
+        border: none;
+   
+        cursor: pointer;
+        text-align: center;
+
+        &.confirmButton {
+            background: $primary-green;
+            color: white;
+        }
+
+        
+
+        &.cancelButton {
+            background:  $light-gray;
+            color: $dark-gray;
+        }
+    }
+
+    
+
+    &__button:disabled {
+        background: $light-gray;
+        color: $gray;
+       
+    }
+
+}

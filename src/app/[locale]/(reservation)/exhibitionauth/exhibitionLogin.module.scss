@@ -1,0 +1,107 @@
+@import '@/styles/style.scss';
+
+.exhibitionlogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    &__buttonWrapper {
+        display: flex;
+        width: 100%;
+        gap: 8px;
+
+        @include RWD(sm) {
+            width: 90%;
+        }
+    }
+
+    &__text {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    &__forgetText {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: $primary-green;
+        font-size: 14px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__socialLogin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid $black;
+        padding: 8px 30px;
+        border-radius: 30px;
+        width: calc(100% - 16px);
+        text-align: center;
+        transition: all 0.3s;
+
+        &:hover {
+            background: $black;
+            color: $white;
+            cursor: pointer;
+
+        }
+    }
+
+    &__bottomText {
+        // border: 1px solid red;
+        // text-align: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 40px;
+        width: 90%;
+
+        &:lang(en) {
+            width: 50%;
+        }
+
+        @include RWD(sm) {
+            margin-top: 0;
+
+            &:lang(en) {
+                width: 94%;
+            }
+
+            width: 94%;
+        }
+    }
+
+    &__registerText {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: $primary-green;
+        font-size: 14px;
+
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__forgetMailText {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: $second-title;
+        font-size: 14px;
+        text-align: center;
+
+        &:lang(en) {
+            @include RWD(sp414) {
+                font-size: 12px;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+        }
+    }
+}

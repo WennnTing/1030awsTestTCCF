@@ -1,0 +1,222 @@
+
+@import '@/styles/style.scss';
+
+.sideBar {
+   
+    min-width: calc(200px + 2.5vw);
+    height: calc(100vh - 100px);
+    height: calc((var(--vh, 1vh) * 100) - 100px);
+    position: sticky;
+    top: 100px;
+    padding-top: 50px;
+    // border-right: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    font-size: clamp(15px, 0.833vw, 16px);
+    // border: 1px solid red;
+ 
+   
+
+    @include RWD(sp820) {
+
+        display: none;        
+    }
+
+   
+
+
+    &__title {
+       
+        align-items: center;
+        padding: 20px ;
+        justify-content: space-between;
+        border-bottom: 1px solid $gray;
+        cursor: pointer;
+        display: none;
+        
+        
+        @include RWD(sp820) {
+            
+            display: flex;
+           
+            
+         
+            
+        }
+      
+
+        &_text {
+            
+        }
+
+        &_icon {
+            
+            font-size: 20px;
+            display: inline-flex;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        
+
+    }
+
+    &__menuList {
+        
+        list-style: none;
+        // width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        padding: 0;
+        margin: 0;
+
+        margin-left: 2.5vw;
+        width: 100%;
+       
+        @include RWD(sp820) {
+            
+            width: 100%;
+           
+            
+         
+            
+        }
+       
+
+        &_menuItem {
+
+           
+
+    
+
+        //    border: 1px solid pink;
+   
+
+           
+          
+
+            &__wrapper{
+                
+                
+                cursor: pointer;
+                transition: all 0.3s;
+               
+               
+                
+
+                @include RWD(sp820) {
+            
+                    padding-left: 60px;
+                    
+                }
+
+                &_container {
+                    
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 20px 0 20px 20px;
+
+                   
+
+                    &__icon {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        width: 40px;
+                        color: $secondary-gray;
+                        transition: all 0.3s;
+                                                
+                        &:hover {
+                            color: $dark-gray ;
+                        }
+                        // border: 1px solid yellow;
+                    }
+                }
+
+                // &:hover {
+                //     background: linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b);
+                //     background: -webkit-linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b);
+                //     background-clip: text;
+                //     -webkit-background-clip: text;
+                //     color: transparent;
+                //     font-weight: 500;
+                // }
+                
+
+                a {
+                    display: inline-flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: flex-start;
+                
+                   
+                    @include RWD(sp820) {
+            
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        
+                    }
+                   
+                }
+                
+              
+
+                &_icon {
+                 
+                    font-size: 20px;
+                    display: inline-flex;
+                    margin-right: 30px;
+           
+                }
+
+                &_text {
+
+                }
+
+                &_arrow {
+                    margin-left: auto;
+                    font-size: 16px;
+                    display: inline-flex;
+                }
+            }
+            
+        }
+
+        &_subMenuList {
+            
+            list-style: none;
+            display: grid;
+            grid-template-rows: 1fr ;
+            transition: all .3s;
+            padding: 0;
+
+           
+            // border: 1px solid blue;
+
+            &__container {
+                overflow: hidden;
+
+                // border: 1px solid red;
+
+            
+            }
+            
+
+            &__subMenuItem {
+               
+                padding: 20px 0 20px 20px;
+
+                a {
+                   
+                     justify-content: flex-start;
+                }
+            }
+        }
+
+
+
+    }
+}

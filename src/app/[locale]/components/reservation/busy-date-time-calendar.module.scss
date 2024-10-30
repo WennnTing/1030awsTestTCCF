@@ -1,0 +1,51 @@
+@import '@/styles/style.scss';
+.reservationBusyDateTimeCalendar {
+
+    // border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+
+    @include RWD(lg) {
+        flex-direction: column;
+        
+    }
+
+
+    &__calendar {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    
+
+    &__container {
+        border: none;
+        display: flex;
+        align-items: center;
+        background: $light-gray;
+        width: 100%;
+        padding: 0 10px 0 0;
+    }
+
+    &__required {
+        color: $red;
+    }
+
+    input {
+        border: none;
+        background: $light-gray;
+        cursor: pointer;
+        width: 100%;
+        padding: 5px 10px;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__icon {
+        display: inline-flex;
+        color: $dark-gray;
+    }
+}

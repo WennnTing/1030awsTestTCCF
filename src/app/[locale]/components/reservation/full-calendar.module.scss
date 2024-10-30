@@ -1,0 +1,54 @@
+@import '@/styles/style.scss';
+.reservationFullCalendar {
+
+    padding-top: 10px;
+
+    &__event {
+
+  
+        height: 100%;
+        padding: 0 10px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+  
+
+        &_title {
+            display: flex;
+          
+
+            &__icon {
+
+               
+                display: inline-flex;
+                align-items: center;
+                margin-right: 10px;
+             
+            }
+
+            &__text {
+                
+                width: 100%;
+                overflow:hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-weight: 700;
+            }
+           
+        }
+
+        &_time {
+
+
+            margin-left: 24px;
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+         
+        }
+    }
+  
+
+    
+}

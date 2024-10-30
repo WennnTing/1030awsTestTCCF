@@ -1,0 +1,106 @@
+@import '@/styles/style.scss';
+
+.tooltipWrapper {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+}
+
+.tooltipText {
+    visibility: hidden;
+    width: max-content;
+    max-width: 240px;
+    // max-width: 10vw;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    word-wrap: break-word;
+
+    @include RWD(sm) {
+        // bottom: auto;
+        // top: 125%;
+        left: -50%;
+        transform: translateX(-50%);
+        max-width: 45vw;
+    }
+}
+
+.tooltipWrapper:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.longText {
+    max-width: 400px;
+    left: 500%;
+
+    @include RWD(sm) {
+        left: 438%;
+        max-width: 360px;
+    }
+}
+
+.castLongText {
+    @include RWD(sm) {
+        left: 200%;
+        max-width: 360px;
+    }
+}
+
+.award {
+    @include RWD(sm) {
+        left: -70%;
+        max-width: 360px;
+    }
+}
+
+.trailer {
+    @include RWD(sm) {
+        left: -600%;
+        max-width: 360px;
+    }
+}
+
+.companyProfile {
+    max-width: 500px;
+
+    @include RWD(sp820) {
+        left: -80%;
+        max-width: 360px;
+    }
+
+    @include RWD(sm) {
+        left: -80%;
+        max-width: 360px;
+    }
+}
+
+.passwordRWD {
+    max-width: 400px;
+    left: 500%;
+
+    @include RWD(sm) {
+        left: 750%;
+        max-width: 360px;
+
+        &:lang(en) {
+            left: 400%;
+            max-width: 360px;
+        }
+    }
+}

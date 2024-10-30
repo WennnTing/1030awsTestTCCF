@@ -1,0 +1,11 @@
+@import '@/styles/style.scss';
+
+.cmsSelect {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    &__required {
+        color: $red;
+    }
+}

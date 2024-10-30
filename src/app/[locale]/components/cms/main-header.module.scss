@@ -1,0 +1,15 @@
+@import '@/styles/style.scss';
+
+.cmsMainHeader {
+    height: 60px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    background-color: $white;
+    z-index: 6;
+    border-bottom: 1px solid $gray;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px;
+}

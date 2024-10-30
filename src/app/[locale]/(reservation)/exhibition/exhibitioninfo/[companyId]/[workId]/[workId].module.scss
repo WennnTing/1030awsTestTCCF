@@ -1,0 +1,71 @@
+@import '@/styles/style.scss';
+
+.worksBlock {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    // padding: 24px;
+
+    &__infomation {
+        border: 1px solid rgba(208, 208, 208, 0.5);
+        border-radius: 4px;
+        padding: 24px;
+
+    }
+
+    &__inputBlock {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 12px;
+        column-gap: 36px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(208, 208, 208, 0.5);
+        border-radius: 4px;
+
+        @include RWD(sp820) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+    }
+
+    &__buttonBlock {
+        // border: 1px solid green;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 36px 0;
+    }
+
+    &__mainContent {
+        border: 1px solid rgba(208, 208, 208, 0.5);
+        border-radius: 4px;
+        // padding: 24px;
+    }
+
+    &__btnWrapper {
+        // border: 1px solid purple;
+
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        align-items: center;
+
+        button {
+            border: none;
+            width: 120px;
+            background-color: $primary-green ;
+            border-radius: 4px;
+            color: $white;
+            padding: 4px;
+            cursor: pointer;
+            font-size: clamp(14px, 1.40625vw, 16px);
+
+            &:nth-child(1) {
+                background-color: $gray;
+                color: $remind;
+            }
+        }
+    }
+}

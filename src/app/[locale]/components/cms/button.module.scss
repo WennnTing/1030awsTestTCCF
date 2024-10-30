@@ -1,0 +1,28 @@
+@import '@/styles/style.scss';
+
+.cmsButton__primary {
+
+   background: $primary-green;
+    border: 1px solid $primary-green;
+    color: $white;
+    padding: 5px 20px;
+    cursor: pointer;
+
+ 
+
+    span {
+          
+        // padding: 0px 10px;
+    }
+
+}
+
+.cmsButton__secondary {
+    background: $gray;
+    border: 1px solid $gray;
+     cursor: pointer;
+
+    span {
+        // padding: 0px 10px;
+    }
+}

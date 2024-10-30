@@ -1,0 +1,103 @@
+@import '@/styles/style.scss';
+
+.loadingScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    &__container {
+        
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 200px;
+        align-items: center;
+        font-family: var(--font-montserrat);
+
+        &_text {
+           
+            font-size: 25px;
+            padding-bottom: 20px;
+            
+        }
+
+        &__dots {
+
+            display: flex;
+            align-items: center;
+        }
+
+        &_dot {
+            position: relative;
+            width: clamp(10px, 1.041vw, 20px);
+            height: clamp(10px, 1.041vw, 20px);
+            margin: clamp(10px, 1.041vw, 20px);
+            border-radius: 50%;
+    
+            &::before {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: inherit;
+                border-radius: inherit;
+                animation: anime 2s ease-out infinite;
+            }
+    
+            &:nth-child(1) {
+                background-color: $blue; // Blue
+    
+                &::before {
+                    animation-delay: 0.2s;
+                } 
+            }
+    
+            &:nth-child(2) {
+                background-color: $pitching; // Yellow
+                &::before {
+                    animation-delay: 0.4s;
+                } 
+            }
+    
+            &:nth-child(3) {
+                background-color: $market;  // Green
+                &::before {
+                    animation-delay: 0.6s;
+                } 
+            }
+
+            &:nth-child(4) {
+                background-color: $forum;  // Green
+                &::before {
+                    animation-delay: 0.8s;
+                } 
+            }
+    
+           
+        }
+    }
+
+   
+}
+
+@keyframes anime {
+    50%,
+    75% {
+        transform: scale(2.5);
+    }
+    80%,
+    100% {
+        opacity: 0;
+    }
+}

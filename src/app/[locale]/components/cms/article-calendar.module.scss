@@ -1,0 +1,17 @@
+@import '@/styles/style.scss';
+
+.cmsArticleCalendar {
+
+    margin-bottom: 15px;
+
+    &__required {
+        color: $red;
+    }
+
+    &__container {
+        display: flex;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+}

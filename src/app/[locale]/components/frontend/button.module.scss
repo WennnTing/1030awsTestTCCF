@@ -1,0 +1,19 @@
+@import '@/styles/style.scss';
+
+
+.button {
+       
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 30px;
+    border: 1px solid $black;
+    background: $white;
+    text-align: center;
+    transition: all 0.3s;
+
+
+    &:hover{
+        background: $black;
+        color: $white;
+    }
+}

@@ -1,0 +1,22 @@
+@import '@/styles/style.scss';
+
+.reservationSubmitButton {
+    background: $primary-green;
+    border: 1px solid $primary-green;
+    color: $white;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+
+.reservationGoBackButton {
+    background: $gray;
+    border: 1px solid $gray;
+    color: $dark-gray;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+}

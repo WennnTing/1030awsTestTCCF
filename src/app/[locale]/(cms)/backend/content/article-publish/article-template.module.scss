@@ -1,0 +1,12 @@
+.cmsArticleTemplate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20vw);
+  
+}

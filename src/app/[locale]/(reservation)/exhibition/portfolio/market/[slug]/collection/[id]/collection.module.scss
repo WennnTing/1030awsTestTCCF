@@ -1,0 +1,202 @@
+@import '@/styles/style.scss';
+
+.reservationCollection {
+    display: flex;
+   
+
+    &__container {
+
+        
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+  
+
+        &_banner {
+
+            height: 150px;
+            background: $primary-green;
+        }
+
+        &_content {
+            padding: 20px 30px 40px 30px;
+            width: 100%;
+
+       
+
+            &__profile {
+
+
+                &_title {
+
+           
+                    margin: 0 0 20px 0;
+                  
+                 }
+
+                &_info {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 15px;
+
+                 
+        
+                    @include RWD(lg) {
+                        grid-template-columns: repeat(1, 1fr);
+                        
+                    }
+
+                    &__container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
+                        padding-bottom: 30px;
+                      
+                    }
+        
+                    &__item {
+                       
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        width: 100%;
+
+                
+        
+                        &_icon {
+                            display: inline-flex;
+                            align-items: flex-start;
+                            justify-content: center;
+                            // color: $dark-gray;
+                            
+                        }
+        
+                        &_text {
+                            // color: $dark-gray;
+                            font-size: 15px;
+                            width: 100%;
+                        }
+        
+                        &_tag {
+        
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                            width: 100%;
+                            font-size: 15px;
+        
+                            span {
+                                padding: 1px 10px;
+                                background: $light-gray;
+                                color: $dark-gray;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__intro {
+
+               
+                display: flex;
+                gap: 40px;
+
+                @include RWD(lg) {
+                    flex-direction: column;
+                    
+                }
+
+                &_brief {
+
+                    
+                    width: 60%;
+
+                    @include RWD(lg) {
+                        width: 100%;
+                        
+                    }
+                }
+
+                &_image {
+
+                    width: 40%;
+                    height: 80vh;
+                    background: $light-gray;
+                    padding: 30px;
+                    position: sticky;
+                    top: 100px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    @include RWD(lg) {
+                        width: 100%;
+                        
+                    }
+                }
+
+                &_title {
+                    border-bottom: 1px solid $gray;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    &__icon {
+                        display: inline-flex;
+                        align-items: flex-start;
+                        justify-content: center;
+                        color: $primary-green;
+                        // color: $dark-gray;
+                    }
+
+                    &__text {
+                      
+                      
+                    }
+                }
+
+                &_description {
+                    padding-bottom: 20px;
+                    
+                }
+
+                &_content {
+                    
+
+                    &__item {
+
+  
+                        display: flex;
+                        align-items: baseline;
+                        gap: 10px;
+
+                        &_title {
+                            // border: 1px solid pink;
+                            margin-top: 0;
+
+                        
+                        }
+
+                        &_text {
+                            // border: 1px solid pink;
+                        }
+                    }
+
+                    &__list {
+
+                        // border: 1px solid red;
+
+                        &_item {
+
+                            // border: 1px solid blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

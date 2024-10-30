@@ -1,0 +1,113 @@
+@import '@/styles/style.scss';
+
+
+.sidebarWrapper {
+    width: 250px;
+    position: sticky;
+    top: 100px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    font-size: clamp(15px, 0.833vw, 16px);
+
+    @include RWD(sp820) {
+        display: none;
+    }
+
+    &__title {
+        align-items: center;
+        padding: 20px;
+        justify-content: space-between;
+        border-bottom: 1px solid $gray;
+        cursor: pointer;
+        display: none;
+
+        @include RWD(sp820) {
+            display: flex;
+        }
+
+        &_icon {
+            font-size: 20px;
+            display: inline-flex;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+    }
+
+    &__menuList {
+        list-style: none;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        padding: 0;
+        margin: 0;
+
+        @include RWD(sp820) {
+            width: 100%;
+        }
+
+        &_menuItem {
+            &__menuItemContainer {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                padding: 20px 0;
+                transition: all 0.3s;
+                position: relative;
+
+                @include RWD(sp820) {
+
+                    padding-left: 60px;
+
+                }
+
+                a {
+
+                    display: inline-flex;
+                    width: 100%;
+                    align-items: center;
+
+                    @include RWD(sp820) {
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                    }
+                }
+
+                &_icon {
+                    font-size: 20px;
+                    display: inline-flex;
+                    margin-right: 10px;
+                }
+
+                &_text {
+                    font-size: 18px;
+                }
+
+                &_arrow {
+                    margin-left: auto;
+                    font-size: 16px;
+                    display: inline-flex;
+                    position: absolute;
+                    right: -10px;
+                }
+            }
+
+        }
+
+        &__subMenuList {
+            list-style: none;
+            padding-left: 68px;
+
+            &__subMenuItem {
+                padding: 10px 0;
+
+                &__subMenuItem_text {
+                    font-size: 14px;
+                    color: #333;
+                }
+            }
+        }
+    }
+}

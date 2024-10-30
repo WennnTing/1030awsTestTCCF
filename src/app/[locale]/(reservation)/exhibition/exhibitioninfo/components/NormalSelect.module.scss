@@ -1,0 +1,102 @@
+@import '@/styles/style.scss';
+
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+
+    &__labelBlock {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+
+        span {
+            color: red;
+        }
+    }
+
+    &__label {
+        font-size: clamp(14px, 1.40625vw, 16px);
+        font-weight: 600;
+    }
+
+    &__toggle {
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        // border: 1px solid red;
+    }
+
+    &__toggleError {
+        border: 1px solid red;
+    }
+
+    &__toggleErrorText {
+        color: red;
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    &__toggleDisabled {
+        cursor: not-allowed;
+        border-color: #ccc;
+
+        background-color: #F1F2F5;
+        color: #B5B9C2;
+    }
+
+
+
+    &__selected {
+        flex: 1;
+        // border: 1px solid red;
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        @include RWD(sm) {
+            width: 200px;
+        }
+
+    }
+
+    &__icon {
+        margin-left: 10px;
+    }
+
+    &__options {
+        list-style: none;
+        padding-left: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    &__option {
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+    }
+}

@@ -1,0 +1,175 @@
+@import '@/styles/style.scss';
+
+.exhibitioninputWrapper {
+    display: flex;
+    flex-direction: column;
+
+    &__labelBlock {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2px;
+    }
+
+    &__labelAndTooltip,
+    &__uploadStatusBlock {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    &__uploadStatusBlock {
+        font-size: 10px;
+        color: #7ccc64;
+    }
+
+    &__unUploadText {
+        font-size: 10px;
+        color: #f00;
+    }
+
+    &__required {
+        color: red;
+    }
+
+    &__infoIcon {
+        font-size: 20px;
+    }
+
+    &__input {
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 0;
+
+        &.error {
+            border: 1px solid red;
+        }
+
+        &:disabled {
+            background-color: #F1F2F5;
+            color: #B5B9C2;
+        }
+
+        &:focus {
+            outline: none !important;
+            border: 1.5px solid $primary-green;
+        }
+    }
+
+    &__errorText {
+        color: red;
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    &__label {
+        font-size: clamp(14px, 1.40625vw, 16px);
+        font-weight: 600;
+    }
+
+    &__imageInput {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        height: 40px;
+
+        &_hidden {
+            display: none;
+        }
+
+        &_display {
+            flex: 1;
+            font-size: 16px;
+            color: #333;
+        }
+
+        &_icon {
+            font-size: 20px;
+            color: #333;
+        }
+    }
+
+    &__textarea {
+        height: 150px;
+        resize: vertical;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &.error {
+            border: 1px solid red;
+        }
+
+        &::placeholder {
+            padding-left: 4px;
+        }
+
+        &:focus {
+            outline: none !important;
+            border: 1.5px solid $primary-green;
+        }
+    }
+
+    &__passwordInputWrapper {
+        position: relative;
+        // border: 1px solid red;
+
+        &__input {
+            padding-right: 40px;
+        }
+
+        &__toggleBtn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                color: $primary-green;
+            }
+        }
+    }
+}
+
+.radioGroupWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+.dateInputWrapper {
+    display: flex;
+    gap: 12px;
+
+    @include RWD(sm) {
+        flex-direction: column;
+    }
+}
