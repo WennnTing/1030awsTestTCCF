@@ -856,3 +856,29 @@ export const API_CreateCalendarEventByAdmin = async (body) => {
   };
   return await tryFetch(path, requestOption);
 };
+
+// ================== 展務後台會議預約 end ==================
+
+
+
+// ================== 展務後台匯入功能 ==================
+
+// 匯入MARKET
+export const API_ImportCompanies = async (body) => {
+  const path = `${Host}/api/companies/import-companies`;
+  const requestOption = {
+    method: "POST",
+    body: body,
+  };
+  return await tryFetch(path, requestOption);
+};
+
+// 匯入PROJECT
+export const API_ImportProjects = async (body) => {
+  const path = `${Host}/api/project/import-project`;
+  const requestOption = {
+    method: "POST",
+    body: body,
+  };
+  return await tryFetch(path, requestOption);
+};

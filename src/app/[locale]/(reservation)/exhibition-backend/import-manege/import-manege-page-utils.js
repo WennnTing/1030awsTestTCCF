@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { API_ImportMembers } from "@/api/api";
+import { API_ImportCompanies, API_ImportProjects } from "@/api/api";
 
 // 複製error
 export const showErrorWithCopy = (displayMessage, copyMessage) => {
@@ -78,7 +78,7 @@ export const showErrorWithCopy = (displayMessage, copyMessage) => {
 };
 
 
-// 匯入會員
+// 匯入會員(MARKET)
 export const importMembers = async (base64File) => {
     try {
         if (!base64File) {
@@ -91,9 +91,9 @@ export const importMembers = async (base64File) => {
         }
 
         const data = {
-            MembersBase64: base64File,
+            CompaniesBase64: base64File,
         };
-        const res = await API_ImportMembers(JSON.stringify(data));
+        const res = await API_ImportCompanies(JSON.stringify(data));
 
         const successEmails = res.success?.join('\n') || '';
 
@@ -142,3 +142,35 @@ export const importMembers = async (base64File) => {
     }
 };
 
+// 匯入PROJECT
+export const importProject = async (config) => {
+    try {
+        if (!config) {
+            Swal.fire({
+                icon: "warning",
+                text: "請先上傳檔案",
+                showConfirmButton: true,
+            });
+            return;
+        }
+
+        const data = config;
+
+        const res = await API_ImportProjects(JSON.stringify(data));
+
+        if (res && res.message && res.message.includes("匯入成功")) {
+            Swal.fire({
+                icon: "success",
+                title: "匯入成功",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+
+        console.log(res);
+
+
+    } catch (error) {
+
+    }
+}

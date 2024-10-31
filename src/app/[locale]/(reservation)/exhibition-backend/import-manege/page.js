@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../market-manege/market-manege.module.scss";
 import Swal from "sweetalert2";
 // icons
@@ -12,7 +12,7 @@ import { AiOutlineCloudUpload } from "react-icons/ai";      // 上傳
 
 
 // components
-import { importMembers } from "./import-manege-page-utils";
+import { importMembers, importProject } from "./import-manege-page-utils";
 
 const ImportManegePage = () => {
     const Swal = require("sweetalert2");
@@ -21,34 +21,107 @@ const ImportManegePage = () => {
     const [base64File, setBase64File] = useState(null);
     const [fileName, setFileName] = useState(null);
 
+    const [projectConfig, setProjectConfig] = useState({
+        PitchingMainCategory: "",
+        PitchingMainCategoryEn: "",
+        PitchingCategory: "",
+        PitchingCategoryEn: "",
+        Location: "",
+        Base64: ""
+    });
+
+    const [categorys, setCategorys] = useState({
+        id: '',
+        name: ''
+    });
+
+    useEffect(() => {
+        console.log(projectConfig)
+        console.log(categorys)
+    }, [projectConfig, categorys])
+
     const importData = [
         {
             id: 1,
-            importTitle: "匯入會員",
-            importIcon: <MdPeopleOutline />,
-            templateUrl: '/sample_member.xlsx',
+            importTitle: "匯入Market",
+            subTitle: "Market",
+            importIcon: <BiStore />,
+            templateUrl: '/market_sample.xlsx',
         },
         {
             id: 2,
-            importTitle: "匯入Market",
-            importIcon: <BiStore />,
-            templateUrl: 'https://www.google.com',
+            importTitle: "匯入Pitching",
+            subTitle: "Taicca School",
+            importIcon: <LuBookUp />,
+            templateUrl: '/Taicca_school_sample.xlsx',
         },
         {
             id: 3,
             importTitle: "匯入Pitching",
             subTitle: "Story to Screen",
             importIcon: <LuBookUp />,
-            templateUrl: 'https://www.google.com',
+            templateUrl: '/story_to_screen.xlsx',
+            categorys: [
+                {
+                    id: 1,
+                    PitchingCategory: "出版文本｜Fiction & Non-Fiction",
+                    PitchingCategoryEn: "Fiction & Non-Fiction",
+                },
+                {
+                    id: 2,
+                    PitchingCategory: "漫畫｜Comics",
+                    PitchingCategoryEn: "Comics",
+
+                },
+                {
+                    id: 3,
+                    PitchingCategory: "Shoot the Book! TCCF",
+                    PitchingCategoryEn: "Shoot the Book! TCCF",
+
+                },
+                {
+                    id: 4,
+                    PitchingCategory: "原創故事專場｜Original Story Concept",
+                    PitchingCategoryEn: "Original Story Concept",
+
+                },
+            ]
         },
         {
             id: 4,
             importTitle: "匯入Pitching",
             subTitle: "Project to Screen",
             importIcon: <GoProjectRoadmap />,
-            templateUrl: 'https://www.google.com',
+            templateUrl: '/project_to_screen_sample.xlsx',
+            categorys: [
+                {
+                    id: 1,
+                    PitchingCategory: "長片｜Feature Film",
+                    PitchingCategoryEn: "Feature Film",
+
+                },
+                {
+                    id: 2,
+                    PitchingCategory: "影集｜Series",
+                    PitchingCategoryEn: "Series",
+
+                },
+                {
+                    id: 3,
+                    PitchingCategory: "動畫｜Animation Films and Series",
+                    PitchingCategoryEn: "Animation Films and Series",
+
+                },
+                {
+                    id: 4,
+                    PitchingCategory: "紀錄片｜Documentary Films and Series",
+                    PitchingCategoryEn: "Documentary Films and Series",
+
+                },
+            ]
         },
     ];
+
 
     const showWarning = (message) => {
         Swal.fire({
@@ -62,6 +135,50 @@ const ImportManegePage = () => {
     const handleSelectImport = (data) => {
         setSelectedImport(data);
         setCurrentStep(2);
+
+        if (data.id === 3) {
+            setProjectConfig({
+                ...projectConfig,
+                PitchingMainCategory: "故事專場",
+                PitchingMainCategoryEn: "Story to Screen",
+            });
+        } else if (data.id === 4) {
+            setProjectConfig({
+                ...projectConfig,
+                PitchingMainCategory: "企畫專場",
+                PitchingMainCategoryEn: "Project to Screen",
+            });
+        } else if (data.id === 2) {
+            setProjectConfig({
+                ...projectConfig,
+                PitchingMainCategory: "Taicca School",
+                PitchingMainCategoryEn: "Taicca School",
+            });
+        }
+    };
+
+    // 選擇project的類型
+    const handleCategorySelect = (category) => {
+
+        setCategorys(pre => {
+            if (pre.id === category.id) {
+                return {
+                    ...pre,
+                    id: '',
+                    name: ''
+                }
+            }
+            return {
+                ...pre,
+                id: category.id,
+                name: category.PitchingCategory
+            }
+        })
+        setProjectConfig((prevConfig) => ({
+            ...prevConfig,
+            PitchingCategory: category.PitchingCategory,
+            PitchingCategoryEn: category.PitchingCategoryEn,
+        }));
     };
 
     // 回到選擇匯入類型的畫面
@@ -70,19 +187,38 @@ const ImportManegePage = () => {
         setSelectedImport(null);
         setFileName(null);
         setBase64File(null);
+        setProjectConfig({
+            PitchingMainCategory: "",
+            PitchingMainCategoryEn: "",
+            PitchingCategory: "",
+            PitchingCategoryEn: "",
+            Location: "",
+            Base64: "",
+        });
+        setCategorys({
+            id: '',
+            name: ''
+        })
     };
 
     const handleFileUpload = (e) => {
         const file = e.target.files && e.target.files[0];
         if (!file) return;
+
         if (file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
             const reader = new FileReader();
 
-            // 轉Base64
             reader.onloadend = () => {
                 const base64 = reader.result;
                 setBase64File(base64);
                 setFileName(file.name);
+
+                if (selectedImport && (selectedImport.id === 2 || selectedImport.id === 3 || selectedImport.id === 4)) {
+                    setProjectConfig((prevConfig) => ({
+                        ...prevConfig,
+                        Base64: base64,
+                    }));
+                }
             };
 
             reader.onerror = (error) => {
@@ -95,6 +231,7 @@ const ImportManegePage = () => {
         }
     };
 
+
     const handleImport = async () => {
         if (!base64File) {
             showWarning("請先上傳檔案");
@@ -102,13 +239,12 @@ const ImportManegePage = () => {
         }
 
         try {
-            switch (selectedImport.id) {
-                case 1:
-                    await importMembers(base64File);
-                    break;
-                default:
-                    showWarning("未知的匯入類型");
-                    break;
+            if (selectedImport.id === 1) {
+                await importMembers(base64File);
+            } else if (selectedImport.id === 2 || selectedImport.id === 3 || selectedImport.id === 4) {
+                await importProject(projectConfig);
+            } else {
+                showWarning("未知的匯入類型");
             }
         } catch (error) {
             console.error(error);
@@ -156,6 +292,30 @@ const ImportManegePage = () => {
                             </h2>
 
                             <div className={styles.marketWrapper__squareBtnWrapper}>
+
+                                {selectedImport.id === 3 && selectedImport.categorys && selectedImport.categorys.map((category) => (
+                                    <div
+                                        key={category.id}
+                                        className={`${styles.marketWrapper__textButton} ${categorys.id === category.id ? styles.active : ''}`}
+                                        onClick={() => handleCategorySelect(category)}
+                                    >
+                                        <span className={styles.marketWrapper__textBtnText}>
+                                            {category.PitchingCategory}
+                                        </span>
+                                    </div>
+                                ))}
+
+                                {selectedImport.id === 4 && selectedImport.categorys && selectedImport.categorys.map((category) => (
+                                    <div
+                                        key={category.id}
+                                        className={`${styles.marketWrapper__textButton} ${categorys.id === category.id ? styles.active : ''}`}
+                                        onClick={() => handleCategorySelect(category)}
+                                    >
+                                        <span className={styles.marketWrapper__textBtnText}>
+                                            {category.PitchingCategory}
+                                        </span>
+                                    </div>
+                                ))}
 
                                 <a
                                     className={styles.marketWrapper__downloadButton}

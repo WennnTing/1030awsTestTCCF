@@ -222,4 +222,27 @@
         }
     }
 
+    &__textButton {
+        border: 1px solid #e8e8e8;
+        padding: 8px 20px;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            background-color: rgba(81, 186, 151, .1);
+            border-color: #51ba97;
+            cursor: pointer;
+        }
+
+        &.active {
+            background-color: rgba(81, 186, 151, .1);
+            border-color: #51ba97;
+        }
+    }
+
+    &__textBtnText {
+        font-size: 16px;
+        margin: 0;
+    }
+
 }
