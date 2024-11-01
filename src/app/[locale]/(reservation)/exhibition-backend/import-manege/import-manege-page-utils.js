@@ -165,6 +165,52 @@ export const importProject = async (config) => {
                 showConfirmButton: false,
                 timer: 1500,
             });
+        } else if (res && res.message && res.message.includes("尚未輸入Email")) {
+            Swal.fire({
+                icon: "warning",
+                title: "尚未輸入Email，請確認後再試",
+                showConfirmButton: true,
+            });
+        } else if (res && res.message && res.message.includes("Email已存在")) {
+            Swal.fire({
+                icon: "warning",
+                title: "Email已存在，請確認後再試",
+                showConfirmButton: true,
+            });
+        } else if (res && res.message && res.message.includes("專案已存在")) {
+            Swal.fire({
+                icon: "warning",
+                title: "該專案已存在",
+                showConfirmButton: true,
+            });
+        } else if (res && res.message && res.message.includes("公司缺少必要內容")) {
+            Swal.fire({
+                icon: "warning",
+                title: "公司缺少必要內容",
+                text: "請將公司名稱與公司簡介填寫後再試",
+                showConfirmButton: true,
+            });
+        } else if (res && res.message && res.message.includes("團隊成員缺少必要內容")) {
+            Swal.fire({
+                icon: "warning",
+                title: "團隊成員缺少必要內容",
+                text: "團隊成員的 Name 為必填",
+                showConfirmButton: true,
+            });
+        } else if (res && res.message && res.message.includes("角色缺少必要內容")) {
+            Swal.fire({
+                icon: "warning",
+                title: "角色缺少必要內容",
+                text: "若填寫「簡介」，需填寫相對應的「主要角色 Character Description」",
+                showConfirmButton: true,
+            });
+        } else if (res && res.message && res.message.includes("創作者缺少必要內容")) {
+            Swal.fire({
+                icon: "warning",
+                title: "創作者缺少必要內容",
+                text: "創作者的 姓名 為必填",
+                showConfirmButton: true,
+            });
         }
 
         console.log(res);
