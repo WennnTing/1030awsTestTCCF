@@ -231,7 +231,6 @@ const ImportManegePage = () => {
         }
     };
 
-
     const handleImport = async () => {
         if (!base64File) {
             showWarning("請先上傳檔案");
@@ -250,6 +249,16 @@ const ImportManegePage = () => {
             console.error(error);
             showWarning("匯入過程中發生錯誤，請稍後再試");
         }
+    };
+
+    const getTemplateUrl = () => {
+        if (selectedImport?.id === 3) {
+            if (categorys.id === 4) {
+                return '/original_story_concepts_sample.xlsx';
+            }
+            return '/story_to_screen_sample.xlsx';
+        }
+        return selectedImport?.templateUrl || '';
     };
 
 
@@ -319,9 +328,15 @@ const ImportManegePage = () => {
 
                                 <a
                                     className={styles.marketWrapper__downloadButton}
-                                    href={selectedImport.templateUrl}
+                                    href={getTemplateUrl()}
                                     target="_blank"
                                     rel="noreferrer"
+                                    onClick={(e) => {
+                                        if (selectedImport.id === 3 && !categorys.id) {
+                                            e.preventDefault();
+                                            showWarning("請先選擇分類後再下載範本");
+                                        }
+                                    }}
                                 >
                                     <span className={styles.marketWrapper__squareBtnIcon}>
                                         <AiOutlineCloudDownload />
