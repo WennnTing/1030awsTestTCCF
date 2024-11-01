@@ -171,7 +171,7 @@ export default async function ProjectPage({ params }) {
         </div>
       </div>
 
-      {permissionStatus && <ReservationButton />}
+      {/* {permissionStatus && <ReservationButton />} */}
     </div>
   );
 }

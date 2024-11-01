@@ -30,7 +30,7 @@ export default async function MeetingPage() {
 
           <div className={styles.reservationMeeting__calendar_header__buttons}>
             <MeetingExportButton events={events} />
-            <div
+            {/* <div
               className={
                 styles.reservationMeeting__calendar_header__buttons_button
               }
@@ -45,13 +45,9 @@ export default async function MeetingPage() {
                 </div>
                 {t("Appointments.AppointmentsPage.button.setting")}
               </Link>
-            </div>
-            <div
-              className={
-                styles.reservationMeeting__calendar_header__buttons_button
-              }
-            >
-              <Link href={"/exhibition/portfolio/market/1586"}>
+            </div> */}
+            <div className={styles.reservationMeeting__btnContainer}>
+              <div className={styles.reservationMeeting__btnBlock}>
                 <div
                   className={
                     styles.reservationMeeting__calendar_header__buttons_button__icon
@@ -59,8 +55,8 @@ export default async function MeetingPage() {
                 >
                   <IoIosArrowForward />
                 </div>
-                {t("Appointments.AppointmentsPage.button.go")}
-              </Link>
+                {t("Appointments.AppointmentsPage.button.closed")}
+              </div>
             </div>
           </div>
         </div>

@@ -196,7 +196,8 @@
                 },
                 "button": {
                     "go": "Go To Scheduling",
-                    "setting": "Busy Time Slot Settings"
+                    "setting": "Busy Time Slot Settings",
+                    "closed": "Closed"
                 },
                 "event": {
                     "appointment": "Appointment",

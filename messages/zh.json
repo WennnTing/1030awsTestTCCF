@@ -197,7 +197,8 @@
         },
         "button": {
           "go": "前往預約",
-          "setting": "預約會議設定"
+          "setting": "預約會議設定",
+          "closed": "功能關閉"
         },
         "event": {
           "appointment": "會議預約",

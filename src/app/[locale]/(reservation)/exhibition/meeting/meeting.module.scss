@@ -2,9 +2,23 @@
 
 .reservationMeeting {
 
-   
+
     height: 100%;
     padding: 40px 30px;
+
+    &__btnContainer {
+        background-color: #CBCBCB;
+        border-radius: 4px;
+        color: #6D6D6D;
+        font-size: 14px;
+    }
+
+    &__btnBlock {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        cursor: not-allowed;
+    }
 
     &__calendar {
 
@@ -28,7 +42,7 @@
 
                 display: flex;
                 gap: 20px;
-                
+
 
                 &_button {
                     background-color: $primary-green;
@@ -36,7 +50,7 @@
                     font-size: 14px;
                     border-radius: 4px;
                     overflow: hidden;
-    
+
                     &__icon {
                         display: inline-flex;
                         align-items: center;
@@ -45,9 +59,9 @@
                         margin-right: 10px;
                         font-weight: 500;
                     }
-    
+
                     a {
-    
+
                         display: flex;
                         align-items: center;
                         padding: 5px 10px;
@@ -55,20 +69,20 @@
                 }
             }
 
-          
+
         }
-        
+
 
 
     }
 
-   
+
 
     h2 {
 
         font-size: clamp(25px, 1.6667vw, 32px);
         margin-top: 0;
         line-height: 1.5;
-        
+
     }
 }

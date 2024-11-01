@@ -488,7 +488,7 @@ export default async function MarketPage({ params }) {
           )}
         </div>
       </div>
-      <ReservationButton />
+      {/* <ReservationButton /> */}
     </div>
   );
 }

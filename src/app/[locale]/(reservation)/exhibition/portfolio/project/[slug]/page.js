@@ -164,7 +164,7 @@ export default async function ProjectPage({ params }) {
         </div>
       </div>
 
-      <ReservationButton />
+      {/* <ReservationButton /> */}
     </div>
   );
 }

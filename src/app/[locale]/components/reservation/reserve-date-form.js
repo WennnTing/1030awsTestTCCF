@@ -67,12 +67,12 @@ export default function ReserveDateForm({
         {t("Appointments.ReservePage.time.title")}
       </h2>
       <div className={styles.reservationReserve__container_reserve__container}>
-        <Calendar
+        {/* <Calendar
           label={t("Appointments.ReservePage.time.formItem.date")}
           required={true}
           name={"meetingDate"}
           placeholder={t("Appointments.ReservePage.placeholder.date")}
-        />
+        /> */}
         {/* <RadioBox
           label={t("Appointments.ReservePage.time.formItem.startTime")}
           name={"startTime"}
@@ -95,7 +95,7 @@ export default function ReserveDateForm({
         </ul>
       )}
 
-      {time.length > 0 ? (
+      {/* {time.length > 0 ? (
         <div className={styles.reservationReserve__singleButton}>
           <ReserveFormSubmit
             text={t("Appointments.ReservePage.button.searchDate")}
@@ -110,7 +110,7 @@ export default function ReserveDateForm({
             onClickFun={actionFunction}
           />
         </div>
-      )}
+      )} */}
 
       <input
         type="text"
