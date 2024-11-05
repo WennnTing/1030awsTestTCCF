@@ -49,8 +49,8 @@ const Dashboard = () => {
                         {type === "map" &&
                             <>
                                 <div style={{ display: "flex" }}>
-                                    <p style={{ color: "red" }}>*</p>
-                                    <p >帳號統計數據不包含Pitching，不包含沒有建立組織的Professional</p>
+                                    <p style={{ color: "red", fontSize: "14px" }}>*</p>
+                                    <p style={{ color: "#9095A1", fontSize: "14px" }}>帳號統計數據不包含Pitching，不包含沒有建立組織的Professional</p>
                                 </div>
                                 <MapAccount />
                             </>
