@@ -786,6 +786,24 @@ export const API_CountMembers = async () => {
   return await tryFetch(path, requestOption);
 };
 
+// data 後台 查詢 國家的帳號數量
+export const API_GetMemberCountByCountryWithCompany = async () => {
+  const path = `${Host}/api/country/get-member-count-by-country-with-company`;
+  const requestOption = {
+    method: "GET",
+  };
+  return await tryFetch(path, requestOption);
+};
+
+// data 後台 查詢 每日創建帳號數量
+export const API_GetMemberCreatedCountEveryday = async () => {
+  const path = `${Host}/api/member/get-member-created-count-everyday`;
+  const requestOption = {
+    method: "GET",
+  };
+  return await tryFetch(path, requestOption);
+};
+
 // ================== 展務後台會議預約 ==================
 // 取得 該會員 的所有會議 (by admin)
 export const API_GetMeetingCalendarByAdmin = async (body) => {
@@ -861,6 +879,9 @@ export const API_CreateCalendarEventByAdmin = async (body) => {
 
 
 
+
+
+
 // ================== 展務後台匯入功能 ==================
 
 // 匯入MARKET
@@ -882,3 +903,5 @@ export const API_ImportProjects = async (body) => {
   };
   return await tryFetch(path, requestOption);
 };
+
+// ================== 展務後台匯入功能 End ==================

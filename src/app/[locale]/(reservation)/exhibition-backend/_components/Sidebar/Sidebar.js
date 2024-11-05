@@ -14,6 +14,7 @@ import { FaRegMessage } from "react-icons/fa6";             // 會議管理
 import { BsBox } from "react-icons/bs";                     // 活動管理 
 import { BiBarChartAlt2 } from "react-icons/bi";            // 日誌記錄
 import { TbDatabaseImport } from "react-icons/tb";          // 匯入管理
+import { GrDashboard } from "react-icons/gr";               // 儀表板
 
 
 
@@ -63,7 +64,14 @@ export default function BackSidebar() {
             title: "匯入管理",
             icon: <TbDatabaseImport />,
             id: 6,
-            color: "#33A6B8"
+            color: "#4C5445"
+        },
+        {
+            path: "dashboard",
+            title: "儀表板",
+            icon: <GrDashboard />,
+            id: 7,
+            color: "#7D6252"
         },
 
     ]);
