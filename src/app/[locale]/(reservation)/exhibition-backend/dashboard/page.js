@@ -46,7 +46,15 @@ const Dashboard = () => {
 
                     <div className="tabContent">
                         {type === "barchart" && <BarChart />}
-                        {type === "map" && <MapAccount />}
+                        {type === "map" &&
+                            <>
+                                <div style={{ display: "flex" }}>
+                                    <p style={{ color: "red" }}>*</p>
+                                    <p >帳號統計數據不包含Pitching，不包含沒有建立組織的Professional</p>
+                                </div>
+                                <MapAccount />
+                            </>
+                        }
                     </div>
 
                 </div>
