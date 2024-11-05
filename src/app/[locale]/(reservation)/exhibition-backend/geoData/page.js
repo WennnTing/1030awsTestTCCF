@@ -3,13 +3,20 @@ import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import Swal from "sweetalert2";
 import { worldData } from "./worldData";
-import worldGeoData from "./worldGeoJson.json";
 
 const GeoData = () => {
     const mapRef = useRef(null);
 
     useEffect(() => {
-        drawMap();
+        fetch("https://cdk-hnb659fds-assets-637423257201-ap-southeast-2.s3.ap-southeast-2.amazonaws.com/worldGeoJson.json")
+            .then(response => response.json())
+            .then(data => {
+                console.log("GeoJSON data loaded:", data);
+                drawMap(data);
+            })
+            .catch(error => {
+                console.error("Error loading GeoJSON data:", error);
+            });
     }, []);
 
     const getColor = (accounts) => {
@@ -20,7 +27,7 @@ const GeoData = () => {
         return "#DEE1E6";
     };
 
-    const drawMap = () => {
+    const drawMap = (geoData) => {
         const width = 1200;
         const height = 800;
 
@@ -44,7 +51,7 @@ const GeoData = () => {
         const path = d3.geoPath().projection(projection);
 
         svg.selectAll("path")
-            .data(worldGeoData.features)
+            .data(geoData.features)
             .enter()
             .append("path")
             .attr("d", path)
@@ -66,9 +73,8 @@ const GeoData = () => {
                 );
             });
 
-
         svg.selectAll("text")
-            .data(worldGeoData.features)
+            .data(geoData.features)
             .enter()
             .append("text")
             .attr("transform", (d) => {
