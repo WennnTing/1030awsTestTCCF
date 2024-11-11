@@ -23,6 +23,27 @@ import {
   API_ChangePasswordByAdmin
 } from "@/api/api";
 
+// alert 
+const showAlert = (icon, title, timer = 1000) => {
+  Swal.fire({
+    icon,
+    title,
+    showConfirmButton: false,
+    timer,
+  });
+};
+
+// 密碼格式驗證函數
+const isPasswordValid = (password) => {
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{}|;':",./<>?])[A-Za-z\d!@#$%^&*()_+\-=[\]{}|;':",./<>?]{8,16}$/;
+  return passwordPattern.test(password);
+};
+
+// 驗證密碼一致性函數
+const arePasswordsMatching = (newPassword, confirmPassword) => {
+  return newPassword === confirmPassword;
+};
+
 const ExhibitionBackendMemberInfo = () => {
   const Swal = require("sweetalert2");
   const t = useTranslations("MemberInfo");
@@ -174,14 +195,6 @@ const ExhibitionBackendMemberInfo = () => {
     fetchMemberDetails();
   }, [memberId]); // 監聽 memberId 的變化
 
-  // useEffect(() => {
-  //   if (tempFormData.systemRole) {
-  //     const updatedBadgeRole = determineBadgeRole(tempFormData.systemRole);
-  //     setTempFormData((prev) => ({ ...prev, badgeRole: updatedBadgeRole }));
-  //   }
-  // }, [tempFormData.systemRole]); // 當 systemRole 變化時觸發
-
-
   // 關閉修改個人資訊
   const handleCloseAccountInfo = () => {
     setIsAccountInfoOpen(false);
@@ -302,86 +315,68 @@ const ExhibitionBackendMemberInfo = () => {
 
   // 儲存密碼
   const handleSavePassword = async () => {
-    // 密碼格式驗證:8-16位英文大小寫字母和數字，至少包含一個特殊符號
-    const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{}|;':",./<>?])[A-Za-z\d!@#$%^&*()_+\-=[\]{}|;':",./<>?]{8,16}$/;
-
     // 驗證新密碼格式
-    if (!passwordPattern.test(passwords.newPassword)) {
-      Swal.fire({
-        icon: "error",
-        title:
-          locale === "zh"
-            ? "密碼必須是8到16個字元，包含大小寫字母和數字和一個特殊符號"
-            : "Password: 8-16 characters, including at least 1  uppercase letter, 1 lowercase letter, 1 number, and 1 special character.",
-        showConfirmButton: false,
-        timer: 1000,
-      });
+    if (!isPasswordValid(passwords.newPassword)) {
+      showAlert(
+        "error",
+        locale === "zh"
+          ? "密碼必須是8到16個字元，包含大小寫字母和數字和一個特殊符號"
+          : "Password: 8-16 characters, including at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+      );
       return;
     }
 
     // 驗證新密碼與確認密碼是否一致
-    if (passwords.newPassword !== passwords.confirmPassword) {
-      Swal.fire({
-        icon: "error",
-        title:
-          locale === "zh"
-            ? "輸入的密碼不一致"
-            : "The password entered is inconsistent",
-        showConfirmButton: false,
-        timer: 1000,
-      });
+    if (!arePasswordsMatching(passwords.newPassword, passwords.confirmPassword)) {
+      showAlert(
+        "error",
+        locale === "zh" ? "輸入的密碼不一致" : "The password entered is inconsistent"
+      );
       return;
     }
 
     setIsPasswordOpen(false);
 
     const result = await QuestionSwal({
-      title:
-        locale === "zh" ? "確認修改嗎?" : "Are you sure you want to submit?",
+      title: locale === "zh" ? "確認修改嗎?" : "Are you sure you want to submit?",
       canceltext: locale === "zh" ? "取消" : "Cancel",
       confirmtext: locale === "zh" ? "確認" : "Confirm",
     });
 
-    if (result.isConfirmed) {
-      try {
-        const passwordData = {
-          newPassword: passwords.newPassword,
-        };
-        const response = await API_ChangePasswordByAdmin(JSON.stringify(passwordData), memberId);
+    if (!result.isConfirmed) return;
 
-        if (response.message && response.message.includes("更新成功")) {
-          Swal.fire({
-            icon: "success",
-            title:
-              locale === "zh" ? "修改成功" : "Password updated successfully",
-            showConfirmButton: false,
-            timer: 1000,
-          });
+    try {
+      const passwordData = { newPassword: passwords.newPassword };
+      const response = await API_ChangePasswordByAdmin(
+        JSON.stringify(passwordData),
+        memberId
+      );
 
-          setPasswords({
-            newPassword: "",
-            confirmPassword: "",
-          });
-        } else {
-          // 舊密碼驗證失敗錯誤
-          Swal.fire({
-            icon: "error",
-            title: locale === "zh" ? "無法更新密碼" : "Password update failed",
-            timer: 1500,
-            showConfirmButton: false,
-          });
-        }
-      } catch (error) {
-        // 處理錯誤
-        console.error("Error updating password:", error);
-        Swal.fire({
-          icon: "error",
-          title: locale === "zh" ? "修改失敗" : "Update failed",
-          text: locale === "zh" ? "請稍後再試。" : "Please try again later.",
-          showConfirmButton: true,
+      if (response.message && response.message.includes("更新成功")) {
+        showAlert(
+          "success",
+          locale === "zh" ? "修改成功" : "Password updated successfully"
+        );
+
+        setPasswords({
+          newPassword: "",
+          confirmPassword: "",
         });
+      } else {
+        showAlert(
+          "error",
+          locale === "zh" ? "無法更新密碼" : "Password update failed",
+          1500
+        );
       }
+    } catch (error) {
+      console.error("Error updating password:", error);
+      Swal.fire({
+        icon: "error",
+        title: locale === "zh" ? "修改失敗" : "Update failed",
+        text: locale === "zh" ? "請稍後再試。" : "Please try again later.",
+        showConfirmButton: true,
+      });
     }
   };
 

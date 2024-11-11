@@ -550,19 +550,14 @@ export default function TableType({ pageData, locale }) {
       : [{ id: 1, open: true, key: nanoid() }],
   ]);
 
-  const handleToggleRow = (id) => {
-    setRow((prev) =>
-      prev.map((item) => {
-        return item.map((data) => {
-          if (data.id === id) {
-            return { ...data, open: !data.open };
-          } else {
-            return data;
-          }
-        });
-      })
-    );
+  const toggleOpenStatusForRow = (item, id) => {
+    return item.map((data) => (data.id === id ? { ...data, open: !data.open } : data));
   };
+
+  const handleToggleRow = (id) => {
+    setRow((prev) => prev.map((item) => toggleOpenStatusForRow(item, id)));
+  };
+
 
   const handleIncreaseRow = (tableKey) => {
     setRow((prev) =>
@@ -601,14 +596,16 @@ export default function TableType({ pageData, locale }) {
     });
   };
 
-  // 刪除表格
-  const removeTable = (id) => {
-    setTable((prev) => prev.filter((data) => data.id !== id));
-  };
+  const filterRowById = (item, id) => item.filter((data) => data.id !== id);
 
   // 刪除行
   const removeRow = (id) => {
-    setRow((prev) => prev.map((item) => item.filter((data) => data.id !== id)));
+    setRow((prev) => prev.map((item) => filterRowById(item, id)));
+  };
+
+  // 刪除表格
+  const removeTable = (id) => {
+    setTable((prev) => prev.filter((data) => data.id !== id));
   };
 
   // 刪除表格的主邏輯
@@ -628,6 +625,7 @@ export default function TableType({ pageData, locale }) {
       showDeleteConfirmation(id, removeRow, "確定刪除此區塊？");
     }
   };
+
 
 
   return (

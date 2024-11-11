@@ -33,6 +33,15 @@ import {
   API_CountMembers
 } from "@/api/api";
 
+const showSwalAlert = (icon, text, showConfirmButton = false, timer = 2000) => {
+  Swal.fire({
+    icon,
+    text,
+    showConfirmButton,
+    timer,
+  });
+};
+
 const headers = ["電子信箱", "Role"];
 
 const passwordPattern =
@@ -197,118 +206,68 @@ const AccountManagePages = () => {
   };
 
   // 新增未開通帳號
+  const handleAddExhibitPass = async (memberId) => {
+    const exhibitPass = { memberId };
+    try {
+      const exhibitRes = await API_AddExhibitPass(JSON.stringify(exhibitPass));
+      if (exhibitRes && exhibitRes.message.includes("新增展證成功!")) {
+        showSuccess("帳號及展證新增成功", () => {
+          closeInactivesDialog();
+          updateInactiveData();
+        });
+      } else {
+        showError("展證新增失敗");
+      }
+    } catch (exhibitError) {
+      console.error("Error adding exhibit pass:", exhibitError);
+      showError("展證新增失敗，請稍後再試");
+    }
+  };
+
+  const updateInactiveData = () => {
+    setInactiveData((prevData) => [
+      ...prevData,
+      { email: addNoActivateData.email },
+    ]);
+    setFilteredInactiveData((prevData) => [
+      ...prevData,
+      { email: addNoActivateData.email },
+    ]);
+    setAddNoActivateData({ email: "", role: 0, hasExhibitPass: false });
+  };
+
   const addNotActivateMember = async () => {
     if (addNoActivateData.email.includes(" ") || !emailPattern.test(addNoActivateData.email)) {
       showError("請輸入有效的電子郵件地址，且不得包含空格");
       return;
     }
 
-    const data = {
-      email: addNoActivateData.email,
-      roleId: addNoActivateData.role,
-    };
-
+    const data = { email: addNoActivateData.email, roleId: addNoActivateData.role };
     try {
       const res = await API_AddNotActivatedMember(JSON.stringify(data));
-
       if (res && res.message) {
         if (res.message.includes("Email already exists")) {
-          Swal.fire({
-            icon: "warning",
-            text: "該信箱已存在",
-            showConfirmButton: true,
-          });
+          showWarning("該信箱已存在");
         } else if (res.message.includes("新增成功")) {
           getMembersCount();
-          const exhibitPass = {
-            memberId: res.data.memberId,
-          };
-
           if (addNoActivateData.hasExhibitPass) {
-            try {
-              const exhibitRes = await API_AddExhibitPass(JSON.stringify(exhibitPass));
-
-              if (exhibitRes && exhibitRes.message.includes("新增展證成功!")) {
-                Swal.fire({
-                  icon: "success",
-                  text: "帳號及展證新增成功",
-                  showConfirmButton: false,
-                  timer: 2000,
-                }).then(() => {
-                  closeInactivesDialog();
-                  setInactiveData((prevData) => [
-                    ...prevData,
-                    { email: addNoActivateData.email },
-                  ]);
-                  setFilteredInactiveData((prevData) => [
-                    ...prevData,
-                    { email: addNoActivateData.email },
-                  ]);
-                  setAddNoActivateData({
-                    email: "",
-                    role: 0,
-                    hasExhibitPass: false,
-                  });
-                });
-              } else {
-                Swal.fire({
-                  icon: "error",
-                  text: "展證新增失敗",
-                  showConfirmButton: false,
-                  timer: 2000,
-                });
-              }
-            } catch (exhibitError) {
-              console.error("Error adding exhibit pass:", exhibitError);
-              Swal.fire({
-                icon: "error",
-                text: "展證新增失敗，請稍後再試",
-                showConfirmButton: false,
-                timer: 2000,
-              });
-            }
+            await handleAddExhibitPass(res.data.memberId);
           } else {
-            Swal.fire({
-              icon: "success",
-              text: "帳號新增成功",
-              showConfirmButton: false,
-              timer: 2000,
-            }).then(() => {
+            showSuccess("帳號新增成功", () => {
               closeInactivesDialog();
-              setInactiveData((prevData) => [
-                ...prevData,
-                { email: addNoActivateData.email },
-              ]);
-              setFilteredInactiveData((prevData) => [
-                ...prevData,
-                { email: addNoActivateData.email },
-              ]);
-              setAddNoActivateData({
-                email: "",
-                role: 0,
-                hasExhibitPass: false,
-              });
+              updateInactiveData();
             });
           }
         } else {
-          Swal.fire({
-            icon: "error",
-            text: "新增帳號失敗，請稍後再試",
-            showConfirmButton: false,
-            timer: 2000,
-          });
+          showError("新增帳號失敗，請稍後再試");
         }
       }
     } catch (error) {
       console.error("Error adding not activated member:", error);
-      Swal.fire({
-        icon: "error",
-        text: "系統錯誤，無法新增帳號",
-        showConfirmButton: false,
-        timer: 2000,
-      });
+      showError("系統錯誤，無法新增帳號");
     }
   };
+
 
   // 關閉 Dialog
   const dialogClose = () => setDialogOpen(false);
