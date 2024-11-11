@@ -83,29 +83,40 @@ export default function SettingPage({ setActive }) {
     );
   };
 
+  const showErrorAlert = () => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: "至少需有一個忙碌時段",
+      showCancelButton: false,
+      confirmButtonText: btnText("confirm"),
+    });
+  };
+
+  const showConfirmationAlert = (onConfirm) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此忙碌時段？",
+      showCancelButton: true,
+      confirmButtonText: btnText("confirm"),
+      cancelButtonText: btnText("cancel"),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onConfirm();
+      }
+    });
+  };
+
   const handleDeleteBusyDate = (id) => {
     if (busyDate.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "至少需有一個忙碌時段",
-        showCancelButton: false,
-        confirmButtonText: btnText("confirm"),
-      });
+      showErrorAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此忙碌時段？",
-        showCancelButton: true,
-        confirmButtonText: btnText("confirm"),
-        cancelButtonText: btnText("cancel"),
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setBusyDate((prev) => prev.filter((data) => data.id !== id));
-        }
+      showConfirmationAlert(() => {
+        setBusyDate((prev) => prev.filter((data) => data.id !== id));
       });
     }
   };
+
 
   return (
     <div className={styles.reservationSetting}>

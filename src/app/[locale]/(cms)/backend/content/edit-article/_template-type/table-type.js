@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "../[uuid]/article-content.module.scss";
 import { RxPlus } from "react-icons/rx";
 import { Alert } from "@/components/cms/swal";

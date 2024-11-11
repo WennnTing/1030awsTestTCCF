@@ -4,7 +4,6 @@ import { useRouter, useParams, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import InputComponent from "@/(reservation)/exhibition/components/Input/Input";
 import Button from "@/(reservation)/exhibition/components/Button/Button";
-import Swal from "sweetalert2";
 import styles from "./[workId].module.scss";
 import exhibitionPage from '../../../../exhibition-backendPages.module.scss';
 

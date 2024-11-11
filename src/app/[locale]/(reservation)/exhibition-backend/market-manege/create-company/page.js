@@ -39,6 +39,15 @@ import NormalSelect from "@/(reservation)/exhibition/exhibitioninfo/components/N
 import Loading from "@/(reservation)/exhibition/components/Loading/Loading";
 import Select from "react-select";
 
+// alert
+const showWarningAlert = (message) => {
+  return Swal.fire({
+    icon: "warning",
+    text: message,
+    showConfirmButton: true,
+  });
+};
+
 const CreateCompanyPages = () => {
   const Swal = require("sweetalert2");
   const [companyLogoForPrinting, setCompanyLogoForPrinting] = useState(""); // 印刷用公司logo
@@ -132,68 +141,141 @@ const CreateCompanyPages = () => {
   }, []);
 
   // 更新 input 的值
-  const handleInputChange = (name, eventOrValue) => {
-    let value;
+  // const handleInputChange = (name, eventOrValue) => {
+  //   let value;
 
-    if (Array.isArray(eventOrValue)) {
-      value = eventOrValue;
-    } else if (
-      eventOrValue &&
-      typeof eventOrValue === "object" &&
-      eventOrValue.target
-    ) {
-      value = eventOrValue.target.value;
-    } else {
-      value = eventOrValue;
-    }
+  //   if (Array.isArray(eventOrValue)) {
+  //     value = eventOrValue;
+  //   } else if (
+  //     eventOrValue &&
+  //     typeof eventOrValue === "object" &&
+  //     eventOrValue.target
+  //   ) {
+  //     value = eventOrValue.target.value;
+  //   } else {
+  //     value = eventOrValue;
+  //   }
 
-    // 處理 companyLogoForPrinting 和 posterForPrinting
+  //   // 處理 companyLogoForPrinting 和 posterForPrinting
+  //   if (name === "companyLogoForPrinting") {
+  //     setCompanyLogoForPrinting(value);
+  //     return; // 返回，避免影響原有的邏輯
+  //   }
+
+  //   if (name === "posterForPrinting") {
+  //     setPosterForPrinting(value);
+  //     return; // 返回，避免影響原有的邏輯
+  //   }
+
+  //   // 只允許數字和 + - 符號的正則表達式
+  //   if (name === "companyPhone" || name === "contactPersonPhone") {
+  //     const phoneRegex = /^[\d+\-\s#]*$/; // 允許數字、+、-、# 和空格
+  //     if (!phoneRegex.test(value)) {
+  //       return; // 如果輸入不符合規則，則不進行更新
+  //     }
+  //   }
+
+  //   // 英文正規表達式，允許逗號和空格
+  //   const regex = /^[a-zA-Z, ]*$/;
+
+  //   // 如果是 contactPersonNameEn，則檢查是否符合正規表達式
+  //   if (name === "contactPersonNameEn") {
+  //     if (regex.test(value)) {
+  //       const parts = value.split(",");
+
+  //       if (parts.length > 0) {
+  //         // 處理逗號前的部分：首字母大寫，其他保持原樣
+  //         parts[0] = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+  //       }
+
+  //       if (parts.length > 1) {
+  //         // 處理逗號後的部分：所有字母大寫
+  //         parts[1] = parts[1].toUpperCase();
+  //       }
+
+  //       value = parts.join(",");
+  //     } else {
+  //       return;
+  //     }
+  //   }
+
+  //   // 如果是 taxId 且值為空字串，設為 null
+  //   if (name === "taxId" && value === "") {
+  //     value = null;
+  //   }
+
+  //   // 更新 formData
+  //   setFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // 處理特定字段的更新
+  const handleSpecificFieldUpdate = (name, value) => {
     if (name === "companyLogoForPrinting") {
       setCompanyLogoForPrinting(value);
-      return; // 返回，避免影響原有的邏輯
+      return true;
     }
-
     if (name === "posterForPrinting") {
       setPosterForPrinting(value);
-      return; // 返回，避免影響原有的邏輯
+      return true;
     }
+    return false;
+  };
 
-    // 只允許數字和 + - 符號的正則表達式
+  // 處理電話字段
+  const isValidPhone = (name, value) => {
+    const phoneRegex = /^[\d+\-\s#]*$/;
     if (name === "companyPhone" || name === "contactPersonPhone") {
-      const phoneRegex = /^[\d+\-\s#]*$/; // 允許數字、+、-、# 和空格
-      if (!phoneRegex.test(value)) {
-        return; // 如果輸入不符合規則，則不進行更新
-      }
+      return phoneRegex.test(value);
     }
+    return true;
+  };
 
-    // 英文正規表達式，允許逗號和空格
+  // 處理英文名稱格式化
+  const formatContactPersonNameEn = (name, value) => {
     const regex = /^[a-zA-Z, ]*$/;
-
-    // 如果是 contactPersonNameEn，則檢查是否符合正規表達式
-    if (name === "contactPersonNameEn") {
-      if (regex.test(value)) {
-        const parts = value.split(",");
-
-        if (parts.length > 0) {
-          // 處理逗號前的部分：首字母大寫，其他保持原樣
-          parts[0] = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
-        }
-
-        if (parts.length > 1) {
-          // 處理逗號後的部分：所有字母大寫
-          parts[1] = parts[1].toUpperCase();
-        }
-
-        value = parts.join(",");
-      } else {
-        return;
+    if (name === "contactPersonNameEn" && regex.test(value)) {
+      const parts = value.split(",");
+      if (parts.length > 0) {
+        parts[0] = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
       }
+      if (parts.length > 1) {
+        parts[1] = parts[1].toUpperCase();
+      }
+      return parts.join(",");
     }
+    return value;
+  };
 
-    // 如果是 taxId 且值為空字串，設為 null
+  // 處理空值為 null 的特殊字段
+  const handleEmptyToNull = (name, value) => {
     if (name === "taxId" && value === "") {
-      value = null;
+      return null;
     }
+    return value;
+  };
+
+  // 更新 input 的值
+  const handleInputChange = (name, eventOrValue) => {
+    let value = Array.isArray(eventOrValue)
+      ? eventOrValue
+      : eventOrValue && typeof eventOrValue === "object" && eventOrValue.target
+        ? eventOrValue.target.value
+        : eventOrValue;
+
+    // 檢查並更新特定字段
+    if (handleSpecificFieldUpdate(name, value)) return;
+
+    // 驗證電話號碼
+    if (!isValidPhone(name, value)) return;
+
+    // 格式化英文名稱
+    value = formatContactPersonNameEn(name, value);
+
+    // 處理空值為 null
+    value = handleEmptyToNull(name, value);
 
     // 更新 formData
     setFormData((prevFormData) => ({
@@ -201,6 +283,7 @@ const CreateCompanyPages = () => {
       [name]: value,
     }));
   };
+
 
   // 檢查必填欄位有無填寫
   const validateFields = (company) => {
@@ -253,6 +336,69 @@ const CreateCompanyPages = () => {
   // 儲存與創建公司資訊 API_UpdateCompany
   // 創建完畢後，再打 API_AddCompanyLogo 更新公司LOGO
   // 全部完成後，才跳success通知
+  // 上傳圖片的輔助函數
+  const uploadImages = async (uploadFn, deleteFn, images, companyId) => {
+    try {
+      await deleteFn(companyId);
+      for (const image of images) {
+        const imageData = { ImageBase64: image };
+        const res = await uploadFn(JSON.stringify(imageData), companyId);
+        if (!res.message.includes("Image uploaded successfully.")) {
+          return false;
+        }
+      }
+      return true;
+    } catch (error) {
+      console.error("Error uploading images:", error);
+      return false;
+    }
+  };
+
+  // 處理創建成功的結果
+  const handleCreateSuccess = async (locale, router) => {
+    await Swal.fire({
+      icon: "success",
+      title: locale === "zh" ? "創建成功" : "Success",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    router.push(`/${locale}/exhibition-backend/market-manege`);
+  };
+
+  const prepareCompanyData = (formData) => ({
+    OwnerMemberId: formData.ownerId || null,
+    CompanyNameEn: formData.companyNameEn,
+    CompanyNameZh: formData.companyNameZh,
+    CompanyCategory: formData.companyCategory,
+    ExhibitionRole: formData.exhibitionRole,
+    ParticipationGoals: formData.participationGoals,
+    CompanyProfileZh: formData.companyProfileZh,
+    CompanyProfileEn: formData.companyProfileEn,
+    WebsiteUrl: formData.websiteUrl,
+    CompanyPhone: formData.companyPhone,
+    CompanyEmail: formData.companyEmail,
+    ExhibitionZone: formData.exhibitionZone,
+    RegistrationCountryId: formData.registrationCountryId,
+    ContactPersonNameZh: formData.contactPersonNameZh,
+    ContactPersonNameEn: formData.contactPersonNameEn,
+    ContactPersonTitleZh: formData.contactPersonTitleZh,
+    ContactPersonTitleEn: formData.contactPersonTitleEn,
+    ContactPersonPhone: formData.contactPersonPhone,
+    ContactPersonEmail: formData.contactPersonEmail,
+    PassCount: formData.passCount,
+    BoothRawSpace: formData.boothRawSpace,
+    NetworkingEvent: formData.networkingEvent,
+    MainStageTime: formData.mainStageTime,
+    SalonStageTime: formData.salonStageTime,
+    TaxId: formData.taxId,
+    InvoiceHeader: formData.invoiceHeader,
+    InvoiceNotes: formData.invoiceNotes,
+    Tags: formData.tags,
+    HappyHour: formData.happyHour,
+    PaymentMethods: formData.paymentMethods,
+  });
+
+  // 主函數
   const handleSave = async () => {
     try {
       setIsLoading(true);
@@ -262,152 +408,33 @@ const CreateCompanyPages = () => {
         return;
       }
 
-      // 準備公司資料
-      const companyData = {
-        OwnerMemberId: formData.ownerId || null,
-        CompanyNameEn: formData.companyNameEn,
-        CompanyNameZh: formData.companyNameZh,
-        CompanyCategory: formData.companyCategory,
-        ExhibitionRole: formData.exhibitionRole,
-        ParticipationGoals: formData.participationGoals,
-        CompanyProfileZh: formData.companyProfileZh,
-        CompanyProfileEn: formData.companyProfileEn,
-        WebsiteUrl: formData.websiteUrl,
-        CompanyPhone: formData.companyPhone,
-        CompanyEmail: formData.companyEmail,
-        ExhibitionZone: formData.exhibitionZone,
-        RegistrationCountryId: formData.registrationCountryId,
-        ContactPersonNameZh: formData.contactPersonNameZh,
-        ContactPersonNameEn: formData.contactPersonNameEn,
-        ContactPersonTitleZh: formData.contactPersonTitleZh,
-        ContactPersonTitleEn: formData.contactPersonTitleEn,
-        ContactPersonPhone: formData.contactPersonPhone,
-        ContactPersonEmail: formData.contactPersonEmail,
-        PassCount: formData.passCount,
-        BoothRawSpace: formData.boothRawSpace,
-        NetworkingEvent: formData.networkingEvent,
-        MainStageTime: formData.mainStageTime,
-        SalonStageTime: formData.salonStageTime,
-        TaxId: formData.taxId,
-        InvoiceHeader: formData.invoiceHeader,
-        InvoiceNotes: formData.invoiceNotes,
-        Tags: formData.tags,
-        HappyHour: formData.happyHour,
-        PaymentMethods: formData.paymentMethods,
-      };
-
-      // 創建公司資訊
+      const companyData = prepareCompanyData(formData);
       const response = await API_CreateCompany(JSON.stringify(companyData));
 
-      console.log("API_CreateCompany response:", response);
-
-      if (
-        response &&
-        response.message &&
-        response.message.includes("該用戶已經擁有一家公司。")
-      ) {
-        Swal.fire({
-          icon: "warning",
-          text:
-            locale === "zh"
-              ? "該用戶已經擁有一家公司。"
-              : "The user already owns a company.",
-          showConfirmButton: true,
-        });
-        setIsLoading(false); // 結束加載動畫
+      if (response?.message.includes("該用戶已經擁有一家公司。")) {
+        await showWarningAlert(locale === "zh" ? "該用戶已經擁有一家公司。" : "The user already owns a company.");
+        setIsLoading(false);
         return;
-      } else if (
-        response &&
-        response.message &&
-        response.message.includes("創建成功!")
-      ) {
-        const companyId = response.data.companyId; // 獲取新創建的公司ID
+      } else if (response?.message.includes("創建成功!")) {
+        const companyId = response.data.companyId;
 
-        let printLogoSuccess = true;
-        let printPosterSuccess = true;
+        const printLogoSuccess = formData.logo ? await uploadImages(API_AddCompanyLogo, API_DeleteCompanyLogo, formData.logo, companyId) : true;
+        const printPosterSuccess = posterForPrinting ? await uploadImages(API_UploadCompanyPrintPoster, API_DeleteCompanyPrintPoster, posterForPrinting, companyId) : true;
+        const printLogoForPrintingSuccess = companyLogoForPrinting ? await uploadImages(API_UploadCompanyPrintLogo, API_DeleteCompanyPrintLogo, companyLogoForPrinting, companyId) : true;
 
-        // 上傳公司Logo
-        if (formData.logo) {
-          try {
-            await API_DeleteCompanyLogo(companyId);
-            for (const logo of formData.logo) {
-              const logoData = {
-                ImageBase64: logo,
-              };
-              await API_AddCompanyLogo(JSON.stringify(logoData), companyId);
-            }
-          } catch (error) {
-            printLogoSuccess = false;
-            console.error("Error uploading logo:", error);
-          }
-        }
-
-        // 上傳印刷用公司Logo
-        if (companyLogoForPrinting) {
-          try {
-            await API_DeleteCompanyPrintLogo(companyId);
-            for (const printinglogo of companyLogoForPrinting) {
-              const printlogo = {
-                ImageBase64: printinglogo,
-              };
-              const res = await API_UploadCompanyPrintLogo(
-                JSON.stringify(printlogo),
-                companyId
-              );
-              if (!res.message.includes("Image uploaded successfully.")) {
-                printLogoSuccess = false;
-              }
-            }
-          } catch (error) {
-            printLogoSuccess = false;
-            console.error("Error uploading print logo:", error);
-          }
-        }
-
-        // 上傳參展作品海報或直式視覺
-        if (posterForPrinting) {
-          try {
-            await API_DeleteCompanyPrintPoster(companyId);
-            for (const posterItem of posterForPrinting) {
-              const poster = {
-                ImageBase64: posterItem,
-              };
-              const res = await API_UploadCompanyPrintPoster(
-                JSON.stringify(poster),
-                companyId
-              );
-              if (!res.message.includes("Image uploaded successfully.")) {
-                printPosterSuccess = false;
-              }
-            }
-          } catch (error) {
-            printPosterSuccess = false;
-            console.error("Error uploading poster:", error);
-          }
-        }
-
-        // 處理上傳失敗的結果
-        if (!printLogoSuccess || !printPosterSuccess) {
+        if (!printLogoSuccess || !printPosterSuccess || !printLogoForPrintingSuccess) {
           await Swal.fire({
             icon: "error",
             title: "Error",
             text: "There was an issue uploading some files. Please try again.",
             showConfirmButton: true,
           });
-          setIsLoading(false); // 結束加載動畫
+          setIsLoading(false);
           return;
         }
 
-        // 如果所有上傳都成功，顯示成功提示
-        await Swal.fire({
-          icon: "success",
-          title: locale === "zh" ? "創建成功" : "Success",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-
-        setIsLoading(false); // 確保在 Swal 彈出後結束加載動畫
-        router.push(`/${locale}/exhibition-backend/market-manege`); // 跳轉到公司頁面
+        await handleCreateSuccess(locale, router);
+        setIsLoading(false);
       } else {
         console.error("Failed to create company");
         setIsLoading(false);
@@ -434,7 +461,6 @@ const CreateCompanyPages = () => {
                   </div>
 
                   <div className={styles.architecture__inputBlock}>
-
 
                     {/* 展證張數 */}
                     {/* 對應API是passcount */}

@@ -1,18 +1,40 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "../setting/setting.module.scss";
-import Calendar from "@/components/reservation/calendar";
 import { BsTrash3 } from "react-icons/bs";
 import { RxPlus } from "react-icons/rx";
-import SelectComponent from "@/components/reservation/select";
 import { Alert } from "@/components/reservation/swal";
-import GoBackButton from "@/components/reservation/go-back-button";
 import BusyFormSubmit from "@/components/reservation/busy-form-submit";
 import { useFormState } from "react-dom";
 import { setBusyDateAndTime } from "@/actions/reservation";
 import { useTranslations } from "next-intl";
 import { useFormStatus } from "react-dom";
 import BusyDateTimeCalendar from "@/components/reservation/busy-date-time-calendar";
+
+const showDeleteErrorAlert = () => {
+  Alert({
+    icon: "error",
+    title: "刪除失敗",
+    text: "至少需有一個忙碌時段",
+    showCancelButton: false,
+    confirmButtonText: btnText("confirm"),
+  });
+};
+
+const showDeleteConfirmationAlert = (onConfirm) => {
+  Alert({
+    icon: "warning",
+    title: "確定刪除此忙碌時段？",
+    showCancelButton: true,
+    showConfirmButton: true,
+    confirmButtonText: btnText("confirm"),
+    cancelButtonText: btnText("cancel"),
+  }).then((result) => {
+    if (result.isConfirmed) onConfirm();
+  });
+};
+
+
 
 export default function SettingPage({ setActive }) {
   const t = useTranslations("Reservation");
@@ -59,28 +81,17 @@ export default function SettingPage({ setActive }) {
     );
   };
 
+  // 刪除忙碌時段
+  const deleteBusyDate = (id) => {
+    setBusyDate((prev) => prev.filter((data) => data.id !== id));
+  };
+
+  // 主函數
   const handleDeleteBusyDate = (id) => {
     if (busyDate.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "至少需有一個忙碌時段",
-        showCancelButton: false,
-        confirmButtonText: btnText("confirm"),
-      });
+      showDeleteErrorAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此忙碌時段？",
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonText: btnText("confirm"),
-        cancelButtonText: btnText("cancel"),
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setBusyDate((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteConfirmationAlert(() => deleteBusyDate(id));
     }
   };
 
