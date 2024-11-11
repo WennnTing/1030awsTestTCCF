@@ -228,59 +228,6 @@ const ZhTemplate = ({
   handleIncreaseRow,
 }) => {
   const [editorContent, setEditorContent] = useState([]);
-
-  // const [table, setTable] = useState([
-  //   {
-  //     id: 1,
-  //     open: true,
-  //     locale: "",
-  //   },
-  // ]);
-
-  // const handleToggleBlock = (id) => {
-  //   setTable((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseBlock = () => {
-  //   setTable((prev) =>
-  //     prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //     })
-  //   );
-  // };
-
-  // const handleDeleteBlock = (id) => {
-  //   if (table.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "表格至少需有一筆資料",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setTable((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
   return (
     <div
       style={{
@@ -491,28 +438,33 @@ export default function TableType({
     );
   };
 
-  const handleDeleteTable = (id) => {
-    if (table.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "表格至少需有一筆資料",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
-    } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setTable((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
-    }
+  const showSingleItemAlert = (message) => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: message,
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
   };
+
+  const showDeleteConfirmationAlert = (id, removeFunction) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此區塊？",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeFunction(id);
+      }
+    });
+  };
+
+  const removeItem = (id, setFunction) => {
+    setFunction((prev) => prev.filter((data) => data.id !== id));
+  };
+
 
   const [row, setRow] = useState([
     {
@@ -546,26 +498,20 @@ export default function TableType({
 
   const handleDeleteRow = (id) => {
     if (row.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "表格至少需有一筆資料",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+      showSingleItemAlert("表格至少需有一筆資料");
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setRow((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteConfirmationAlert(id, (id) => removeItem(id, setRow));
     }
   };
+
+  const handleDeleteTable = (id) => {
+    if (table.length === 1) {
+      showSingleItemAlert("表格至少需有一筆資料");
+    } else {
+      showDeleteConfirmationAlert(id, (id) => removeItem(id, setTable));
+    }
+  };
+
 
   return (
     <div>
@@ -611,117 +557,6 @@ export default function TableType({
         handleToggleRow={handleToggleRow}
         handleIncreaseRow={handleIncreaseRow}
       />
-      {/* <div className={styles.cmsArticleContent__container}>
-        <h3>表格型文章設定</h3>
-        <Input label={"標題"} required={true} elementId={"title"} />
-        <CustomEditor
-          elementId={"content"}
-          content={editorContent}
-          setContent={setEditorContent}
-        />
-        <ButtonInput
-          label={"左頁尾按鈕"}
-          elementId={"leftFooterButton"}
-          elementValueId={"leftFooterButtonValue"}
-        />
-        <ButtonInput
-          label={"右頁尾按鈕"}
-          elementId={"rightFooterButton"}
-          elementValueId={"rightFooterButtonValue"}
-        />
-
-        <div className={styles.cmsArticleContent__container}>
-          <h3>版型設定</h3>
-
-          <div>
-            <RadioButton
-              label={"編號"}
-              elementId={"serial"}
-              required={true}
-              input={true}
-              state={serial}
-              onChangeFun={setSerial}
-              options={[
-                {
-                  value: "true",
-                  label: "顯示",
-                  checked: true,
-                },
-                {
-                  value: "false",
-                  label: "不顯示",
-                },
-              ]}
-            />
-
-            <RadioButton
-              label={"檢視按鈕"}
-              elementId={"viewButton"}
-              required={true}
-              input={true}
-              state={viewButton}
-              onChangeFun={setViewButton}
-              options={[
-                {
-                  value: "true",
-                  label: "顯示",
-                  checked: true,
-                },
-                {
-                  value: "false",
-                  label: "不顯示",
-                },
-              ]}
-            />
-          </div>
-
-          <div className={styles.cmsArticleContent__container_twoColumn}>
-            <Input label={"表頭1"} elementId={"header_1"} />
-            <Input label={"表頭2"} elementId={"header_2"} />
-            <Input label={"表頭3"} elementId={"header_3"} />
-            <Input label={"表頭4"} elementId={"header_4"} />
-            <Input label={"表頭5"} elementId={"header_5"} />
-          </div>
-
-          <div
-            className={styles.cmsArticleContent__container_confirmButton}
-            onClick={handleIncreaseBlock}
-          ></div>
-        </div>
-        {table.map((data, index) => (
-          <TableBlock
-            data={data}
-            index={index}
-            table={table}
-            setTable={setTable}
-            handleDeleteBlock={handleDeleteBlock}
-            handleToggleBlock={handleToggleBlock}
-            serial={serial}
-            numberButton={numberButton}
-            viewButton={viewButton}
-          />
-        ))}
-        <div
-          className={styles.cmsArticleContent__container_increase}
-          onClick={handleIncreaseBlock}
-        >
-          <div className={styles.cmsArticleContent__container_increase__icon}>
-            <RxPlus />
-          </div>
-          <span>增加表格</span>
-        </div>
-      </div>
-      <div className={styles.cmsArticleContent__container}>
-        <h3>共用設定</h3>
-        <ArticleCalendar
-          label={"上架期間"}
-          required={true}
-          publishDate={publishDate}
-          setPublishDate={setPublishDate}
-          unpublishDate={unpublishDate}
-          setUnpublishDate={setUnpublishDate}
-        />
-      </div> */}
     </div>
   );
 }

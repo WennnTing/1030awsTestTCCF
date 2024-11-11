@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./edit.module.scss";
 import exhibitionPage from '../../../exhibition-backendPages.module.scss';
-import { usePathname, useRouter } from "next/navigation";
-import Swal from "sweetalert2";
+import { usePathname } from "next/navigation";
 
 // api
 import {
@@ -20,9 +19,8 @@ import {
 
 // icon
 import { FaRegSave } from "react-icons/fa";
-import { IoPeopleSharp } from "react-icons/io5";
+import { IoPeopleSharp, IoTrashBin } from "react-icons/io5";
 import { MdAdd } from "react-icons/md";
-import { IoTrashBin } from "react-icons/io5";
 
 // components
 import Button from "@/(reservation)/exhibition/components/Button/Button";
@@ -36,7 +34,6 @@ const EditProjectPages = () => {
   const Swal = require("sweetalert2");
   const pathname = usePathname();
   const locale = pathname.split("/")[1];
-  const router = useRouter();
   const [inviteEmail, setInviteEmail] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [project, setProject] = useState(null);             // 一進入頁面用來塞作品資訊
@@ -45,6 +42,34 @@ const EditProjectPages = () => {
   const [memberPassChanges, setMemberPassChanges] = useState({}); // 會員展證變更
   const projectId = pathname.split("/").pop();
   const [originalKeyVisual, setOriginalKeyVisual] = useState(null); // 原始主視覺圖
+
+
+  const showError = (zhMessage, enMessage) => {
+    Swal.fire({
+      icon: "error",
+      title: locale === "zh" ? zhMessage : enMessage,
+      showConfirmButton: true,
+    });
+  };
+
+  const showSuccess = (message) => {
+    Swal.fire({
+      icon: "success",
+      title: message,
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  };
+
+  const showNotification = (type, title, text = "", timer = 2000) => {
+    Swal.fire({
+      icon: type,
+      title,
+      text,
+      showConfirmButton: type === "error",
+      timer: type === "success" ? timer : undefined,
+    });
+  };
 
   // Pitching sub category
   const mainCategory = [
@@ -89,7 +114,7 @@ const EditProjectPages = () => {
     {
       value: "Taicca School",
       label: "Taicca School",
-      zhValue: "文策學院",
+      zhValue: "Taicca School",
       zhOptions: [],
     },
   ];
@@ -110,93 +135,63 @@ const EditProjectPages = () => {
     getProjectMember();
   }, [projectId]);
 
+  const updateMainCategory = (updatedProject, value, field) => {
+    const selectedCategory = mainCategory.find(
+      (cat) => (field === "pitchingMainCategory" ? cat.zhValue : cat.label) === value
+    );
+    if (selectedCategory) {
+      updatedProject.pitchingMainCategory = selectedCategory.zhValue;
+      updatedProject.pitchingMainCategoryEn = selectedCategory.label;
+      updatedProject.pitchingCategory = ""; // 重置子分類
+      updatedProject.pitchingCategoryEn = ""; // 重置子分類英文
+    }
+  };
+
+  const updateSubCategory = (updatedProject, value, field) => {
+    const mainCat = mainCategory.find(
+      (cat) =>
+      (field === "pitchingCategory"
+        ? cat.zhValue === project.pitchingMainCategory
+        : cat.label === project.pitchingMainCategoryEn)
+    );
+    if (mainCat) {
+      const selectedSubCategory = mainCat.zhOptions.find(
+        (subCat) =>
+          (field === "pitchingCategory" ? subCat.value : subCat.enValue) === value
+      );
+      if (selectedSubCategory) {
+        updatedProject.pitchingCategory = selectedSubCategory.value;
+        updatedProject.pitchingCategoryEn = selectedSubCategory.enValue;
+      }
+    }
+  };
+
+  const updateArrayField = (updatedProject, field, value, index, arrayName) => {
+    const updatedArray = [...updatedProject[arrayName]];
+    updatedArray[index] = { ...updatedArray[index], [field]: value };
+    updatedProject[arrayName] = updatedArray;
+  };
+
   const handleInputChange = (field, value, index = null, type = null) => {
     let updatedProject = { ...project };
-
-    if (field === "pitchingMainCategory") {
-      const selectedCategory = mainCategory.find(
-        (cat) => cat.zhValue === value
-      );
-      if (selectedCategory) {
-        updatedProject.pitchingMainCategory = selectedCategory.zhValue;
-        updatedProject.pitchingMainCategoryEn = selectedCategory.label; // 更新英文主分類
-        updatedProject.pitchingCategory = ""; // 重置子分類
-        updatedProject.pitchingCategoryEn = ""; // 重置子分類英文
-      }
-    } else if (field === "pitchingMainCategoryEn") {
-      const selectedCategory = mainCategory.find((cat) => cat.label === value);
-      if (selectedCategory) {
-        updatedProject.pitchingMainCategoryEn = selectedCategory.label;
-        updatedProject.pitchingMainCategory = selectedCategory.zhValue; // 更新中文主分類
-        updatedProject.pitchingCategory = ""; // 重置子分類
-        updatedProject.pitchingCategoryEn = ""; // 重置子分類英文
-      }
-    } else if (field === "pitchingCategory") {
-      const mainCat = mainCategory.find(
-        (cat) => cat.zhValue === project.pitchingMainCategory
-      );
-      if (mainCat) {
-        const selectedSubCategory = mainCat.zhOptions.find(
-          (subCat) => subCat.value === value
-        );
-        if (selectedSubCategory) {
-          updatedProject.pitchingCategory = selectedSubCategory.value;
-          updatedProject.pitchingCategoryEn = selectedSubCategory.enValue; // 更新英文次分類
-        }
-      }
-    } else if (field === "pitchingCategoryEn") {
-      const mainCat = mainCategory.find(
-        (cat) => cat.label === project.pitchingMainCategoryEn
-      );
-      if (mainCat) {
-        const selectedSubCategory = mainCat.zhOptions.find(
-          (subCat) => subCat.enValue === value
-        );
-        if (selectedSubCategory) {
-          updatedProject.pitchingCategoryEn = selectedSubCategory.enValue;
-          updatedProject.pitchingCategory = selectedSubCategory.value; // 更新中文次分類
-        }
-      }
+    if (field === "pitchingMainCategory" || field === "pitchingMainCategoryEn") {
+      updateMainCategory(updatedProject, value, field);
+    } else if (field === "pitchingCategory" || field === "pitchingCategoryEn") {
+      updateSubCategory(updatedProject, value, field);
     } else if (type === "projectCharacters" && index !== null) {
-      // 僅更新 projectCharacters 的特定字段
-      const updatedCharacters = [...updatedProject.projectCharacters];
-      updatedCharacters[index] = {
-        characterName: updatedCharacters[index].characterName,
-        characterNameEn: updatedCharacters[index].characterNameEn,
-        characterDescription: updatedCharacters[index].characterDescription,
-        characterDescriptionEn: updatedCharacters[index].characterDescriptionEn,
-        [field]: value,
-      };
-      updatedProject.projectCharacters = updatedCharacters;
+      updateArrayField(updatedProject, field, value, index, "projectCharacters");
     } else if (type === "projectCreators" && index !== null) {
-      // 僅更新 projectCreators 的特定字段
-      const updatedCreators = [...updatedProject.projectCreators];
-      updatedCreators[index] = {
-        creatorName: updatedCreators[index].creatorName,
-        creatorNameEn: updatedCreators[index].creatorNameEn,
-        creatorTitle: updatedCreators[index].creatorTitle,
-        creatorTitleEn: updatedCreators[index].creatorTitleEn,
-        creatorProfile: updatedCreators[index].creatorProfile,
-        creatorProfileEn: updatedCreators[index].creatorProfileEn,
-        [field]: value, // 只更新特定字段
-      };
-      updatedProject.projectCreators = updatedCreators;
+      updateArrayField(updatedProject, field, value, index, "projectCreators");
     } else if (type === "projectCompanies" && index !== null) {
-      // 僅更新 projectCompanies 的特定字段
-      const updatedCompanies = [...updatedProject.projectCompanies];
-      updatedCompanies[index] = {
-        ...updatedCompanies[index],
-        [field]: value,
-      };
-      updatedProject.projectCompanies = updatedCompanies;
+      updateArrayField(updatedProject, field, value, index, "projectCompanies");
     } else {
-      // 默認更新：更新其他字段的輸入值
       updatedProject[field] = value;
     }
+
     setProject(updatedProject);
   };
 
-  // 展證 select 狀態
+
   const handleSelectChange = (memberId, hasExhibitPass) => {
     setMemberPassChanges((prevChanges) => ({
       ...prevChanges,
@@ -204,171 +199,149 @@ const EditProjectPages = () => {
     }));
   };
 
+  // 準備給api的格式
+  // 過濾角色、創作者和公司資料的函數
+  const filterCharacters = (characters) => characters.filter(
+    (character) =>
+      character.characterName ||
+      character.characterNameEn ||
+      character.characterDescription ||
+      character.characterDescriptionEn
+  );
+
+  const filterCreators = (creators) => creators.filter(
+    (creator) =>
+      creator.creatorName ||
+      creator.creatorNameEn ||
+      creator.creatorTitle ||
+      creator.creatorTitleEn ||
+      creator.creatorProfile ||
+      creator.creatorProfileEn
+  );
+
+  const filterCompanies = (companies) => companies.filter(
+    (company) =>
+      company.productionCompanyName ||
+      company.productionCompanyNameEn ||
+      company.productionCompanyProfile ||
+      company.productionCompanyProfileEn
+  );
+
+  // 獲取基本專案資料的函數
+  const getBasicProjectData = (project) => ({
+    entityId: project.entityId,
+    entiryOverviewType: project.entiryOverviewType || "Project",
+    subject: project.subject || null,
+    subjectEn: project.subjectEn || null,
+    pitchingMainCategory: project.pitchingMainCategory || null,
+    pitchingMainCategoryEn: project.pitchingMainCategoryEn || null,
+    pitchingCategory: project.pitchingCategory || null,
+    pitchingCategoryEn: project.pitchingCategoryEn || null,
+    originalTitle: project.originalTitle || null,
+    passCount: project.passCount || null,
+    country: project.country || null,
+    countryEn: project.countryEn || null,
+    genre: project.genre || null,
+    genreEn: project.genreEn || null,
+    contactPerson: project.contactPerson || null,
+    contactPersonEn: project.contactPersonEn || null,
+    jobTitle: project.jobTitle || null,
+    jobTitleEn: project.jobTitleEn || null,
+    contactNumber: project.contactNumber || null,
+    contactEmail: project.contactEmail || null,
+    logline: project.logline || null,
+    loglineEn: project.loglineEn || null,
+    synopsis: project.synopsis || null,
+    synopsisEn: project.synopsisEn || null,
+    yearOfFirstPublicationRelease: project.yearOfFirstPublicationRelease || null,
+    publisherName: project.publisherName || null,
+    publisherNameEn: project.publisherNameEn || null,
+    holderOfAudiovisualAdaptationRights: project.holderOfAudiovisualAdaptationRights || null,
+    holderOfAudiovisualAdaptationRightsEn: project.holderOfAudiovisualAdaptationRightsEn || null,
+    publisherProfile: project.publisherProfile || null,
+    publisherProfileEn: project.publisherProfileEn || null,
+    productionCompanyName: project.productionCompanyName || null,
+    productionCompanyNameEn: project.productionCompanyNameEn || null,
+    productionCompanyProfile: project.productionCompanyProfile || null,
+    productionCompanyProfileEn: project.productionCompanyProfileEn || null,
+    type: project.type || null,
+    typeEn: project.typeEn || null,
+    theme: project.theme || null,
+    themeEn: project.themeEn || null,
+    rightsSold: project.rightsSold || null,
+    rightsSoldEn: project.rightsSoldEn || null,
+    whyAdaptThisStory: project.whyAdaptThisStory || null,
+    whyAdaptThisStoryEn: project.whyAdaptThisStoryEn || null,
+    comparableFilmTvWorks: project.comparableFilmTvWorks || null,
+    comparableFilmTvWorksEn: project.comparableFilmTvWorksEn || null,
+    awardsReceivedOrNumberOfCopiesSold: project.awardsReceivedOrNumberOfCopiesSold || null,
+    awardsReceivedOrNumberOfCopiesSoldEn: project.awardsReceivedOrNumberOfCopiesSoldEn || null,
+    backgroundSetting: project.backgroundSetting || null,
+    backgroundSettingEn: project.backgroundSettingEn || null,
+    formats: project.formats || null,
+    formatsEn: project.formatsEn || null,
+    keyVisual: project.keyVisual || null,
+    originalIdeaAdaptation: project.originalIdeaAdaptation || null,
+    originalIdeaAdaptationEn: project.originalIdeaAdaptationEn || null,
+    productionStatement: project.productionStatement || null,
+    productionStatementEn: project.productionStatementEn || null,
+    goalAtTccf: project.goalAtTccf || null,
+    goalAtTccfEn: project.goalAtTccfEn || null,
+    projectStatus: project.projectStatus || null,
+    projectStatusEn: project.projectStatusEn || null,
+    totalBudgetUsd: project.totalBudgetUsd || null,
+    financingAlreadyInPlaceUsd: project.financingAlreadyInPlaceUsd || null,
+    numberOfEpisodes: project.numberOfEpisodes || null,
+    duration: project.duration || null,
+  });
+
+  // 最終的 prepareProjectData 函數
+  const prepareProjectData = () => {
+    return {
+      ...getBasicProjectData(project),
+      projectCompanies: filterCompanies(project.projectCompanies),
+      projectCharacters: filterCharacters(project.projectCharacters),
+      projectCreators: filterCreators(project.projectCreators),
+    };
+  };
+
   // 儲存與更新專案資訊 API_UpdateProject
+  const handleKeyVisualUpload = async (projectData) => {
+    if (projectData.keyVisual !== originalKeyVisual) {
+      await API_DeleteProjectKeyVisualByAdmin(projectData.entityId);
+      try {
+        for (const keyVisual of projectData.keyVisual) {
+          const data = { ImageBase64: keyVisual };
+          await API_UploadProjectKeyVisualByAdmin(JSON.stringify(data), projectData.entityId);
+        }
+      } catch (error) {
+        console.error("Key visual upload error:", error);
+      }
+    }
+  };
+
   const handleSave = async () => {
-    console.log("Saving project data...", project);
     try {
       setLoading(true);
 
-      // 過濾掉空的角色和創作者
-      const filteredCharacters = project.projectCharacters.filter(
-        (character) =>
-          character.characterName ||
-          character.characterNameEn ||
-          character.characterDescription ||
-          character.characterDescriptionEn
-      );
+      const projectData = prepareProjectData();
+      await handleKeyVisualUpload(projectData);
 
-      const filteredCreators = project.projectCreators.filter(
-        (creator) =>
-          creator.creatorName ||
-          creator.creatorNameEn ||
-          creator.creatorTitle ||
-          creator.creatorTitleEn ||
-          creator.creatorProfile ||
-          creator.creatorProfileEn
-      );
-
-      const filteredCompanies = project.projectCompanies.filter(
-        (company) =>
-          company.productionCompanyName ||
-          company.productionCompanyNameEn ||
-          company.productionCompanyProfile ||
-          company.productionCompanyProfileEn
-      )
-
-      const projectData = {
-        entityId: project.entityId,
-        entiryOverviewType: project.entiryOverviewType || "Project",
-        subject: project.subject || null,
-        subjectEn: project.subjectEn || null,
-        pitchingMainCategory: project.pitchingMainCategory || null,
-        pitchingMainCategoryEn: project.pitchingMainCategoryEn || null,
-        pitchingCategory: project.pitchingCategory || null,
-        pitchingCategoryEn: project.pitchingCategoryEn || null,
-        originalTitle: project.originalTitle || null,
-        passCount: project.passCount || null,
-        country: project.country || null,
-        countryEn: project.countryEn || null,
-        genre: project.genre || null,
-        genreEn: project.genreEn || null,
-        contactPerson: project.contactPerson || null,
-        contactPersonEn: project.contactPersonEn || null,
-        jobTitle: project.jobTitle || null,
-        jobTitleEn: project.jobTitleEn || null,
-        contactNumber: project.contactNumber || null,
-        contactEmail: project.contactEmail || null,
-        logline: project.logline || null,
-        loglineEn: project.loglineEn || null,
-        synopsis: project.synopsis || null,
-        synopsisEn: project.synopsisEn || null,
-        yearOfFirstPublicationRelease:
-          project.yearOfFirstPublicationRelease || null,
-        publisherName: project.publisherName || null,
-        publisherNameEn: project.publisherNameEn || null,
-        holderOfAudiovisualAdaptationRights:
-          project.holderOfAudiovisualAdaptationRights || null,
-        holderOfAudiovisualAdaptationRightsEn:
-          project.holderOfAudiovisualAdaptationRightsEn || null,
-        publisherProfile: project.publisherProfile || null,
-        publisherProfileEn: project.publisherProfileEn || null,
-        productionCompanyName: project.productionCompanyName || null,
-        productionCompanyNameEn: project.productionCompanyNameEn || null,
-        productionCompanyProfile: project.productionCompanyProfile || null,
-        productionCompanyProfileEn: project.productionCompanyProfileEn || null,
-        type: project.type || null,
-        typeEn: project.typeEn || null,
-        theme: project.theme || null,
-        themeEn: project.themeEn || null,
-        rightsSold: project.rightsSold || null,
-        rightsSoldEn: project.rightsSoldEn || null,
-        whyAdaptThisStory: project.whyAdaptThisStory || null,
-        whyAdaptThisStoryEn: project.whyAdaptThisStoryEn || null,
-        comparableFilmTvWorks: project.comparableFilmTvWorks || null,
-        comparableFilmTvWorksEn: project.comparableFilmTvWorksEn || null,
-        awardsReceivedOrNumberOfCopiesSold:
-          project.awardsReceivedOrNumberOfCopiesSold || null,
-        awardsReceivedOrNumberOfCopiesSoldEn:
-          project.awardsReceivedOrNumberOfCopiesSoldEn || null,
-        backgroundSetting: project.backgroundSetting || null,
-        backgroundSettingEn: project.backgroundSettingEn || null,
-        formats: project.formats || null,
-        formatsEn: project.formatsEn || null,
-        keyVisual: project.keyVisual || null,
-        originalIdeaAdaptation: project.originalIdeaAdaptation || null,
-        originalIdeaAdaptationEn: project.originalIdeaAdaptationEn || null,
-        productionStatement: project.productionStatement || null,
-        productionStatementEn: project.productionStatementEn || null,
-        goalAtTccf: project.goalAtTccf || null,
-        goalAtTccfEn: project.goalAtTccfEn || null,
-        projectStatus: project.projectStatus || null,
-        projectStatusEn: project.projectStatusEn || null,
-        totalBudgetUsd: project.totalBudgetUsd || null,
-        financingAlreadyInPlaceUsd: project.financingAlreadyInPlaceUsd || null,
-        numberOfEpisodes: project.numberOfEpisodes || null,
-        duration: project.duration || null,
-        projectCompanies: filteredCompanies,
-        projectCharacters: filteredCharacters,
-        projectCreators: filteredCreators,
-      };
-
-      if (projectData.keyVisual !== originalKeyVisual) {
-        await API_DeleteProjectKeyVisualByAdmin(projectData.entityId);
-        try {
-          for (const keyVisual of projectData.keyVisual) {
-            const data = {
-              ImageBase64: keyVisual
-            }
-            await API_UploadProjectKeyVisualByAdmin(JSON.stringify(data), projectData.entityId);
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      console.log("Prepared projectData for API:", projectData);
-
-
-      const res = await API_UpdateProject(
-        JSON.stringify(projectData),
-        project.entityId
-      );
+      const res = await API_UpdateProject(JSON.stringify(projectData), project.entityId);
 
       if (res === null) {
-        Swal.fire({
-          icon: "error",
-          title: locale === "zh" ? "網路訊號不佳" : "Poor Internet Signal",
-          text:
-            locale === "zh"
-              ? "請檢查您的網路連接"
-              : "Please check your internet connection.",
-          showConfirmButton: true,
-        });
-        setLoading(false);
-        return;
+        showNotification("error", locale === "zh" ? "網路訊號不佳" : "Poor Internet Signal", locale === "zh" ? "請檢查您的網路連接" : "Please check your internet connection.");
+      } else {
+        getProjectDetail();
+        showNotification("success", locale === "zh" ? "儲存成功" : "Success");
       }
-
-      getProjectDetail();
-      setLoading(false);
-
-      // 顯示成功提示
-      Swal.fire({
-        icon: "success",
-        title: locale === "zh" ? "儲存成功" : "Success",
-        showConfirmButton: false,
-        timer: 2000,
-      });
     } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title:
-          locale === "zh"
-            ? "異常狀況，請稍後再試"
-            : "An exception occurred, please try again later.",
-        timer: 2000,
-        showConfirmButton: false,
-      });
+      showNotification("error", locale === "zh" ? "異常狀況，請稍後再試" : "An exception occurred, please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
+
 
   // 開啟dialog
   const handleOpenDialog = () => {
@@ -413,7 +386,7 @@ const EditProjectPages = () => {
       JSON.stringify(data),
       projectId
     );
-    if (res && res.message && res.message.includes("已發送開通信件!")) {
+    if (res?.message?.includes("已發送開通信件!")) {
       handleCloseDialog();
       Swal.fire({
         icon: "success",
@@ -424,7 +397,7 @@ const EditProjectPages = () => {
         setInviteEmail("");
         setLoading(false);
       });
-    } else if (res && res.message && res.message.includes("Email 已經存在")) {
+    } else if (res?.message?.includes("Email 已經存在")) {
       Swal.fire({
         icon: "error",
         title:
@@ -454,20 +427,39 @@ const EditProjectPages = () => {
       return;
     }
 
-    const newItem =
-      type === 'projectCharacters'
-        ? { characterName: '', characterNameEn: '', characterDescription: '', characterDescriptionEn: '' }
-        : type === 'projectCreators'
-          ? { creatorName: '', creatorNameEn: '', creatorTitle: '', creatorTitleEn: '', creatorProfile: '', creatorProfileEn: '' }
-          : { productionCompanyName: '', productionCompanyNameEn: '', productionCompanyProfile: '', productionCompanyProfileEn: '' };
+    let newItem;
 
-    setProject((prevProject) => {
-      return {
-        ...prevProject,
-        [type]: [...prevProject[type], newItem],
+    if (type === 'projectCharacters') {
+      newItem = {
+        characterName: '',
+        characterNameEn: '',
+        characterDescription: '',
+        characterDescriptionEn: '',
       };
-    });
+    } else if (type === 'projectCreators') {
+      newItem = {
+        creatorName: '',
+        creatorNameEn: '',
+        creatorTitle: '',
+        creatorTitleEn: '',
+        creatorProfile: '',
+        creatorProfileEn: '',
+      };
+    } else {
+      newItem = {
+        productionCompanyName: '',
+        productionCompanyNameEn: '',
+        productionCompanyProfile: '',
+        productionCompanyProfileEn: '',
+      };
+    }
+
+    setProject((prevProject) => ({
+      ...prevProject,
+      [type]: [...prevProject[type], newItem],
+    }));
   };
+
 
   // 用於刪除角色、創作者或公司
   const handleDeleteItem = (type, index) => {
@@ -481,73 +473,72 @@ const EditProjectPages = () => {
     });
   };
 
-
-
-
   // 儲存展證變更
   const saveExhibitPassChanges = async () => {
     try {
-      const memberPassChangesArray = Object.entries(memberPassChanges); // 轉換為可迭代的鍵值對陣列
-      const failedAdditions = []; // 用於儲存新增失敗的會員
-      const failedDeletions = []; // 用於儲存刪除失敗的會員
+      const memberPassChangesArray = Object.entries(memberPassChanges);
+      const failedAdditions = [];
+      const failedDeletions = [];
 
-      for (const [memberId, hasExhibitPass] of memberPassChangesArray) {
-        try {
+      await Promise.all(
+        memberPassChangesArray.map(async ([memberId, hasExhibitPass]) => {
           if (hasExhibitPass === "true") {
-            const data = {
-              memberId: memberId,
-            };
-            const response = await API_AddExhibitPass(JSON.stringify(data));
-            if (response.message.includes("新增失敗")) {
-              failedAdditions.push(memberId);
-            }
+            await addExhibitPass(memberId, failedAdditions);
           } else {
-            const response = await API_DeleteExhibitPass(memberId);
-            if (response.message.includes("無法刪除")) {
-              failedDeletions.push(memberId);
-            }
+            await deleteExhibitPass(memberId, failedDeletions);
           }
-        } catch (apiError) {
-          console.error(`Error processing memberId: ${memberId}`, apiError);
-        }
-      }
+        })
+      );
 
-      // 錯誤提示顯示
-      if (failedAdditions.length > 0 || failedDeletions.length > 0) {
-        let failureMessage = "";
-        if (failedAdditions.length > 0) {
-          failureMessage +=
-            `新增展證失敗的會員: ${failedAdditions.join("\n")}`;
-        }
-        if (failedDeletions.length > 0) {
-          failureMessage +=
-            `刪除展證失敗的會員: ${failedDeletions.join("\n")}`;
-        }
-
-        Swal.fire({
-          icon: "error",
-          title: "部分操作失敗，請洽系統人員",
-          text: failureMessage,
-          showConfirmButton: true,
-        });
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: locale === "zh" ? "展證修改成功" : "Exhibit pass changes saved!",
-          timer: 2000,
-          showConfirmButton: false,
-        });
-      }
+      handleFailures(failedAdditions, failedDeletions);
     } catch (error) {
       console.error("Error saving exhibit pass changes:", error);
-      Swal.fire({
-        icon: "error",
-        title: "異常狀況，請稍後再試",
-        timer: 2000,
-        showConfirmButton: false,
-      });
+      showError("異常狀況，請稍後再試", "An exception occurred, please try again later.");
     }
   };
+
+  const addExhibitPass = async (memberId, failedAdditions) => {
+    try {
+      const data = { memberId };
+      const response = await API_AddExhibitPass(JSON.stringify(data));
+      console.log(`Add response for ${memberId}:`, response);
+      if (response?.message?.includes("新增失敗")) {
+        failedAdditions.push(memberId);
+      }
+    } catch (error) {
+      console.error(`Error adding exhibit pass for memberId: ${memberId}`, error);
+    }
+  };
+
+  const deleteExhibitPass = async (memberId, failedDeletions) => {
+    try {
+      const response = await API_DeleteExhibitPass(memberId);
+      console.log(`Delete response for ${memberId}:`, response);
+      if (response.message && response.message.includes("無法刪除")) {
+        failedDeletions.push(memberId);
+      }
+    } catch (error) {
+      console.error(`Error deleting exhibit pass for memberId: ${memberId}`, error);
+    }
+  };
+
+
+  const handleFailures = (failedAdditions, failedDeletions) => {
+    if (failedAdditions.length > 0 || failedDeletions.length > 0) {
+      let failureMessage = "";
+      if (failedAdditions.length > 0) {
+        failureMessage += `新增展證失敗的會員: ${failedAdditions.join("\n")}`;
+      }
+      if (failedDeletions.length > 0) {
+        failureMessage += `刪除展證失敗的會員: ${failedDeletions.join("\n")}`;
+      }
+      showError("部分操作失敗，請洽系統人員", failureMessage);
+    } else {
+      showSuccess(locale === "zh" ? "展證修改成功" : "Exhibit pass changes saved!");
+    }
+  };
+
+
 
   if (!project) {
     return <p>Loading...</p>;

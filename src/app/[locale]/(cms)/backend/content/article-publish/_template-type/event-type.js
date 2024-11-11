@@ -1,15 +1,12 @@
 import styles from "../article-content.module.scss";
 import {
   Input,
-  ButtonInput,
-  FileInput,
-  DefaultInput,
   ControllerInput,
 } from "@/components/cms/input";
 
 import { RadioButton } from "@/components/cms/radio-button";
 import ArticleCalendar from "@/components/cms/article-calendar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import EventMember from "./_event-type/event-member";
 import { Alert } from "@/components/cms/swal";
@@ -17,9 +14,7 @@ import { RxPlus } from "react-icons/rx";
 import ArticleEventCalendar from "@/components/cms/article-event-calendar";
 import ArticleEventTime from "@/components/cms/article-event-time";
 import ImageUpload from "@/components/cms/image-upload";
-import { useEffect } from "react";
 import moment from "moment";
-import FileUpload from "@/components/cms/file-upload";
 import SlideImageUpload from "@/components/cms/slide-image-upload";
 import SelectComponent from "@/components/cms/select";
 import { nanoid } from "nanoid";
@@ -66,15 +61,6 @@ const EnTemplate = ({
   handleDeleteMember,
 }) => {
   const [editorContent, setEditorContent] = useState([]);
-
-  // const [member, setMember] = useState([
-  //   {
-  //     id: 1,
-  //     open: true,
-  //     locale: "_En",
-  //   },
-  // ]);
-
   const locationOptions = [
     {
       value: "Main Stage",
@@ -90,51 +76,6 @@ const EnTemplate = ({
     },
   ];
 
-  // const handleToggleMember = (id) => {
-  //   setMember((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseMember = () => {
-  //   setMember((prev) =>
-  //     prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "_En",
-  //     })
-  //   );
-  // };
-
-  // const handleDeleteMember = (id) => {
-  //   if (member.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "人員資訊不可少於一項",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setMember((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
-
   return (
     <div
       style={{
@@ -148,28 +89,6 @@ const EnTemplate = ({
 
       <div className={styles.cmsArticleContent__container}>
         <h3>活動資訊</h3>
-        {/* <RadioButton
-          label={"主題資訊"}
-          elementId={"themeInfoEn"}
-          required={true}
-          state={themeInfo}
-          value={themeInfo}
-          onChangeFun={setThemeInfo}
-          info={
-            "於詳細頁面顯示活動資訊名稱、地點、報名日期與額滿人數、劇情概要(logline)、主視覺與活動性質區塊"
-          }
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        /> */}
         <RadioButton
           label={"內文資訊"}
           elementId={"contentInfoEn"}
@@ -255,28 +174,6 @@ const EnTemplate = ({
           options={locationOptions}
           controller={false}
         />
-        {/* {locationInfo == "true" && (
-            <RadioButton
-              label={"地點呈現方式"}
-              elementId={"locationDisplayTypeEn"}
-              elementValueId={"locationDisplayTypeValueEn"}
-              state={locationDisplayType}
-              value={locationDisplayType}
-              onChangeFun={setLocationDisplayType}
-              required={true}
-              input={true}
-              options={[
-                {
-                  value: "googlemap",
-                  label: "Google地圖",
-                },
-                {
-                  value: "image",
-                  label: "圖片",
-                },
-              ]}
-            />
-          )} */}
 
         <RadioButton
           label={"活動性質"}
@@ -295,6 +192,7 @@ const EnTemplate = ({
             },
           ]}
         />
+
         <ArticleEventTime
           required={true}
           label={"活動時間"}
@@ -317,21 +215,6 @@ const EnTemplate = ({
           setActivityStartTime={setActivityStartTime}
           setActivityEndTime={setActivityEndTime}
         />
-
-        {/* <div className={styles.cmsArticleContent__container_twoColumn}>
-            <ArticleEventCalendar
-              required={true}
-              label={"活動日期"}
-              startDate={activityStartTime}
-              setStartDate={setActivityStartTime}
-              endDate={activityEndTime}
-              setEndDate={setActivityEndTime}
-              startElementId={"activityStartTime"}
-              endElementId={"activityEndTime"}
-              startPlaceholder={"活動開始日期"}
-              endPalceholder={"活動結束日期"}
-            />
-          </div> */}
 
         <div className={styles.cmsArticleContent__container_twoColumn}>
           <ArticleEventCalendar
@@ -368,7 +251,6 @@ const EnTemplate = ({
           />
 
           <SlideImageUpload label={"輪播圖片"} type={"en"} />
-          {/* <FileUpload label={"附件"} required={true} elementId={"fileEn"} /> */}
           <Input
             label={"附件"}
             elementId={"fileEn"}
@@ -399,17 +281,18 @@ const EnTemplate = ({
                 locale={"_En"}
               />
             ))}
-            <div
+
+            <button
               className={styles.cmsArticleContent__container_increase}
+              style={{ outline: "none", border: "none" }}
               onClick={handleIncreaseMember}
             >
-              <div
-                className={styles.cmsArticleContent__container_increase__icon}
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
               <span>增加人員資訊</span>
-            </div>
+            </button>
+
           </div>
         </div>
       )}
@@ -467,14 +350,6 @@ const ZhTemplate = ({
   handleDeleteMember,
 }) => {
   const [editorContent, setEditorContent] = useState([]);
-  // const [member, setMember] = useState([
-  //   {
-  //     id: 1,
-  //     open: true,
-  //     locale: "",
-  //   },
-  // ]);
-
   const locationOptions = [
     {
       value: "主舞台",
@@ -490,51 +365,6 @@ const ZhTemplate = ({
     },
   ];
 
-  // const handleToggleMember = (id) => {
-  //   setMember((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseMember = () => {
-  //   setMember((prev) =>
-  //     prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //     })
-  //   );
-  // };
-
-  // const handleDeleteMember = (id) => {
-  //   if (member.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "人員資訊不可少於一項",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setMember((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
-
   return (
     <div
       style={{
@@ -548,28 +378,7 @@ const ZhTemplate = ({
 
       <div className={styles.cmsArticleContent__container}>
         <h3>活動資訊</h3>
-        {/* <RadioButton
-          label={"主題資訊"}
-          elementId={"themeInfo"}
-          required={true}
-          state={themeInfo}
-          value={themeInfo}
-          onChangeFun={setThemeInfo}
-          info={
-            "於詳細頁面顯示活動資訊名稱、地點、報名日期與額滿人數、劇情概要(logline)、主視覺與活動性質區塊"
-          }
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        /> */}
+
         <RadioButton
           label={"內文資訊"}
           elementId={"contentInfo"}
@@ -590,6 +399,7 @@ const ZhTemplate = ({
             },
           ]}
         />
+
         <RadioButton
           label={"人員資訊"}
           elementId={"memberInfo"}
@@ -610,6 +420,7 @@ const ZhTemplate = ({
             },
           ]}
         />
+
         <RadioButton
           label={"地點資訊"}
           elementId={"locationInfo"}
@@ -655,28 +466,6 @@ const ZhTemplate = ({
           options={locationOptions}
           controller={false}
         />
-        {/* {locationInfo == "true" && (
-            <RadioButton
-              label={"地點呈現方式"}
-              elementId={"locationDisplayType"}
-              elementValueId={"locationDisplayTypeValue"}
-              state={locationDisplayType}
-              value={locationDisplayType}
-              onChangeFun={setLocationDisplayType}
-              required={true}
-              input={true}
-              options={[
-                {
-                  value: "googlemap",
-                  label: "Google地圖",
-                },
-                {
-                  value: "image",
-                  label: "圖片",
-                },
-              ]}
-            />
-          )} */}
 
         <RadioButton
           label={"活動性質"}
@@ -785,17 +574,18 @@ const ZhTemplate = ({
                 locale={""}
               />
             ))}
-            <div
+
+            <button
               className={styles.cmsArticleContent__container_increase}
+              style={{ outline: "none", border: "none" }}
               onClick={handleIncreaseMember}
             >
-              <div
-                className={styles.cmsArticleContent__container_increase__icon}
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
               <span>增加人員資訊</span>
-            </div>
+            </button>
+
           </div>
         </div>
       )}
@@ -930,28 +720,41 @@ export default function EventType({
     );
   };
 
+  const showSingleMemberAlert = () => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: "人員資訊不可少於一項",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
+  };
+
+  const showDeleteConfirmationAlert = (id) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此區塊？",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeMember(id);
+      }
+    });
+  };
+
+  const removeMember = (id) => {
+    setMember((prev) => prev.filter((data) => data.id !== id));
+  };
+
   const handleDeleteMember = (id) => {
     if (member.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "人員資訊不可少於一項",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+      showSingleMemberAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setMember((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteConfirmationAlert(id);
     }
   };
+
 
   return (
     <div>
@@ -1031,224 +834,6 @@ export default function EventType({
         handleIncreaseMember={handleIncreaseMember}
         handleDeleteMember={handleDeleteMember}
       />
-      {/* <div className={styles.cmsArticleContent__container}>
-        <h3>活動型文章設定</h3>
-        <Input label={"標籤名稱"} elementId={"tag"} />
-      </div>
-
-      <div className={styles.cmsArticleContent__container}>
-        <h3>活動資訊</h3>
-        <RadioButton
-          label={"主題資訊"}
-          elementId={"themeInfo"}
-          required={true}
-          state={themeInfo}
-          onChangeFun={setThemeInfo}
-          info={
-            "於詳細頁面顯示活動資訊名稱、地點、報名日期與額滿人數、劇情概要(logline)、主視覺與活動性質區塊"
-          }
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        />
-        <RadioButton
-          label={"內文資訊"}
-          elementId={"contentInfo"}
-          required={true}
-          state={contentInfo}
-          onChangeFun={setContentInfo}
-          info={"於詳細頁面顯示活動資訊的內容、輪播圖與附件區塊"}
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        />
-        <RadioButton
-          label={"人員資訊"}
-          elementId={"memberInfo"}
-          required={true}
-          state={memberInfo}
-          onChangeFun={setMemberInfo}
-          info={"於詳細頁面顯示活動資訊的團隊詳細介紹等區塊"}
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        />
-        <RadioButton
-          label={"地點資訊"}
-          elementId={"locationInfo"}
-          required={true}
-          state={locationInfo}
-          onChangeFun={setLocationInfo}
-          info={"於詳細頁面顯示活動資訊的地點顯示區塊"}
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        />
-      </div>
-
-      {themeInfo == "true" && (
-        <div className={styles.cmsArticleContent__container}>
-          <h3>主題資訊</h3>
-          <Input label={"標題"} required={true} elementId={"title"} />
-          <Input label={"企劃案概要"} required={true} elementId={"summary"} />
-          <Input label={"主視覺"} required={true} elementId={"kv"} />
-
-          {locationInfo == "true" && (
-            <Input label={"地點"} required={true} elementId={"location"} />
-          )}
-          {locationInfo == "true" && (
-            <RadioButton
-              label={"地點呈現方式"}
-              elementId={"locationDisplayType"}
-              elementValueId={"locationDisplayTypeValue"}
-              state={locationDisplayType}
-              onChangeFun={setLocationDisplayType}
-              required={true}
-              input={true}
-              options={[
-                {
-                  value: "googlemap",
-                  label: "Google地圖",
-                },
-                {
-                  value: "image",
-                  label: "圖片",
-                },
-              ]}
-            />
-          )}
-
-          <RadioButton
-            label={"活動性質"}
-            elementId={"eventType"}
-            required={true}
-            options={[
-              {
-                value: "apply",
-                label: "報名入場",
-              },
-              {
-                value: "badge",
-                label: "憑展證入場",
-              },
-            ]}
-          />
-          <div className={styles.cmsArticleContent__container_twoColumn}>
-            <ArticleEventCalendar
-              required={true}
-              label={"報名日期"}
-              startDate={registrationStartDate}
-              setStartDate={setRegistrationStartDate}
-              endDate={registrationEndDate}
-              setEndDate={setRegistrationEndDate}
-              startElementId={"registrationStartDate"}
-              endElementId={"registrationEndDate"}
-              startPlaceholder={"報名開始日期"}
-              endPalceholder={"報名截止日期"}
-            />
-
-            <Input label={"滿額人數"} required={true} elementId={"maxParticipants"} />
-
-            <ArticleEventCalendar
-              label={"報名日期2"}
-              startDate={activityStartTime}
-              setStartDate={setActivityStartTime}
-              endDate={activityEndTime}
-              setEndDate={setActivityEndTime}
-              startElementId={"activityStartTime"}
-              endElementId={"activityEndTime"}
-              startPlaceholder={"報名開始日期"}
-              endPalceholder={"報名截止日期"}
-            />
-            <Input label={"滿額人數2"} elementId={"quota2"} />
-          </div>
-        </div>
-      )}
-
-      {contentInfo == "true" && (
-        <div className={styles.cmsArticleContent__container}>
-          <h3>內文資訊</h3>
-          <CustomEditor
-            elementId={"content"}
-            content={editorContent}
-            setContent={setEditorContent}
-          />
-          <Input label={"輪播圖片"} />
-
-          <FileInput label={"上傳附件"} required={true} elementId={"file"} />
-        </div>
-      )}
-
-      {memberInfo == "true" && (
-        <div className={styles.cmsArticleContent__container}>
-          <h3>人員資訊</h3>
-          {member.map((data, index) => (
-            <EventMember
-              data={data}
-              index={index}
-              member={member}
-              setMember={setMember}
-              editorContent={editorContent}
-              setEditorContent={setEditorContent}
-              handleDeleteMember={handleDeleteMember}
-              handleToggleMember={handleToggleMember}
-            />
-          ))}
-          <div
-            className={styles.cmsArticleContent__container_increase}
-            onClick={handleIncreaseMember}
-          >
-            <div className={styles.cmsArticleContent__container_increase__icon}>
-              <RxPlus />
-            </div>
-            <span>增加人員資訊</span>
-          </div>
-        </div>
-      )}
-
-      <div className={styles.cmsArticleContent__container}>
-        <h3>共用設定</h3>
-        <ArticleCalendar
-          label={"上架期間"}
-          required={true}
-          publishDate={publishDate}
-          setPublishDate={setPublishDate}
-          unpublishDate={unpublishDate}
-          setUnpublishDate={setUnpublishDate}
-        />
-      </div> */}
     </div>
   );
 }

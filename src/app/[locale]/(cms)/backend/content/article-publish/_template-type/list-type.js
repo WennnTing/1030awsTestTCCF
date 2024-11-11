@@ -25,58 +25,6 @@ const EnTemplate = ({
   handleDeleteBlock,
 }) => {
   const [editorContent, setEditorContent] = useState([]);
-  // const [block, setBlock] = useState([
-  //   {
-  //     id: 1,
-  //     open: true,
-  //     locale: "_En",
-  //   },
-  // ]);
-
-  // const handleToggleBlock = (id) => {
-  //   setBlock((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseBlock = () => {
-  //   setBlock((prev) => {
-  //     return prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "_En",
-  //     });
-  //   });
-  // };
-
-  // const handleDeleteBlock = (id) => {
-  //   if (block.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "文章至少需有一個區塊",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setBlock((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
 
   return (
     <div
@@ -176,59 +124,6 @@ const ZhTemplate = ({
   handleDeleteBlock,
 }) => {
   const [editorContent, setEditorContent] = useState([]);
-  // const [block, setBlock] = useState([
-  //   {
-  //     id: 1,
-  //     open: true,
-  //     locale: "",
-  //   },
-  // ]);
-
-  // const handleToggleBlock = (id) => {
-  //   setBlock((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseBlock = () => {
-  //   setBlock((prev) => {
-  //     return prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //     });
-  //   });
-  // };
-
-  // const handleDeleteBlock = (id) => {
-  //   if (block.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "文章至少需有一個區塊",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setBlock((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
-
   return (
     <div
       style={{
@@ -351,28 +246,41 @@ export default function ListType({
     });
   };
 
+  const showSingleBlockAlert = () => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: "文章至少需有一個區塊",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
+  };
+
+  const showDeleteConfirmationAlert = (id) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此區塊？",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeBlock(id);
+      }
+    });
+  };
+
+  const removeBlock = (id) => {
+    setBlock((prev) => prev.filter((data) => data.id !== id));
+  };
+
   const handleDeleteBlock = (id) => {
     if (block.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "文章至少需有一個區塊",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+      showSingleBlockAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setBlock((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteConfirmationAlert(id);
     }
   };
+
 
   return (
     <div>
@@ -400,62 +308,6 @@ export default function ListType({
         handleToggleBlock={handleToggleBlock}
         handleIncreaseBlock={handleIncreaseBlock}
       />
-      {/* <div className={styles.cmsArticleContent__container}>
-        <h3>條列型文章設定</h3>
-        <Input label={"標題"} required={true} elementId={"title"} />
-        <CustomEditor
-          elementId={"content"}
-          content={editorContent}
-          setContent={setEditorContent}
-        />
-        <ButtonInput
-          label={"左頁尾按鈕"}
-          elementId={"leftFooterButton"}
-          elementValueId={"leftFooterButtonValue"}
-        />
-        <ButtonInput
-          label={"右頁尾按鈕"}
-          elementId={"rightFooterButton"}
-          elementValueId={"rightFooterButtonValue"}
-        />
-
-        <div className={styles.cmsArticleContent__container}>
-          <h3>區域設計</h3>
-          {block.map((data, index) => (
-            <ListBlock
-              data={data}
-              index={index}
-              block={block}
-              setBlock={setBlock}
-              handleDeleteBlock={handleDeleteBlock}
-              handleToggleBlock={handleToggleBlock}
-              editorContent={editorContent}
-              setEditorContent={setEditorContent}
-            />
-          ))}
-
-          <div
-            className={styles.cmsArticleContent__container_increase}
-            onClick={handleIncreaseBlock}
-          >
-            <div className={styles.cmsArticleContent__container_increase__icon}>
-              <RxPlus />
-            </div>
-            <span>增加區塊</span>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cmsArticleContent__container}>
-        <h3>共用設定</h3>
-        <ArticleCalendar
-          label={"上架期間"}
-          required={true}
-          publishDate={publishDate}
-          setPublishDate={setPublishDate}
-          unpublishDate={unpublishDate}
-          setUnpublishDate={setUnpublishDate}
-        />
-      </div> */}
     </div>
   );
 }

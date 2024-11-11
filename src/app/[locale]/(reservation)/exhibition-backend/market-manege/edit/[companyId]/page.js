@@ -5,7 +5,6 @@ import styles from "./edit.module.scss";
 import pageStyles from '../../../exhibition-backendPages.module.scss';
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import Swal from "sweetalert2";
 
 // options
 import {
@@ -34,10 +33,9 @@ import {
 } from "@/api/api";
 
 // icon
-import { FaRegSave } from "react-icons/fa";
+import { FaRegSave, FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineSquares2X2 } from "react-icons/hi2";
 import { IoPeopleSharp } from "react-icons/io5";
-import { FaRegTrashAlt } from "react-icons/fa";
 
 // components
 import Button from "@/(reservation)/exhibition/components/Button/Button";

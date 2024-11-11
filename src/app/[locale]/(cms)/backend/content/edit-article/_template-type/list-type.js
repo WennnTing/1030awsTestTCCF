@@ -19,80 +19,6 @@ const EnTemplate = ({
   handleIncreaseBlock,
   handleToggleBlock,
 }) => {
-  // const blockData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("block_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/_(\d+)$/);
-  //     if (match) {
-  //       const key = match[1];
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-
-  // const blockDataArray = Object.values(blockData || {});
-
-  // const [block, setBlock] = useState(
-  //   blockDataArray.map((item, index) =>
-  //     item.reduce((acc, [key, value]) => {
-  //       acc[key] = value;
-  //       return {
-  //         ...acc,
-  //         ...{ open: true, id: index + 1, locale: "_En" },
-  //       };
-  //     }, {})
-  //   )
-  // );
-
-  // const handleToggleBlock = (id) => {
-  //   setBlock((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseBlock = () => {
-  //   setBlock((prev) => {
-  //     return prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "_En",
-  //     });
-  //   });
-  // };
-
-  // const handleDeleteBlock = (id) => {
-  //   if (block.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "文章至少需有一個區塊",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: true,
-  //       cancelButtonText: "取消",
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setBlock((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
-
   const [editorContent, setEditorContent] = useState(
     data?.content?.[0]?.fieldTextEn
   );
@@ -197,34 +123,6 @@ const ZhTemplate = ({
   handleIncreaseBlock,
   handleToggleBlock,
 }) => {
-  // const blockData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("block_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/_(\d+)$/);
-  //     if (match) {
-  //       const key = match[1];
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-
-  // const blockDataArray = Object.values(blockData || {});
-
-  // const [block, setBlock] = useState(
-  //   blockDataArray.map((item, index) =>
-  //     item.reduce((acc, [key, value]) => {
-  //       acc[key] = value;
-  //       return {
-  //         ...acc,
-  //         ...{ open: true, id: index + 1, locale: "" },
-  //       };
-  //     }, {})
-  //   )
-  // );
-
   const [editorContent, setEditorContent] = useState(
     data?.content?.[0]?.fieldTextZh
   );
@@ -241,51 +139,6 @@ const ZhTemplate = ({
   const [rightFooterButtonValue, setRightFooterButtonValue] = useState(
     data?.rightFooterButton?.[0]?.fieldValue
   );
-
-  // const handleToggleBlock = (id) => {
-  //   setBlock((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseBlock = () => {
-  //   setBlock((prev) => {
-  //     return prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //     });
-  //   });
-  // };
-
-  // const handleDeleteBlock = (id) => {
-  //   if (block.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "文章至少需有一個區塊",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setBlock((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
   return (
     <div
       style={{
@@ -392,18 +245,18 @@ export default function ListType({ pageData, locale }) {
   const [block, setBlock] = useState(
     blockDataArray.length > 0
       ? blockDataArray.map((item, index) =>
-          item.reduce((acc, [key, value]) => {
-            acc[key] = value;
-            return {
-              ...acc,
-              ...{
-                open: true,
-                id: index + 1,
-                key: key.match(/^[^_]*_[^_]*_(.*)$/)[1],
-              },
-            };
-          }, {})
-        )
+        item.reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return {
+            ...acc,
+            ...{
+              open: true,
+              id: index + 1,
+              key: key.match(/^[^_]*_[^_]*_(.*)$/)[1],
+            },
+          };
+        }, {})
+      )
       : [{ id: 1, open: true, key: nanoid() }]
   );
 
@@ -429,29 +282,42 @@ export default function ListType({ pageData, locale }) {
     });
   };
 
+  const showSingleBlockAlert = () => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: "文章至少需有一個區塊",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
+  };
+
+  const showDeleteBlockConfirmation = (id) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此區塊？",
+      showCancelButton: true,
+      cancelButtonText: "取消",
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeBlock(id);
+      }
+    });
+  };
+
+  const removeBlock = (id) => {
+    setBlock((prev) => prev.filter((data) => data.id !== id));
+  };
+
   const handleDeleteBlock = (id) => {
     if (block.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "文章至少需有一個區塊",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+      showSingleBlockAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: true,
-        cancelButtonText: "取消",
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setBlock((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteBlockConfirmation(id);
     }
   };
+
 
   return (
     <div>

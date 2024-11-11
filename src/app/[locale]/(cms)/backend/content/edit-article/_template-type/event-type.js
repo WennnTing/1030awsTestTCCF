@@ -11,7 +11,6 @@ const ControlEditor = dynamic(() => import("@/components/cms/control-editor"), {
   ssr: false,
 });
 import ImageUpload from "@/components/cms/image-upload";
-import FileUpload from "@/components/cms/file-upload";
 import SlideImageUpload from "@/components/cms/slide-image-upload";
 import ArticleEventTime from "@/components/cms/article-event-time";
 import SelectComponent from "@/components/cms/select";
@@ -78,86 +77,6 @@ const EnTemplate = ({
     },
   ];
 
-  // const memberData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("member_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/_(\d+)$/);
-  //     if (match) {
-  //       const key = match[1];
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-
-  // const memberkDataArray = Object.values(memberData || {});
-
-  // const [member, setMember] = useState(
-  //   memberkDataArray.length > 0
-  //     ? memberkDataArray.map((item, index) =>
-  //         item.reduce((acc, [key, value]) => {
-  //           acc[key] = value;
-  //           return {
-  //             ...acc,
-  //             ...{
-  //               open: true,
-  //               id: index + 1,
-  //               locale: "_En",
-  //               key: key.match(/_(\d+)$/)[1],
-  //             },
-  //           };
-  //         }, {})
-  //       )
-  //     : [{ id: 1, open: true, locale: "_En" }]
-  // );
-
-  // const handleToggleMember = (id) => {
-  //   setMember((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseMember = () => {
-  //   setMember((prev) =>
-  //     prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "_En",
-  //     })
-  //   );
-  // };
-
-  // const handleDeleteMember = (id) => {
-  //   if (member.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "人員資訊不可少於一項",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setMember((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
-
   const slideData = Object.entries(data).filter(([key, value]) =>
     key.includes("slide_image")
   );
@@ -177,27 +96,6 @@ const EnTemplate = ({
           placeholder={"請輸入標籤"}
         />
         <h3>活動資訊</h3>
-        {/* <ControllerRadioButton
-          elementId="themeInfoEn"
-          label={"主題資訊"}
-          required={true}
-          value={themeInfo}
-          onChangeFun={setThemeInfo}
-          info={
-            "於詳細頁面顯示活動資訊名稱、地點、報名日期與額滿人數、劇情概要(logline)、主視覺與活動性質區塊"
-          }
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        /> */}
         <ControllerRadioButton
           elementId="contentInfoEn"
           label={"內文資訊"}
@@ -280,14 +178,7 @@ const EnTemplate = ({
           onChangeFun={setKv}
           state={data?.kv?.[0]?.imageUrl}
         />
-        {/* <ControllerInput
-          label={"地點"}
-          required={true}
-          elementId={"locationEn"}
-          value={location}
-          onChangeFun={setLocation}
-          placeholder={"請輸入地點"}
-        /> */}
+
         <SelectComponent
           label={"地點"}
           required={true}
@@ -298,28 +189,7 @@ const EnTemplate = ({
           defaultValue={location}
           setSelect={setLocation}
         />
-        {/* <ControllerRadioButton
-          elementId={"locationDisplayTypeEn"}
-          elementValueId={"locationDisplayTypeValueEn"}
-          label={"地點呈現方式"}
-          required={true}
-          value={locationDisplayType}
-          onChangeFun={setLocationDisplayType}
-          inputValue={locationDisplayTypeValue}
-          inputOnChangeFun={setLocationDisplayTypeValue}
-          input={true}
-          info={"於詳細頁面顯示活動資訊的地點顯示區塊"}
-          options={[
-            {
-              value: "googlemap",
-              label: "Google地圖",
-            },
-            {
-              value: "image",
-              label: "圖片",
-            },
-          ]}
-        /> */}
+
         <ControllerRadioButton
           elementId="eventTypeEn"
           label={"活動性質"}
@@ -389,9 +259,6 @@ const EnTemplate = ({
           setContent={setEditorContent}
         />
         <SlideImageUpload label={"輪播圖片"} type={"en"} state={slideData} />
-
-        {/* <FileUpload label={"附件"} required={true} elementId={"file"} /> */}
-
         <ControllerInput
           label={"附件"}
           elementId={"fileEn"}
@@ -417,21 +284,17 @@ const EnTemplate = ({
                 key={data.id}
               />
             ))}
-            <div
-              className={
-                styles.cmsUpdateArticleContent__container_increaseButton
-              }
+            <button
+              className={styles.cmsArticleContent__container_increase}
+              style={{ outline: "none", border: "none" }}
               onClick={handleIncreaseMember}
             >
-              <div
-                className={
-                  styles.cmsUpdateArticleContent__container_increaseButton__icon
-                }
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
-              <span>增加人員</span>
-            </div>
+              <span>增加人員資訊</span>
+            </button>
+
           </div>
         )}
       </div>
@@ -501,85 +364,6 @@ const ZhTemplate = ({
     },
   ];
 
-  // const memberData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("member_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/_(\d+)$/);
-  //     if (match) {
-  //       const key = match[1];
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-
-  // const memberkDataArray = Object.values(memberData || {});
-
-  // const [member, setMember] = useState(
-  //   memberkDataArray.length > 0
-  //     ? memberkDataArray.map((item, index) =>
-  //         item.reduce((acc, [key, value]) => {
-  //           acc[key] = value;
-  //           return {
-  //             ...acc,
-  //             ...{
-  //               open: true,
-  //               id: index + 1,
-  //               locale: "",
-  //             },
-  //           };
-  //         }, {})
-  //       )
-  //     : [{ id: 1, open: true, locale: "" }]
-  // );
-
-  // const handleToggleMember = (id) => {
-  //   setMember((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseMember = () => {
-  //   setMember((prev) =>
-  //     prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //     })
-  //   );
-  // };
-
-  // const handleDeleteMember = (id) => {
-  //   if (member.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "人員資訊不可少於一項",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此區塊？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setMember((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
-
   const slideData = Object.entries(data).filter(([key, value]) =>
     key.includes("slide_image")
   );
@@ -599,27 +383,7 @@ const ZhTemplate = ({
           placeholder={"請輸入標籤"}
         />
         <h3>活動資訊</h3>
-        {/* <ControllerRadioButton
-          elementId="themeInfo"
-          label={"主題資訊"}
-          required={true}
-          value={themeInfo}
-          onChangeFun={setThemeInfo}
-          info={
-            "於詳細頁面顯示活動資訊名稱、地點、報名日期與額滿人數、劇情概要(logline)、主視覺與活動性質區塊"
-          }
-          options={[
-            {
-              value: "true",
-              label: "顯示",
-              checked: true,
-            },
-            {
-              value: "false",
-              label: "不顯示",
-            },
-          ]}
-        /> */}
+
         <ControllerRadioButton
           elementId="contentInfo"
           label={"內文資訊"}
@@ -703,14 +467,7 @@ const ZhTemplate = ({
           onChangeFun={setKv}
           state={data?.kv?.[0]?.imageUrl}
         />
-        {/* <ControllerInput
-          label={"地點"}
-          required={true}
-          elementId={"location"}
-          value={location}
-          onChangeFun={setLocation}
-          placeholder={"請輸入地點"}
-        /> */}
+
         <SelectComponent
           label={"地點"}
           required={true}
@@ -721,28 +478,7 @@ const ZhTemplate = ({
           defaultValue={location}
           setSelect={setLocation}
         />
-        {/* <ControllerRadioButton
-          elementId={"locationDisplayType"}
-          elementValueId={"locationDisplayTypeValue"}
-          label={"地點呈現方式"}
-          required={true}
-          value={locationDisplayType}
-          onChangeFun={setLocationDisplayType}
-          inputValue={locationDisplayTypeValue}
-          inputOnChangeFun={setLocationDisplayTypeValue}
-          input={true}
-          info={"於詳細頁面顯示活動資訊的地點顯示區塊"}
-          options={[
-            {
-              value: "googlemap",
-              label: "Google地圖",
-            },
-            {
-              value: "image",
-              label: "圖片",
-            },
-          ]}
-        /> */}
+
         <ControllerRadioButton
           elementId="eventType"
           label={"活動性質"}
@@ -812,9 +548,6 @@ const ZhTemplate = ({
           setContent={setEditorContent}
         />
         <SlideImageUpload label={"輪播圖片"} type={"zh"} state={slideData} />
-
-        {/* <FileUpload label={"附件"} required={true} elementId={"file"} /> */}
-
         <ControllerInput
           label={"附件"}
           elementId={"file"}
@@ -841,21 +574,18 @@ const ZhTemplate = ({
                 key={data.id}
               />
             ))}
-            <div
-              className={
-                styles.cmsUpdateArticleContent__container_increaseButton
-              }
+
+            <button
+              className={styles.cmsArticleContent__container_increase}
+              style={{ outline: "none", border: "none" }}
               onClick={handleIncreaseMember}
             >
-              <div
-                className={
-                  styles.cmsUpdateArticleContent__container_increaseButton__icon
-                }
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
-              <span>增加人員</span>
-            </div>
+              <span>增加人員資訊</span>
+            </button>
+
           </div>
         )}
       </div>
@@ -957,18 +687,18 @@ export default function EventType({ pageData, locale }) {
   const [member, setMember] = useState(
     memberkDataArray.length > 0
       ? memberkDataArray.map((item, index) =>
-          item.reduce((acc, [key, value]) => {
-            acc[key] = value;
-            return {
-              ...acc,
-              ...{
-                open: true,
-                id: index + 1,
-                key: key.match(/^[^_]*_[^_]*_(.*)$/)[1],
-              },
-            };
-          }, {})
-        )
+        item.reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return {
+            ...acc,
+            ...{
+              open: true,
+              id: index + 1,
+              key: key.match(/^[^_]*_[^_]*_(.*)$/)[1],
+            },
+          };
+        }, {})
+      )
       : [{ id: 1, open: true, key: nanoid() }]
   );
 
@@ -994,28 +724,41 @@ export default function EventType({ pageData, locale }) {
     );
   };
 
+  const showSingleMemberAlert = () => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: "人員資訊不可少於一項",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
+  };
+
+  const showDeleteConfirmationAlert = (id) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此區塊？",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeMember(id);
+      }
+    });
+  };
+
+  const removeMember = (id) => {
+    setMember((prev) => prev.filter((data) => data.id !== id));
+  };
+
   const handleDeleteMember = (id) => {
     if (member.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "人員資訊不可少於一項",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+      showSingleMemberAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setMember((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteConfirmationAlert(id);
     }
   };
+
 
   return (
     <div>

@@ -209,78 +209,6 @@ const ZhTemplate = ({
   const [buttonFunctionValue, setButtonFunctionValue] = useState(
     data?.card_button_1?.[0]?.fieldTextZh
   );
-  // const cardData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("card_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/_(\d+)$/);
-  //     if (match) {
-  //       const key = match[1];
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-
-  // const cardDataArray = Object.values(cardData || {});
-
-  // const [card, setCard] = useState(
-  //   cardDataArray.map((item, index) =>
-  //     item.reduce((acc, [key, value]) => {
-  //       acc[key] = value;
-  //       return {
-  //         ...acc,
-  //         ...{ open: true, id: index + 1, locale: "" },
-  //       };
-  //     }, {})
-  //   )
-  // );
-
-  // const handleToggleCard = (id) => {
-  //   setCard((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseCard = () => {
-  //   setCard((prev) => {
-  //     return prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //     });
-  //   });
-  // };
-
-  // const handleDeleteCard = (id) => {
-  //   if (card.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "文章至少需有一張卡片",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此卡片？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setCard((prev) => prev.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
 
   return (
     <div
@@ -478,18 +406,18 @@ export default function AnnouncementType({ pageData, locale, pages }) {
   const [card, setCard] = useState(
     cardDataArray.length > 0
       ? cardDataArray.map((item, index) =>
-          item.reduce((acc, [key, value]) => {
-            acc[key] = value;
-            return {
-              ...acc,
-              ...{
-                open: true,
-                id: index + 1,
-                key: key.match(/^[^_]*_[^_]*_(.*)$/)[1],
-              },
-            };
-          }, {})
-        )
+        item.reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return {
+            ...acc,
+            ...{
+              open: true,
+              id: index + 1,
+              key: key.match(/^[^_]*_[^_]*_(.*)$/)[1],
+            },
+          };
+        }, {})
+      )
       : [{ id: 1, open: true, key: nanoid() }]
   );
 
@@ -515,28 +443,41 @@ export default function AnnouncementType({ pageData, locale, pages }) {
     });
   };
 
+  const showSingleCardAlert = () => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: "文章至少需有一張卡片",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
+  };
+
+  const showDeleteConfirmationAlert = (id) => {
+    Alert({
+      icon: "warning",
+      title: "確定刪除此卡片？",
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeCard(id);
+      }
+    });
+  };
+
+  const removeCard = (id) => {
+    setCard((prev) => prev.filter((data) => data.id !== id));
+  };
+
   const handleDeleteCard = (id) => {
     if (card.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "文章至少需有一張卡片",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+      showSingleCardAlert();
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此卡片？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setCard((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
+      showDeleteConfirmationAlert(id);
     }
   };
+
 
   return (
     <div>

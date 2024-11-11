@@ -240,84 +240,6 @@ const ZhTemplate = ({
   handleToggleRow,
   handleIncreaseRow,
 }) => {
-  // const blockData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("table_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/table_(\d+)/);
-  //     if (match) {
-  //       const key = `table_${match[1]}`;
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-  // const blockDataArray = Object.values(blockData || {});
-
-  // const [block, setBlock] = useState(
-  //   blockDataArray.length > 0
-  //     ? blockDataArray.map((item, index) =>
-  //         item.reduce((acc, [key, value]) => {
-  //           acc[key] = value;
-  //           return {
-  //             ...acc,
-  //             ...{
-  //               open: true,
-  //               id: index + 1,
-  //               locale: "",
-  //             },
-  //           };
-  //         }, {})
-  //       )
-  //     : [{ id: 1, open: true, locale: "" }]
-  // );
-
-  // const handleToggleBlock = (id) => {
-  //   setBlock((prev) =>
-  //     prev.map((data) => {
-  //       if (data.id === id) {
-  //         return { ...data, open: !data.open };
-  //       } else {
-  //         return data;
-  //       }
-  //     })
-  //   );
-  // };
-
-  // const handleIncreaseBlock = () => {
-  //   setBlock((prev) => {
-  //     return prev.concat({
-  //       id: prev[prev.length - 1].id + 1,
-  //       open: true,
-  //       locale: "",
-  //       [`table_${prev[prev.length - 1].id + 1}_row_1_1`]: [],
-  //     });
-  //   });
-  // };
-
-  // const handleDeleteBlock = (id) => {
-  //   if (block.length === 1) {
-  //     Alert({
-  //       icon: "error",
-  //       title: "刪除失敗",
-  //       text: "文章至少需有一個表格",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     });
-  //   } else {
-  //     Alert({
-  //       icon: "warning",
-  //       title: "確定刪除此表格？",
-  //       showCancelButton: false,
-  //       confirmButtonText: "確認",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         setBlock(block.filter((data) => data.id !== id));
-  //       }
-  //     });
-  //   }
-  // };
 
   const [title, setTitle] = useState(data?.title?.[0]?.fieldTextZh);
   const [editorContent, setEditorContent] = useState(
@@ -545,18 +467,18 @@ export default function TableType({ pageData, locale }) {
   const [table, setTable] = useState(
     tableDataArray.length > 0
       ? tableDataArray.map((item, index) =>
-          item.reduce((acc, [key, value]) => {
-            acc[key] = value;
-            return {
-              ...acc,
-              ...{
-                open: true,
-                id: index + 1,
-                key: key.match(/table_([^_]+)_(notice|theme|row)/)[1],
-              },
-            };
-          }, {})
-        )
+        item.reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return {
+            ...acc,
+            ...{
+              open: true,
+              id: index + 1,
+              key: key.match(/table_([^_]+)_(notice|theme|row)/)[1],
+            },
+          };
+        }, {})
+      )
       : [{ id: 1, open: true, key: nanoid() }]
   );
 
@@ -587,63 +509,6 @@ export default function TableType({ pageData, locale }) {
     });
   };
 
-  const handleDeleteTable = (id) => {
-    if (table.length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "文章至少需有一個表格",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
-    } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此表格？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setTable((prev) => prev.filter((data) => data.id !== id));
-        }
-      });
-    }
-  };
-
-  // const rowData = Object.entries(data)
-  //   .filter(([key, value]) => key.includes("row_"))
-  //   ?.reduce((acc, item) => {
-  //     const match = item[0].match(/row_([^_]+)_/);
-  //     if (match) {
-  //       const key = match[1];
-  //       if (!acc[key]) {
-  //         acc[key] = [];
-  //       }
-  //       acc[key].push(item);
-  //     }
-  //     return acc;
-  //   }, {});
-
-  // const rowDataArray = Object.values(rowData || {});
-
-  // const [row, setRow] = useState([
-  //   rowDataArray.length > 0
-  //     ? rowDataArray.map((item, index) =>
-  //         item.reduce((acc, [key, value]) => {
-  //           acc[key] = value;
-  //           return {
-  //             ...acc,
-  //             ...{
-  //               open: true,
-  //               id: index + 1,
-  //               key: key.match(/row_(.*)_.*$/)[1],
-  //             },
-  //           };
-  //         }, {})
-  //       )
-  //     : [{ id: 1, open: true, key: nanoid() }],
-  // ]);
-
   const rowData = Object.entries(data)
     .filter(([key, value]) => key.includes("row_"))
     ?.reduce((acc, item) => {
@@ -670,18 +535,18 @@ export default function TableType({ pageData, locale }) {
   const [row, setRow] = useState([
     rowDataArray.length > 0
       ? rowDataArray.flat().map((item, index) =>
-          item.reduce((acc, [key, value]) => {
-            acc[key] = value;
-            return {
-              ...acc,
-              ...{
-                open: true,
-                id: index + 1,
-                key: key.match(/row_(.*)_.*$/)[1],
-              },
-            };
-          }, {})
-        )
+        item.reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return {
+            ...acc,
+            ...{
+              open: true,
+              id: index + 1,
+              key: key.match(/row_(.*)_.*$/)[1],
+            },
+          };
+        }, {})
+      )
       : [{ id: 1, open: true, key: nanoid() }],
   ]);
 
@@ -712,30 +577,58 @@ export default function TableType({ pageData, locale }) {
     );
   };
 
-  const handleDeleteRow = (id) => {
-    if (row?.[0].length === 1) {
-      Alert({
-        icon: "error",
-        title: "刪除失敗",
-        text: "表格至少需有一筆資料",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      });
+  // 通用提示函數
+  const showSingleItemAlert = (message) => {
+    Alert({
+      icon: "error",
+      title: "刪除失敗",
+      text: message,
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    });
+  };
+
+  const showDeleteConfirmation = (id, removeFunction, confirmText = "確定刪除此項目？") => {
+    Alert({
+      icon: "warning",
+      title: confirmText,
+      showCancelButton: false,
+      confirmButtonText: "確認",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeFunction(id);
+      }
+    });
+  };
+
+  // 刪除表格
+  const removeTable = (id) => {
+    setTable((prev) => prev.filter((data) => data.id !== id));
+  };
+
+  // 刪除行
+  const removeRow = (id) => {
+    setRow((prev) => prev.map((item) => item.filter((data) => data.id !== id)));
+  };
+
+  // 刪除表格的主邏輯
+  const handleDeleteTable = (id) => {
+    if (table.length === 1) {
+      showSingleItemAlert("文章至少需有一個表格");
     } else {
-      Alert({
-        icon: "warning",
-        title: "確定刪除此區塊？",
-        showCancelButton: false,
-        confirmButtonText: "確認",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setRow((prev) =>
-            prev.map((item) => item.filter((data) => data.id !== id))
-          );
-        }
-      });
+      showDeleteConfirmation(id, removeTable, "確定刪除此表格？");
     }
   };
+
+  // 刪除行的主邏輯
+  const handleDeleteRow = (id) => {
+    if (row?.[0].length === 1) {
+      showSingleItemAlert("表格至少需有一筆資料");
+    } else {
+      showDeleteConfirmation(id, removeRow, "確定刪除此區塊？");
+    }
+  };
+
 
   return (
     <div>
