@@ -37,12 +37,9 @@ const MultipleSelect = ({
 
   useEffect(() => {
     refreshViewHeight();
-    if (windowSize.width <= 1440) {
-      setLimit(1);
-    } else {
-      setLimit(1);
-    }
+    setLimit(1);
   }, [windowSize.width]);
+
 
   const handleToggleDropdown = () => {
     if (!disabled) {
@@ -118,9 +115,8 @@ const MultipleSelect = ({
   return (
     <div
       ref={dropdownRef}
-      className={`${styles["multiple-select"]} ${
-        disabled ? styles["multiple-select--disabled"] : ""
-      }`}
+      className={`${styles["multiple-select"]} ${disabled ? styles["multiple-select--disabled"] : ""
+        }`}
     >
       <label className={styles["multiple-select__label"]}>
         {label}
@@ -137,10 +133,16 @@ const MultipleSelect = ({
       </label>
       <div
         onClick={handleToggleDropdown}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') handleToggleDropdown();
+        }}
         className={`
-                ${styles["multiple-select__toggle"]} 
-                ${showError ? styles["error"] : ""} 
-                ${disabled ? styles["multiple-select__toggle--disabled"] : ""}`}
+        ${styles["multiple-select__toggle"]} 
+        ${showError ? styles["error"] : ""} 
+        ${disabled ? styles["multiple-select__toggle--disabled"] : ""}
+    `}
       >
         <span className={styles["multiple-select__selected"]}>
           {renderSelectedOptions()}
@@ -149,6 +151,7 @@ const MultipleSelect = ({
           {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </span>
       </div>
+
 
       {showError && (
         <div className={styles["multiple-select__requiredText"]}>
@@ -160,12 +163,16 @@ const MultipleSelect = ({
           {options.map((option) => (
             <li
               key={option.value}
+              role="button"
+              tabIndex={0}
               onClick={() => handleSelectOption(option)}
-              className={`${styles["multiple-select__option"]} ${
-                value.includes(option.value)
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') handleSelectOption(option);
+              }}
+              className={`${styles["multiple-select__option"]} ${value.includes(option.value)
                   ? styles["multiple-select__option--selected"]
                   : ""
-              }`}
+                }`}
             >
               <span>{option.label}</span>
               <input
@@ -175,6 +182,7 @@ const MultipleSelect = ({
                 className={styles["multiple-select__checkbox"]}
               />
             </li>
+
           ))}
         </ul>
       )}

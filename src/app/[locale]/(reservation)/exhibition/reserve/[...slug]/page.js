@@ -2,10 +2,8 @@ import styles from "../reserve.module.scss";
 import ReserveForm from "@/components/reservation/reserve-form";
 import { Suspense } from "react";
 import LoadingScreen from "@/components/reservation/loading-screen";
-import { _searchReserveMember } from "@/actions/_meeting-reservation";
 import { _getEntityOverviewDetail } from "@/actions/_meeting-detail";
 import { getTranslations } from "next-intl/server";
-import GoBackButton from "@/components/reservation/go-back-button";
 export default async function ReservePage({ params }) {
   const locale = params.locale === "en" ? "En" : "Zh";
   const type = params.slug[0];
@@ -38,6 +36,12 @@ export default async function ReservePage({ params }) {
     EntiryOverviewType: type.replace(/^./, type[0].toUpperCase()),
   });
 
+  const descriptionContent = type === "market"
+    ? portfolio?.[`companyProfile${locale}`]
+    : params.locale === "en"
+      ? portfolio?.loglineEn
+      : portfolio?.logline;
+
   return (
     <div className={styles.reservationReserve}>
       <h1>{t("Appointments.ReservePage.title")}</h1>
@@ -45,9 +49,7 @@ export default async function ReservePage({ params }) {
       <div className={styles.reservationReserve__container}>
         <div className={styles.reservationReserve__container_portfolio}>
           <h2 className={styles.reservationReserve__container_portfolio__title}>
-            {type === "market"
-              ? portfolio?.[`subject${params.locale === "en" ? "En" : ""}`]
-              : portfolio?.[`subject${params.locale === "en" ? "En" : ""}`]}
+            {portfolio?.[`subject${params.locale === "en" ? "En" : ""}`]}
           </h2>
           <div
             className={styles.reservationReserve__container_portfolio__image}
@@ -73,16 +75,8 @@ export default async function ReservePage({ params }) {
             >
               項目簡介
             </div> */}
-            <div
-              className={
-                styles.reservationReserve__container_portfolio__description_content
-              }
-            >
-              {type === "market"
-                ? portfolio?.[`companyProfile${locale}`]
-                : params.locale === "en"
-                ? portfolio?.loglineEn
-                : portfolio?.logline}
+            <div className={styles.reservationReserve__container_portfolio__description_content}>
+              {descriptionContent}
             </div>
           </div>
         </div>

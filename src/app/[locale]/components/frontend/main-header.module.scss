@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // position: fixed;
     position: sticky;
     width: 100%;
     top: 0;
@@ -13,18 +12,17 @@
     background-color: white;
     z-index: 5;
     font-size: clamp(15px, 0.833vw, 16px);
-    // box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 
 
     &__functionList {
 
-      
+
         margin-top: auto;
         padding-bottom: 20px;
 
         &_item {
 
-           
+
             padding: 10px 20px;
             color: $white;
             display: flex;
@@ -32,7 +30,7 @@
             cursor: pointer;
             transition: all 0.3s;
 
-                
+
             &:hover {
                 color: $primary-green;
             }
@@ -42,10 +40,7 @@
                 color: $white;
             }
 
-            &__text {
-
-               
-            }
+            &__text {}
 
             &__icon {
 
@@ -53,7 +48,7 @@
                 align-items: center;
                 justify-content: center;
                 font-size: 20px;
-                
+
             }
 
             &__user {
@@ -66,7 +61,7 @@
                 align-items: center;
                 justify-content: center;
                 color: $black;
-        
+
 
                 span {
 
@@ -85,6 +80,7 @@
         justify-content: flex-start;
         gap: 10vw;
         margin: 0 2.5vw;
+
         @include RWD(sp820) {
 
 
@@ -122,8 +118,8 @@
             justify-content: space-between;
             position: relative;
             gap: 1.5vw;
-    
-           
+
+
 
 
             @include RWD(sp820) {
@@ -149,7 +145,7 @@
                 list-style: none;
                 padding: 0;
 
-               
+
             }
 
             &__functionWrapper {
@@ -198,7 +194,7 @@
 
                         // transition: all 0.3s;
 
-                        
+
                     }
 
                     span {
@@ -215,7 +211,7 @@
                         align-items: center;
                         justify-content: center;
                         color: $white;
-                      
+
 
                         span {
 
@@ -225,7 +221,7 @@
                         }
 
                     }
-                    
+
                 }
 
                 &_logout {
@@ -408,7 +404,7 @@
 
                 @include RWD(sp820) {
                     margin-top: auto;
-                    
+
 
                 }
 
@@ -427,18 +423,18 @@
                         font-size: 20px;
                         margin-right: 8px;
                         display: inline-flex;
-                
+
                     }
 
 
-                    
 
-                    
+
+
                 }
 
-                
 
-               
+
+
             }
 
             &__languageWrapper {
@@ -485,7 +481,7 @@
 
             }
 
-            
+
 
 
 
@@ -493,16 +489,13 @@
         }
 
 
-        
 
-       
+
+
 
 
 
         &_hambugerWrapper {
-
-        
-            display: flex;
             position: relative;
             align-items: center;
             display: none;
@@ -512,8 +505,8 @@
                 display: block;
             }
 
-          
-            
+
+
 
             &__container {
                 transition: all .4s;
@@ -543,23 +536,22 @@
                 }
             }
 
-            
+
             &__hamburgerMenu {
                 position: absolute;
                 top: 100px;
                 right: 0;
-               
+
                 height: 100vh;
                 background-color: $black;
                 transition: transform 0.4s ease;
             }
 
-        
+
         }
 
-        
+
     }
 
 
 }
-
