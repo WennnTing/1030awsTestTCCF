@@ -137,8 +137,9 @@ const StoryToScreen = ({ data, locale, tabList, tabStatus, setTabStatus }) => {
             className={styles.reservationPitiching__intro_description__tabList}
           >
             {tabList.map((tab) => (
-              <div
+              <button
                 key={tab.id}
+                type="button"
                 className={
                   styles.reservationPitiching__intro_description__tabList_tab
                 }
@@ -149,12 +150,17 @@ const StoryToScreen = ({ data, locale, tabList, tabStatus, setTabStatus }) => {
                       : "2px solid transparent",
 
                   color: tabStatus === tab.value ? "#171717" : "#6c6c6c",
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer"
                 }}
                 onClick={() => setTabStatus(tab.value)}
               >
                 {tab.name}
-              </div>
+              </button>
             ))}
+
           </div>
           {tabStatus === "work" ? (
             <div className={styles.reservationPitiching__container_work}>

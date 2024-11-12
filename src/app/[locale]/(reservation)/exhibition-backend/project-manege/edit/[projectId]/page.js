@@ -30,13 +30,84 @@ import Loading from "@/(reservation)/exhibition/components/Loading/Loading";
 import Dialog from "@/(reservation)/exhibition/components/Dialog/Dialog";
 import ImageLoader from "@/components/global/image-loader";
 
+const projectFields = {
+  entityId: 0,
+  entiryOverviewType: "Project",
+  subject: null,
+  subjectEn: null,
+  passCount: null,
+  pitchingMainCategory: null,
+  pitchingMainCategoryEn: null,
+  pitchingCategory: null,
+  pitchingCategoryEn: null,
+  originalTitle: null,
+  country: null,
+  countryEn: null,
+  genre: null,
+  genreEn: null,
+  contactPerson: null,
+  contactPersonEn: null,
+  jobTitle: null,
+  jobTitleEn: null,
+  contactNumber: null,
+  contactEmail: null,
+  logline: null,
+  loglineEn: null,
+  synopsis: null,
+  synopsisEn: null,
+  yearOfFirstPublicationRelease: null,
+  publisherName: null,
+  publisherNameEn: null,
+  holderOfAudiovisualAdaptationRights: null,
+  holderOfAudiovisualAdaptationRightsEn: null,
+  publisherProfile: null,
+  publisherProfileEn: null,
+  productionCompanyName: null,
+  productionCompanyNameEn: null,
+  productionCompanyProfile: null,
+  productionCompanyProfileEn: null,
+  type: null,
+  typeEn: null,
+  theme: null,
+  themeEn: null,
+  rightsSold: null,
+  rightsSoldEn: null,
+  whyAdaptThisStory: null,
+  whyAdaptThisStoryEn: null,
+  comparableFilmTvWorks: null,
+  comparableFilmTvWorksEn: null,
+  awardsReceivedOrNumberOfCopiesSold: null,
+  awardsReceivedOrNumberOfCopiesSoldEn: null,
+  backgroundSetting: null,
+  backgroundSettingEn: null,
+  formats: null,
+  formatsEn: null,
+  keyVisual: null,
+  originalIdeaAdaptation: null,
+  originalIdeaAdaptationEn: null,
+  productionStatement: null,
+  productionStatementEn: null,
+  goalAtTccf: null,
+  goalAtTccfEn: null,
+  projectStatus: null,
+  projectStatusEn: null,
+  totalBudgetUsd: null,
+  financingAlreadyInPlaceUsd: null,
+  numberOfEpisodes: null,
+  duration: null,
+  projectCompanies: [],
+  projectCharacters: [],
+  projectCreators: []
+};
+
+
 const EditProjectPages = () => {
   const Swal = require("sweetalert2");
   const pathname = usePathname();
   const locale = pathname.split("/")[1];
   const [inviteEmail, setInviteEmail] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [project, setProject] = useState(null);             // 一進入頁面用來塞作品資訊
+  const [project, setProject] = useState(projectFields);             // 一進入頁面用來塞作品資訊
   const [loading, setLoading] = useState(false);            // 是否正在加載
   const [projectMembers, setProjectMembers] = useState([]); // 用來塞成員資訊
   const [memberPassChanges, setMemberPassChanges] = useState({}); // 會員展證變更
@@ -227,83 +298,15 @@ const EditProjectPages = () => {
       company.productionCompanyProfileEn
   );
 
-  // 獲取基本專案資料的函數
-  const getBasicProjectData = (project) => ({
-    entityId: project.entityId,
-    entiryOverviewType: project.entiryOverviewType || "Project",
-    subject: project.subject || null,
-    subjectEn: project.subjectEn || null,
-    pitchingMainCategory: project.pitchingMainCategory || null,
-    pitchingMainCategoryEn: project.pitchingMainCategoryEn || null,
-    pitchingCategory: project.pitchingCategory || null,
-    pitchingCategoryEn: project.pitchingCategoryEn || null,
-    originalTitle: project.originalTitle || null,
-    passCount: project.passCount || null,
-    country: project.country || null,
-    countryEn: project.countryEn || null,
-    genre: project.genre || null,
-    genreEn: project.genreEn || null,
-    contactPerson: project.contactPerson || null,
-    contactPersonEn: project.contactPersonEn || null,
-    jobTitle: project.jobTitle || null,
-    jobTitleEn: project.jobTitleEn || null,
-    contactNumber: project.contactNumber || null,
-    contactEmail: project.contactEmail || null,
-    logline: project.logline || null,
-    loglineEn: project.loglineEn || null,
-    synopsis: project.synopsis || null,
-    synopsisEn: project.synopsisEn || null,
-    yearOfFirstPublicationRelease: project.yearOfFirstPublicationRelease || null,
-    publisherName: project.publisherName || null,
-    publisherNameEn: project.publisherNameEn || null,
-    holderOfAudiovisualAdaptationRights: project.holderOfAudiovisualAdaptationRights || null,
-    holderOfAudiovisualAdaptationRightsEn: project.holderOfAudiovisualAdaptationRightsEn || null,
-    publisherProfile: project.publisherProfile || null,
-    publisherProfileEn: project.publisherProfileEn || null,
-    productionCompanyName: project.productionCompanyName || null,
-    productionCompanyNameEn: project.productionCompanyNameEn || null,
-    productionCompanyProfile: project.productionCompanyProfile || null,
-    productionCompanyProfileEn: project.productionCompanyProfileEn || null,
-    type: project.type || null,
-    typeEn: project.typeEn || null,
-    theme: project.theme || null,
-    themeEn: project.themeEn || null,
-    rightsSold: project.rightsSold || null,
-    rightsSoldEn: project.rightsSoldEn || null,
-    whyAdaptThisStory: project.whyAdaptThisStory || null,
-    whyAdaptThisStoryEn: project.whyAdaptThisStoryEn || null,
-    comparableFilmTvWorks: project.comparableFilmTvWorks || null,
-    comparableFilmTvWorksEn: project.comparableFilmTvWorksEn || null,
-    awardsReceivedOrNumberOfCopiesSold: project.awardsReceivedOrNumberOfCopiesSold || null,
-    awardsReceivedOrNumberOfCopiesSoldEn: project.awardsReceivedOrNumberOfCopiesSoldEn || null,
-    backgroundSetting: project.backgroundSetting || null,
-    backgroundSettingEn: project.backgroundSettingEn || null,
-    formats: project.formats || null,
-    formatsEn: project.formatsEn || null,
-    keyVisual: project.keyVisual || null,
-    originalIdeaAdaptation: project.originalIdeaAdaptation || null,
-    originalIdeaAdaptationEn: project.originalIdeaAdaptationEn || null,
-    productionStatement: project.productionStatement || null,
-    productionStatementEn: project.productionStatementEn || null,
-    goalAtTccf: project.goalAtTccf || null,
-    goalAtTccfEn: project.goalAtTccfEn || null,
-    projectStatus: project.projectStatus || null,
-    projectStatusEn: project.projectStatusEn || null,
-    totalBudgetUsd: project.totalBudgetUsd || null,
-    financingAlreadyInPlaceUsd: project.financingAlreadyInPlaceUsd || null,
-    numberOfEpisodes: project.numberOfEpisodes || null,
-    duration: project.duration || null,
-  });
 
-  // 最終的 prepareProjectData 函數
-  const prepareProjectData = () => {
-    return {
-      ...getBasicProjectData(project),
-      projectCompanies: filterCompanies(project.projectCompanies),
-      projectCharacters: filterCharacters(project.projectCharacters),
-      projectCreators: filterCreators(project.projectCreators),
-    };
-  };
+  // prepareProjectData
+  const prepareProjectData = () => ({
+    ...projectFields,
+    ...project,
+    projectCompanies: filterCompanies(project.projectCompanies),
+    projectCharacters: filterCharacters(project.projectCharacters),
+    projectCreators: filterCreators(project.projectCreators),
+  });
 
   // 儲存與更新專案資訊 API_UpdateProject
   const handleKeyVisualUpload = async (projectData) => {

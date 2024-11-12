@@ -10,7 +10,7 @@ import { IoWarning } from "react-icons/io5";
 export default function Error({ error, reset }) {
   const t = useTranslations("Error.msg");
   const { pending } = useFormStatus();
-  const [state, formAction] = useFormState(logoutByAdmin, {});
+  const [, formAction] = useFormState(logoutByAdmin, {});
 
   return (
     <div className={styles.cmsGlobalError}>
