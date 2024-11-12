@@ -82,17 +82,19 @@ const EnTemplate = ({
               />
             ))}
 
-            <div
+            <button
               className={styles.cmsArticleContent__container_increase}
               onClick={handleIncreaseBlock}
+              aria-label="增加區塊"
+              style={{ border: "none", fontSize: "1rem" }}
             >
-              <div
-                className={styles.cmsArticleContent__container_increase__icon}
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
               <span>增加區塊</span>
-            </div>
+            </button>
+
+
           </div>
         </div>
       </div>
@@ -180,17 +182,17 @@ const ZhTemplate = ({
               />
             ))}
 
-            <div
+            <button
               className={styles.cmsArticleContent__container_increase}
               onClick={handleIncreaseBlock}
+              aria-label="增加區塊"
+              style={{ border: "none", fontSize: "1rem" }}
             >
-              <div
-                className={styles.cmsArticleContent__container_increase__icon}
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
               <span>增加區塊</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>

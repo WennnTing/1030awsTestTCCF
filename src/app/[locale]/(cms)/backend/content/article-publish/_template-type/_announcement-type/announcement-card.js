@@ -36,14 +36,15 @@ export default function AnnouncementCard({
         className={styles.cmsArticleContent__container_increaseBlock__action}
       >
         <h4>卡片 {index + 1}</h4>
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
+          style={{ border: "none", fontSize: "1rem" }}
           onClick={() => handleDeleteCard(data.id)}
+          aria-label="Delete card"
         >
           <BsTrash3 />
-        </div>
+        </button>
+
         <div
           className={
             styles.cmsArticleContent__container_increaseBlock__action_icon

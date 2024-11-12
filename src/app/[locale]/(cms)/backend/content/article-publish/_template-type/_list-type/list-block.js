@@ -33,15 +33,15 @@ export default function ListBlock({
         className={styles.cmsArticleContent__container_increaseBlock__action}
       >
         <h4>區塊 {index + 1}</h4>
-
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
+          style={{ border: "none", fontSize: "1rem" }}
           onClick={() => handleDeleteBlock(data.id)}
+          aria-label="Delete block"
         >
           <BsTrash3 />
-        </div>
+        </button>
+
         <div
           className={
             styles.cmsArticleContent__container_increaseBlock__action_icon

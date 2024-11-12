@@ -2,9 +2,7 @@ import styles from "../../article-content.module.scss";
 import { Input, ButtonInput } from "@/components/cms/input";
 import { BsTrash3 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
-import RadioButton from "@/components/cms/radio-button";
 import { useState } from "react";
-import { IoMagnet } from "react-icons/io5";
 import TableRow from "./table-row";
 import { RxPlus } from "react-icons/rx";
 import { Alert } from "@/components/cms/swal";
@@ -96,25 +94,27 @@ export default function TableBlock({
         className={styles.cmsArticleContent__container_increaseBlock__action}
       >
         <h4>表格 {index + 1}</h4>
-
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
+          style={{ border: "none", fontSize: "1rem" }}
           onClick={() => handleDeleteTable(data.id)}
+          aria-label="Delete table"
         >
           <BsTrash3 />
-        </div>
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        </button>
+
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
+          style={{ border: "none", fontSize: "1rem" }}
           onClick={() => handleToggleTable(data.id)}
+          aria-label={data.open ? "Collapse table" : "Expand table"}
         >
           <IoIosArrowDown
-            style={{ transform: data.open ? "scaleY(-1) " : "scaleY(1)" }}
+            style={{ transform: data.open ? "scaleY(-1)" : "scaleY(1)" }}
           />
-        </div>
+        </button>
+
+
       </div>
       <div
         className={styles.cmsArticleContent__container_increaseBlock__content}
@@ -165,17 +165,19 @@ export default function TableBlock({
               />
             ))}
 
-            <div
+            <button
               className={styles.cmsArticleContent__container_increase}
               onClick={handleIncreaseRow}
+              aria-label="增加欄位"
+              style={{ border: "none", fontSize: "1rem" }}
             >
-              <div
-                className={styles.cmsArticleContent__container_increase__icon}
-              >
+              <div className={styles.cmsArticleContent__container_increase__icon}>
                 <RxPlus />
               </div>
               <span>增加欄位</span>
-            </div>
+            </button>
+
+
           </div>
 
           {/* <div className={styles.cmsArticleContent__container_twoColumn}>

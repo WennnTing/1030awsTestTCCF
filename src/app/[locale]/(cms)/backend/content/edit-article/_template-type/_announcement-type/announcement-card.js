@@ -37,15 +37,15 @@ export default function AnnouncementCard({
       card.map((item) =>
         item.id === id
           ? {
-              ...item,
-              [key.replace(/_En$/, "")]: [
-                {
-                  ...item[key.replace(/_En$/, "")]?.[0],
-                  [`fieldText${locale ? locale.split("_")[1] : "Zh"}`]:
-                    newValue,
-                },
-              ],
-            }
+            ...item,
+            [key.replace(/_En$/, "")]: [
+              {
+                ...item[key.replace(/_En$/, "")]?.[0],
+                [`fieldText${locale ? locale.split("_")[1] : "Zh"}`]:
+                  newValue,
+              },
+            ],
+          }
           : item
       )
     );
@@ -63,24 +63,39 @@ export default function AnnouncementCard({
       >
         <h4>卡片 {index + 1}</h4>
 
-        <div
+        <button
           className={
             styles.cmsUpdateArticleContent__container_increase__block_action__icon
           }
-          onClick={() => handleDeleteCard(data.id)}
+          onClick={(e) => {
+            e.preventDefault(); // 防止默認行為
+            handleDeleteCard(data.id);
+          }}
+          aria-label="Delete card"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <BsTrash3 />
-        </div>
-        <div
+        </button>
+
+        <button
           className={
             styles.cmsUpdateArticleContent__container_increase__block_action__icon
           }
-          onClick={() => handleToggleCard(data.id)}
+
+          onClick={(e) => {
+            e.preventDefault(); // 防止默認行為
+            handleToggleCard(data.id);
+          }}
+
+          aria-label="Toggle card"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <IoIosArrowDown
-            style={{ transform: data.open ? "scaleY(-1) " : "scaleY(1)" }}
+            style={{ transform: data.open ? "scaleY(-1)" : "scaleY(1)" }}
           />
-        </div>
+        </button>
+
+
       </div>
 
       <div
@@ -155,7 +170,7 @@ export default function AnnouncementCard({
               elementId={`card_location_${data.key}${locale}`}
               state={
                 data[`card_location_${data.key}`]?.[0]?.[
-                  `fieldText${localeStr}`
+                `fieldText${localeStr}`
                 ]
               }
               id={data.id}

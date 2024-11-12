@@ -31,24 +31,26 @@ export default function TableRow({
       >
         <h4>內容 {index + 1}</h4>
 
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
           onClick={() => handleDeleteRow(data.id)}
+          aria-label="Delete row"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <BsTrash3 />
-        </div>
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        </button>
+
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
           onClick={() => handleToggleRow(data.id)}
+          aria-label="Toggle row visibility"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <IoIosArrowDown
-            style={{ transform: data.open ? "scaleY(-1) " : "scaleY(1)" }}
+            style={{ transform: data.open ? "scaleY(-1)" : "scaleY(1)" }}
           />
-        </div>
+        </button>
+
       </div>
 
       <div
@@ -85,7 +87,7 @@ export default function TableRow({
               }
               valueState={
                 data[
-                  `table_${tableKey}_row_${data.key}_viewButtonValue${locale}`
+                `table_${tableKey}_row_${data.key}_viewButtonValue${locale}`
                 ]
               }
               id={data.id}

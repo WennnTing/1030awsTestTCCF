@@ -179,15 +179,19 @@ const EnTemplate = ({
               handleIncreaseRow={handleIncreaseRow}
             />
           ))}
-          <div
+          <button
             className={styles.cmsArticleContent__container_increase}
             onClick={handleIncreaseTable}
+            aria-label="增加表格"
+            style={{ border: "none", fontSize: "1rem" }}
           >
             <div className={styles.cmsArticleContent__container_increase__icon}>
               <RxPlus />
             </div>
             <span>增加表格</span>
-          </div>
+          </button>
+
+
         </div>
       </div>
       <div className={styles.cmsArticleContent__container}>
@@ -369,15 +373,17 @@ const ZhTemplate = ({
               handleIncreaseRow={handleIncreaseRow}
             />
           ))}
-          <div
+          <button
             className={styles.cmsArticleContent__container_increase}
             onClick={handleIncreaseTable}
+            aria-label="增加表格"
+            style={{ border: "none", fontSize: "1rem" }}
           >
             <div className={styles.cmsArticleContent__container_increase__icon}>
               <RxPlus />
             </div>
             <span>增加表格</span>
-          </div>
+          </button>
         </div>
       </div>
       <div className={styles.cmsArticleContent__container}>

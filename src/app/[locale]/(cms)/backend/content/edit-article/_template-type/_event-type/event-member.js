@@ -3,7 +3,6 @@ import { Input, ButtonInput } from "@/components/cms/input";
 import { BsTrash3 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
 import ImageUpload from "@/components/cms/image-upload";
-import { localeToUpperCase } from "@/utils";
 import dynamic from "next/dynamic";
 const CustomEditor = dynamic(() => import("@/components/cms/custom-editor"), {
   ssr: false,
@@ -27,15 +26,15 @@ export default function EventMember({
       member.map((item) =>
         item.id === id
           ? {
-              ...item,
-              [key.replace(/_En$/, "")]: [
-                {
-                  ...item[key.replace(/_En$/, "")]?.[0],
-                  [`fieldText${locale ? locale.split("_")[1] : "Zh"}`]:
-                    newValue,
-                },
-              ],
-            }
+            ...item,
+            [key.replace(/_En$/, "")]: [
+              {
+                ...item[key.replace(/_En$/, "")]?.[0],
+                [`fieldText${locale ? locale.split("_")[1] : "Zh"}`]:
+                  newValue,
+              },
+            ],
+          }
           : item
       )
     );
@@ -52,24 +51,40 @@ export default function EventMember({
         }
       >
         <h4>人員 {index + 1}</h4>
-        <div
+        <button
           className={
             styles.cmsUpdateArticleContent__container_increase__block_action__icon
           }
-          onClick={() => handleDeleteMember(data.id)}
+          onClick={(e) => {
+            e.preventDefault();
+            handleDeleteMember(data.id)
+          }}
+
+          aria-label="Delete member"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <BsTrash3 />
-        </div>
-        <div
+        </button>
+
+        <button
           className={
             styles.cmsUpdateArticleContent__container_increase__block_action__icon
           }
-          onClick={() => handleToggleMember(data.id)}
+          onClick={(e) => {
+            e.preventDefault();
+            handleToggleMember(data.id)
+          }}
+
+          aria-label="Toggle member"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <IoIosArrowDown
-            style={{ transform: data.open ? "scaleY(-1) " : "scaleY(1)" }}
+            style={{ transform: data.open ? "scaleY(-1)" : "scaleY(1)" }}
           />
-        </div>
+        </button>
+
+
+
       </div>
 
       <div

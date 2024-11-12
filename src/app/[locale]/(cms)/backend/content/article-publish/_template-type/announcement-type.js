@@ -167,15 +167,20 @@ const EnTemplate = ({
               locale={"_En"}
             />
           ))}
-          <div
+
+          <button
             className={styles.cmsArticleContent__container_increase}
             onClick={handleIncreaseCard}
+            aria-label="增加卡片"
+            style={{ border: "none", fontSize: "1rem" }}
           >
             <div className={styles.cmsArticleContent__container_increase__icon}>
               <RxPlus />
             </div>
             <span>增加卡片</span>
-          </div>
+          </button>
+
+
         </div>
       </div>
 
@@ -353,15 +358,17 @@ const ZhTemplate = ({
               locale={""}
             />
           ))}
-          <div
+          <button
             className={styles.cmsArticleContent__container_increase}
             onClick={handleIncreaseCard}
+            aria-label="增加卡片"
+            style={{ border: "none", fontSize: "1rem" }}
           >
             <div className={styles.cmsArticleContent__container_increase__icon}>
               <RxPlus />
             </div>
             <span>增加卡片</span>
-          </div>
+          </button>
         </div>
       </div>
 

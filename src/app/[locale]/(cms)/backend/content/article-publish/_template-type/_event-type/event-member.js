@@ -36,14 +36,15 @@ export default function EventMember({
       >
         <h4>人員 {index + 1}</h4>
 
-        <div
-          className={
-            styles.cmsArticleContent__container_increaseBlock__action_icon
-          }
+        <button
+          className={styles.cmsArticleContent__container_increaseBlock__action_icon}
+          style={{ border: "none", fontSize: "1rem" }}
           onClick={() => handleDeleteMember(data.id)}
+          aria-label="Delete member"
         >
           <BsTrash3 />
-        </div>
+        </button>
+
         <div
           className={
             styles.cmsArticleContent__container_increaseBlock__action_icon
