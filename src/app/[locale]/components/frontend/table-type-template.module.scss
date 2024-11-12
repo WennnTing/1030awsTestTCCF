@@ -1,4 +1,5 @@
 @import '@/styles/style.scss';
+
 .tableTypeTemplate {
 
     width: 100%;
@@ -11,31 +12,31 @@
     }
 
     &__content {
-  
+
         margin-bottom: 100px;
 
         figure {
             margin: 0;
-    
-          }
-    
-          img {
-              width: 100%;
-              height: auto;
-              
-          }
 
-      
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+
+        }
+
+
     }
 
     &__tableWrapper {
 
         margin-bottom: 100px;
 
-        
-       
 
-     
+
+
+
 
         &_theme {
             border-radius: 25px;
@@ -47,11 +48,11 @@
             color: $dark-gray;
 
             @include RWD(sm) {
-                
+
                 padding: 10px 0;
                 border-radius: 15px;
                 font-size: 22px;
-             }
+            }
         }
 
         &_notice {
@@ -70,59 +71,59 @@
             height: 60vh;
 
             @include RWD(sm) {
-                
+
                 display: none;
             }
-           
 
-          
+
+
 
             &::-webkit-scrollbar {
 
                 height: 15px;
-          
-              }
-          
-              &::-webkit-scrollbar-button {
-          
+
+            }
+
+            &::-webkit-scrollbar-button {
+
                 background: transparent;
                 border-radius: 4px;
-          
-              }
-          
-              &::-webkit-scrollbar-thumb {
-          
+
+            }
+
+            &::-webkit-scrollbar-thumb {
+
                 background-color: $gray;
                 border-radius: 20px;
                 border: 4.5px solid transparent;
                 background-clip: content-box;
-          
-              }
-          
-              &::-webkit-scrollbar-track {
+
+            }
+
+            &::-webkit-scrollbar-track {
                 background-color: transparent;
-          
-              }
 
-              &::-webkit-scrollbar-thumb:hover {
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
                 background-color: $deep-blue;
-              }
+            }
 
-            
+
         }
 
         &_rwdTable {
-           
+
             flex-direction: column;
             gap: 40px;
             display: none;
             font-size: 14px;
 
             @include RWD(sm) {
-                
+
                 display: flex;
-              }
-            
+            }
+
             &__block {
 
                 &_header {
@@ -136,7 +137,7 @@
 
                     &__serial {
 
-                                 
+
 
                         color: $deep-blue;
                         display: flex;
@@ -144,7 +145,7 @@
                         justify-content: flex-start;
                         white-space: nowrap;
                         font-weight: 900;
-                       
+
                     }
 
                     &__name {
@@ -156,7 +157,7 @@
                 }
 
                 &_body {
-                   
+
                     display: flex;
                     flex-direction: column;
                     gap: 20px;
@@ -167,17 +168,18 @@
                         display: grid;
                         align-items: center;
                         grid-template-columns: 35% 65%;
+
                         &_key {
 
                             color: $dark-gray;
                         }
-    
+
                         &_value {
                             white-space: pre-line;
                         }
                     }
 
-                   
+
                 }
 
                 &_link {
@@ -206,26 +208,27 @@
 
         }
 
-      
+
         // &_
 
         table {
             font-size: 14px;
             border-collapse: collapse;
             width: 100%;
-            
-            
+
+
 
             @include RWD(sm) {
-                
-               display: none;
-             }
-         
+
+                display: none;
+            }
+
 
 
             thead {
 
-                color:  $deep-blue;;
+                color: $deep-blue;
+                ;
                 background-color: rgba(219, 245, 255, 0.7137254902);
                 width: 100%;
                 position: sticky;
@@ -234,54 +237,51 @@
 
                 tr {
                     border: none;
-                  
+
                 }
-                
+
             }
 
-           
 
-          
 
-        
+
+
+
 
             tr {
 
                 border-bottom: 1px solid $gray;
-              
 
-               
+
+
 
                 th {
                     padding: 10px;
-                    text-align: center;
                     font-weight: 500;
                     text-align: left;
                     min-width: 250px;
 
-                    // min-width: 200px;
 
                     &:first-of-type {
                         min-width: 100px;
                     }
-                    
-                   
+
+
                 }
 
                 td {
-                
+
                     padding: 20px 10px;
                     text-align: left;
                     white-space: pre-line;
                     vertical-align: text-top;
-                    // min-width: 200px;
                     min-width: 200px;
-                    
+
 
                     &:first-of-type {
                         min-width: 100px;
                     }
-                    
+
 
 
                     a {
@@ -294,19 +294,19 @@
                         align-items: center;
                         cursor: pointer;
                         color: $deep-blue;
-        
-                      
-        
+
+
+
                         &:hover {
                             background: $deep-blue;
                             color: $white;
                         }
                     }
 
-                    
-                     
-                    
-                }   
+
+
+
+                }
             }
         }
     }

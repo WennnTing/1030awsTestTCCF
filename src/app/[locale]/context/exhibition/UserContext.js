@@ -2,7 +2,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { getAuthToken } from "@/utils/common";
 import { useRouter, usePathname } from "next/navigation";
-import Swal from "sweetalert2";
 
 // api
 import {
@@ -92,8 +91,6 @@ export const UserProvider = ({ children }) => {
           contactPersonPhone: company.contactPersonPhone,
           contactPersonEmail: company.contactPersonEmail,
           passCount: company.passCount,
-          boothRawSpace: company.boothRawSpace,
-          networkingEvent: company.networkingEvent,
           mainStageTime: company.mainStageTime,
           salonStageTime: company.salonStageTime,
           taxId: company.taxId || null,
@@ -231,6 +228,85 @@ export const UserProvider = ({ children }) => {
   // 將 memberDetails 中的所有資料都存到 user
   // 將 company 中的所有資料都存到 user
   // 如果網路錯誤，memberInfo 為 null，跳出網路訊號不佳的警告彈窗
+  // const fetchData = async () => {
+  //   try {
+  //     const memberInfo = await getMemberInfo();
+  //     if (memberInfo === null) {
+  //       handleNetworkError();
+  //       return;
+  //     }
+
+  //     // 先設置基本資料
+  //     const memberDetails = await getMemberDetails(memberInfo.userId);
+  //     setUser((prevUser) => ({
+  //       ...prevUser,
+  //       ...memberInfo,
+  //       memberDetails: memberDetails,
+  //     }));
+
+  //     // 檢查是否有展證
+  //     const exhibitPassRes = await API_CheckExhibitPass(memberInfo.userId);
+  //     if (exhibitPassRes && exhibitPassRes.data) {
+  //       setUser((prevUser) => ({
+  //         ...prevUser,
+  //         hasExhibitPass: exhibitPassRes.data,
+  //       }));
+  //     }
+
+  //     // 如果是 Pitching 角色，則處理 Project 和 project members
+  //     if (memberInfo.roles.includes("Pitching")) {
+  //       const projects = await fetchProjectData(memberInfo.userId);
+  //       const projectMembers = {};
+  //       const projectMemberRes = await fetchProjectMembers(projects.projectId);
+
+  //       if (projectMemberRes && projectMemberRes.length > 0) {
+  //         projectMembers[projects.projectId] = projectMemberRes;
+  //       } else {
+  //         projectMembers[projects.projectId] = [];
+  //       }
+
+  //       // 更新使用者資料以包含項目和項目成員資料
+  //       setUser((prevUser) => ({
+  //         ...prevUser,
+  //         projects: projects,
+  //         projectMembers: projectMembers,
+  //       }));
+  //     } else {
+  //       // 非 Pitching 角色：統一處理公司資料的獲取和設置
+  //       const company = await fetchCompanyData(memberInfo.userId);
+  //       let companyMembers = {};
+  //       for (const comp of company) {
+  //         const membersResponse = await API_GetMembersByCompanyId(
+  //           comp.companyId
+  //         );
+
+  //         if (membersResponse && membersResponse.data) {
+  //           companyMembers[comp.companyId] = membersResponse.data;
+  //         } else {
+  //           companyMembers[comp.companyId] = [];
+  //         }
+  //       }
+
+  //       // 更新使用者資料以包含公司和公司成員資料
+  //       setUser((prevUser) => ({
+  //         ...prevUser,
+  //         companies: company,
+  //         companyMembers: companyMembers,
+  //       }));
+  //     }
+  //   } catch (error) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title:
+  //         locale === "zh"
+  //           ? "異常狀況，請稍後再試"
+  //           : "An exception occurred, please try again later.",
+  //       timer: 2000,
+  //       showConfirmButton: false,
+  //     });
+  //   }
+  // };
+
   const fetchData = async () => {
     try {
       const memberInfo = await getMemberInfo();
@@ -239,63 +315,17 @@ export const UserProvider = ({ children }) => {
         return;
       }
 
-      // 先設置基本資料
-      const memberDetails = await getMemberDetails(memberInfo.userId);
-      setUser((prevUser) => ({
-        ...prevUser,
-        ...memberInfo,
-        memberDetails: memberDetails,
-      }));
+      // 設置基本資料
+      await setBasicMemberData(memberInfo);
 
       // 檢查是否有展證
-      const exhibitPassRes = await API_CheckExhibitPass(memberInfo.userId);
-      if (exhibitPassRes && exhibitPassRes.data) {
-        setUser((prevUser) => ({
-          ...prevUser,
-          hasExhibitPass: exhibitPassRes.data,
-        }));
-      }
+      await checkExhibitPass(memberInfo.userId);
 
-      // 如果是 Pitching 角色，則處理 Project 和 project members
+      // 根據角色設定項目或公司資料
       if (memberInfo.roles.includes("Pitching")) {
-        const projects = await fetchProjectData(memberInfo.userId);
-        const projectMembers = {};
-        const projectMemberRes = await fetchProjectMembers(projects.projectId);
-
-        if (projectMemberRes && projectMemberRes.length > 0) {
-          projectMembers[projects.projectId] = projectMemberRes;
-        } else {
-          projectMembers[projects.projectId] = [];
-        }
-
-        // 更新使用者資料以包含項目和項目成員資料
-        setUser((prevUser) => ({
-          ...prevUser,
-          projects: projects,
-          projectMembers: projectMembers,
-        }));
+        await handlePitchingRole(memberInfo.userId);
       } else {
-        // 非 Pitching 角色：統一處理公司資料的獲取和設置
-        const company = await fetchCompanyData(memberInfo.userId);
-        let companyMembers = {};
-        for (const comp of company) {
-          const membersResponse = await API_GetMembersByCompanyId(
-            comp.companyId
-          );
-
-          if (membersResponse && membersResponse.data) {
-            companyMembers[comp.companyId] = membersResponse.data;
-          } else {
-            companyMembers[comp.companyId] = [];
-          }
-        }
-
-        // 更新使用者資料以包含公司和公司成員資料
-        setUser((prevUser) => ({
-          ...prevUser,
-          companies: company,
-          companyMembers: companyMembers,
-        }));
+        await handleCompanyRole(memberInfo.userId);
       }
     } catch (error) {
       Swal.fire({
@@ -309,6 +339,56 @@ export const UserProvider = ({ children }) => {
       });
     }
   };
+
+  const setBasicMemberData = async (memberInfo) => {
+    const memberDetails = await getMemberDetails(memberInfo.userId);
+    setUser((prevUser) => ({
+      ...prevUser,
+      ...memberInfo,
+      memberDetails: memberDetails,
+    }));
+  };
+
+  const checkExhibitPass = async (userId) => {
+    const exhibitPassRes = await API_CheckExhibitPass(userId);
+    if (exhibitPassRes?.data) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        hasExhibitPass: exhibitPassRes.data,
+      }));
+    }
+  };
+
+  const handlePitchingRole = async (userId) => {
+    const projects = await fetchProjectData(userId);
+    const projectMembers = {};
+    const projectMemberRes = await fetchProjectMembers(projects.projectId);
+
+    projectMembers[projects.projectId] = projectMemberRes || [];
+
+    setUser((prevUser) => ({
+      ...prevUser,
+      projects: projects,
+      projectMembers: projectMembers,
+    }));
+  };
+
+  const handleCompanyRole = async (userId) => {
+    const company = await fetchCompanyData(userId);
+    let companyMembers = {};
+
+    for (const comp of company) {
+      const membersResponse = await API_GetMembersByCompanyId(comp.companyId);
+      companyMembers[comp.companyId] = membersResponse?.data || [];
+    }
+
+    setUser((prevUser) => ({
+      ...prevUser,
+      companies: company,
+      companyMembers: companyMembers,
+    }));
+  };
+
 
   // 處理網路異常
   const handleNetworkError = () => {
@@ -335,7 +415,7 @@ export const UserProvider = ({ children }) => {
           const membersResponse = await API_GetMembersByCompanyId(
             lastCompany.companyId
           );
-          if (membersResponse && membersResponse.data) {
+          if (membersResponse?.data) {
             setUser((prevUser) => ({
               ...prevUser,
               companyMembers: {

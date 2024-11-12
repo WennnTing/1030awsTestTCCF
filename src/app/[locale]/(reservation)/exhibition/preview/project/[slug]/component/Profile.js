@@ -1,8 +1,7 @@
 import styles from "../pitching.module.scss";
-import { useLocale } from "next-intl";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
-const StoryToScreen = ({ data, locale }) => {
+const StoryToScreen = ({ data, locale, jobTitleKey, contactPersonKey }) => {
   // 判斷 pitchingCategoryEn
   const category_publications = [
     "Fiction & Non-fiction",
@@ -19,8 +18,7 @@ const StoryToScreen = ({ data, locale }) => {
   const isOriginal = category_original.includes(data.pitchingCategoryEn);
 
   const t = useTranslations(
-    `Reservation.Portfolios.ProjectPage.${
-      isPublications ? "StoryToScreen_publications" : "StoryToScreen_original"
+    `Reservation.Portfolios.ProjectPage.${isPublications ? "StoryToScreen_publications" : "StoryToScreen_original"
     }`
   );
 
@@ -65,12 +63,8 @@ const StoryToScreen = ({ data, locale }) => {
               >
                 {t("concactPersonAndJobTitle")}
               </div>
-              <div
-                className={styles.reservationPitiching__profile_info__item_text}
-              >
-                {`${data?.[`jobTitle${locale}`] || ""} ${
-                  data?.[`contactPerson${locale}` || ""]
-                }`}
+              <div className={styles.reservationPitiching__profile_info__item_text}>
+                {`${data?.[jobTitleKey] || ""} ${data?.[contactPersonKey] || ""}`}
               </div>
             </div>
 
@@ -178,12 +172,8 @@ const StoryToScreen = ({ data, locale }) => {
               >
                 {t("concactPersonAndJobTitle")}
               </div>
-              <div
-                className={styles.reservationPitiching__profile_info__item_text}
-              >
-                {`${data?.[`jobTitle${locale}`] || ""} ${
-                  data?.[`contactPerson${locale}` || ""]
-                }`}
+              <div className={styles.reservationPitiching__profile_info__item_text}>
+                {`${data?.[jobTitleKey] || ""} ${data?.[contactPersonKey] || ""}`}
               </div>
             </div>
 
@@ -222,7 +212,7 @@ const StoryToScreen = ({ data, locale }) => {
   );
 };
 
-const ProjectToScreen = ({ data, locale }) => {
+const ProjectToScreen = ({ data, locale, jobTitleKey, contactPersonKey }) => {
   const t = useTranslations(
     "Reservation.Portfolios.ProjectPage.ProjectToScreen"
   );
@@ -260,9 +250,8 @@ const ProjectToScreen = ({ data, locale }) => {
           <div className={styles.reservationPitiching__profile_info__item_text}>
             {data?.pitchingCategoryEn === "Film"
               ? `${data?.duration} ${t_unit("min")}`
-              : `${data?.duration} ${t_unit("min")} / ${
-                  data?.numberOfEpisodes
-                } ${t_unit("episodes")}`}
+              : `${data?.duration} ${t_unit("min")} / ${data?.numberOfEpisodes
+              } ${t_unit("episodes")}`}
           </div>
         </div>
 
@@ -316,9 +305,7 @@ const ProjectToScreen = ({ data, locale }) => {
             {t("concactPersonAndJobTitle")}
           </div>
           <div className={styles.reservationPitiching__profile_info__item_text}>
-            {`${data?.[`jobTitle${locale}`] || ""} ${
-              data?.[`contactPerson${locale}` || ""]
-            }`}
+            {`${data?.[jobTitleKey] || ""} ${data?.[contactPersonKey] || ""}`}
           </div>
         </div>
 
@@ -349,9 +336,10 @@ const ProjectToScreen = ({ data, locale }) => {
   );
 };
 
-const TaiccaSchool = ({ data, locale }) => {
+const TaiccaSchool = ({ data, locale, jobTitleKey, contactPersonKey }) => {
   const t = useTranslations("Reservation.Portfolios.ProjectPage.TaiccaSchool");
   const t_unit = useTranslations("Reservation.Portfolios.ProjectPage.Unit");
+
   return (
     <div className={styles.reservationPitiching__profile_info}>
       <div className={styles.reservationPitiching__profile_info__container}>
@@ -383,9 +371,8 @@ const TaiccaSchool = ({ data, locale }) => {
           <div className={styles.reservationPitiching__profile_info__item_text}>
             {data?.pitchingCategoryEn === "Film"
               ? `${data?.duration?.split(" ")[0]} ${t_unit("min")}`
-              : `${data?.duration?.split(" ")[0]} ${t_unit("min")} / ${
-                  data?.numberOfEpisodes?.split(" ")[0]
-                } ${t_unit("episodes")}`}
+              : `${data?.duration?.split(" ")[0]} ${t_unit("min")} / ${data?.numberOfEpisodes?.split(" ")[0]
+              } ${t_unit("episodes")}`}
           </div>
         </div>
 
@@ -439,9 +426,7 @@ const TaiccaSchool = ({ data, locale }) => {
             {t("concactPersonAndJobTitle")}
           </div>
           <div className={styles.reservationPitiching__profile_info__item_text}>
-            {`${data?.[`jobTitle${locale}`] || ""} ${
-              data?.[`contactPerson${locale}` || ""]
-            }`}
+            {`${data?.[jobTitleKey] || ""} ${data?.[contactPersonKey] || ""}`}
           </div>
         </div>
 
@@ -475,14 +460,17 @@ const TaiccaSchool = ({ data, locale }) => {
 export default function Profile({ data }) {
   const locale = useLocale() === "en" ? "En" : "";
 
+  const jobTitleKey = `jobTitle${locale}`;
+  const contactPersonKey = `contactPerson${locale}`;
+
   return (() => {
     switch (data.pitchingMainCategoryEn) {
       case "Project to Screen":
-        return <ProjectToScreen data={data} locale={locale} />;
+        return <ProjectToScreen data={data} locale={locale} jobTitleKey={jobTitleKey} contactPersonKey={contactPersonKey} />;
       case "Story to Screen":
-        return <StoryToScreen data={data} locale={locale} />;
+        return <StoryToScreen data={data} locale={locale} jobTitleKey={jobTitleKey} contactPersonKey={contactPersonKey} />;
       case "Taicca School":
-        return <TaiccaSchool data={data} locale={locale} />;
+        return <TaiccaSchool data={data} locale={locale} jobTitleKey={jobTitleKey} contactPersonKey={contactPersonKey} />;
     }
   })();
 }

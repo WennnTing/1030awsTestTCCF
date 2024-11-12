@@ -46,7 +46,7 @@ export default function SelectComponent({
     }),
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? "black" : "black",
+      color: "black",
       background: state.isSelected ? "#f2f2f2" : "#F8F9FAFF",
       "&:hover": {
         background: "#f2f2f2",

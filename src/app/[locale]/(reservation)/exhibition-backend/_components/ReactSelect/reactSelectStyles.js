@@ -1,7 +1,6 @@
 const customStyles = {
     control: (provided, state) => ({
         ...provided,
-        borderColor: state.isFocused ? "1px solid #4EAC85" : "1px solid #ccc",
         height: "40px",
         borderColor: "#ccc",
         borderWidth: "1px",

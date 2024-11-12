@@ -36,10 +36,11 @@ export default function TableTypeTemplate({ contentData, locale }) {
     (item) => item.elementId === "header_view"
   );
 
-  if (serialIndex !== -1) {
-    const [serial] = tableHeaderData?.splice(serialIndex, 1);
+  if (serialIndex !== -1 && tableHeaderData) {
+    const [serial] = tableHeaderData.splice(serialIndex, 1);
     tableHeaderData.unshift(serial);
   }
+
 
   if (viewIndex !== -1) {
     const newViewIndex = tableHeaderData.findIndex(
@@ -54,14 +55,14 @@ export default function TableTypeTemplate({ contentData, locale }) {
       <h1 className={styles.tableTypeTemplate__title}>
         {
           data?.filter((item) => item.elementId === "title")?.[0]?.[
-            `fieldText${locale}`
+          `fieldText${locale}`
           ]
         }
       </h1>
       <div className={styles.tableTypeTemplate__content}>
         {parse(
           data?.filter((item) => item.elementId === "content")?.[0]?.[
-            `fieldText${locale}`
+          `fieldText${locale}`
           ] ?? ""
         )}
       </div>
@@ -82,38 +83,38 @@ export default function TableTypeTemplate({ contentData, locale }) {
       <div className={styles.tableTypeTemplate__buttonWrapper}>
         {data?.filter((item) => item.elementId === "leftFooterButton").length >
           0 && (
-          <Link
-            href={
-              data?.filter((item) => item.elementId === "leftFooterButton")?.[0]
-                ?.fieldValue ?? ""
-            }
-            target="_blank"
-          >
-            {
-              data?.filter(
-                (item) => item.elementId === "leftFooterButton"
-              )?.[0]?.[`fieldText${locale}`]
-            }
-          </Link>
-        )}
+            <Link
+              href={
+                data?.filter((item) => item.elementId === "leftFooterButton")?.[0]
+                  ?.fieldValue ?? ""
+              }
+              target="_blank"
+            >
+              {
+                data?.filter(
+                  (item) => item.elementId === "leftFooterButton"
+                )?.[0]?.[`fieldText${locale}`]
+              }
+            </Link>
+          )}
 
         {data?.filter((item) => item.elementId === "rightFooterButton").length >
           0 && (
-          <Link
-            href={
-              data?.filter(
-                (item) => item.elementId === "rightFooterButton"
-              )?.[0]?.fieldValue ?? ""
-            }
-            target="_blank"
-          >
-            {
-              data?.filter(
-                (item) => item.elementId === "rightFooterButton"
-              )?.[0]?.[`fieldText${locale}`]
-            }
-          </Link>
-        )}
+            <Link
+              href={
+                data?.filter(
+                  (item) => item.elementId === "rightFooterButton"
+                )?.[0]?.fieldValue ?? ""
+              }
+              target="_blank"
+            >
+              {
+                data?.filter(
+                  (item) => item.elementId === "rightFooterButton"
+                )?.[0]?.[`fieldText${locale}`]
+              }
+            </Link>
+          )}
       </div>
     </div>
   );
