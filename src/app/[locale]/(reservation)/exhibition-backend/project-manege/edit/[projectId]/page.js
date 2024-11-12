@@ -1478,7 +1478,7 @@ const EditProjectPages = () => {
                     <Button
                       text={"儲存"}
                       icon={<FaRegSave />}
-                      onClick={() => handleSave(project.companyId)}
+                      onClick={handleSave}
                     />
                   </div>
                 </div>

@@ -7,7 +7,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { logoutByAdmin } from "@/actions/login";
 import { IoWarning } from "react-icons/io5";
 
-export default function Error({ error, reset }) {
+export default function ErrorPage({ error, reset }) {
   const t = useTranslations("Error.msg");
   const { pending } = useFormStatus();
   const [, formAction] = useFormState(logoutByAdmin, {});

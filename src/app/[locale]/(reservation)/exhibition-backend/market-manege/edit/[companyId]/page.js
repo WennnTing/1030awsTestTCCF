@@ -1230,7 +1230,7 @@ const EditCompanyPages = () => {
                     <Button
                       text={t("save")}
                       icon={<FaRegSave />}
-                      onClick={() => handleSave(company.companyId)}
+                      onClick={handleSave}
                     />
                     <Button
                       text={t("goExhibit")}

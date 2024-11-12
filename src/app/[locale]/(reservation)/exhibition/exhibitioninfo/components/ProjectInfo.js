@@ -293,7 +293,6 @@ const ProjectInfo = ({ setIsLoading }) => {
               value={projects.location}
               onChange={(e) =>
                 handleInputChange(
-                  projects.projectId,
                   e.target.name,
                   e.target.value
                 )
@@ -309,7 +308,6 @@ const ProjectInfo = ({ setIsLoading }) => {
               value={projects.passCount}
               onChange={(e) =>
                 handleInputChange(
-                  projects.projectId,
                   e.target.name,
                   e.target.value
                 )
@@ -325,7 +323,6 @@ const ProjectInfo = ({ setIsLoading }) => {
               value={projects.projectTitleEn}
               onChange={(e) =>
                 handleInputChange(
-                  projects.projectId,
                   e.target.name,
                   e.target.value
                 )
@@ -341,7 +338,6 @@ const ProjectInfo = ({ setIsLoading }) => {
               value={projects.projectTitle}
               onChange={(e) =>
                 handleInputChange(
-                  projects.projectId,
                   e.target.name,
                   e.target.value
                 )
@@ -410,7 +406,6 @@ const ProjectInfo = ({ setIsLoading }) => {
                           value={String(member.exhibitPass)}
                           onChange={(e) =>
                             handleInputChange(
-                              user.projects.projectId,
                               e.target.name,
                               e.target.value
                             )
