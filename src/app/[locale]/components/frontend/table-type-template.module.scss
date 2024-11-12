@@ -1,7 +1,6 @@
 @import '@/styles/style.scss';
 
 .tableTypeTemplate {
-
     width: 100%;
 
     &__title {
@@ -17,26 +16,16 @@
 
         figure {
             margin: 0;
-
         }
 
         img {
             width: 100%;
             height: auto;
-
         }
-
-
     }
 
     &__tableWrapper {
-
         margin-bottom: 100px;
-
-
-
-
-
 
         &_theme {
             border-radius: 25px;
@@ -71,63 +60,46 @@
             height: 60vh;
 
             @include RWD(sm) {
-
                 display: none;
             }
 
-
-
-
             &::-webkit-scrollbar {
-
                 height: 15px;
-
             }
 
             &::-webkit-scrollbar-button {
-
                 background: transparent;
                 border-radius: 4px;
-
             }
 
             &::-webkit-scrollbar-thumb {
-
                 background-color: $gray;
                 border-radius: 20px;
                 border: 4.5px solid transparent;
                 background-clip: content-box;
-
             }
 
             &::-webkit-scrollbar-track {
                 background-color: transparent;
-
             }
 
             &::-webkit-scrollbar-thumb:hover {
                 background-color: $deep-blue;
             }
-
-
         }
 
         &_rwdTable {
-
             flex-direction: column;
             gap: 40px;
             display: none;
             font-size: 14px;
 
             @include RWD(sm) {
-
                 display: flex;
             }
 
             &__block {
-
                 &_header {
-
                     border-bottom: 1px solid $gray;
                     display: grid;
                     text-align: center;
@@ -136,16 +108,12 @@
                     margin-bottom: 20px;
 
                     &__serial {
-
-
-
                         color: $deep-blue;
                         display: flex;
                         align-items: center;
                         justify-content: flex-start;
                         white-space: nowrap;
                         font-weight: 900;
-
                     }
 
                     &__name {
@@ -178,12 +146,9 @@
                             white-space: pre-line;
                         }
                     }
-
-
                 }
 
                 &_link {
-
                     background-color: $deep-blue;
                     color: $white;
                     width: 100%;
@@ -196,40 +161,26 @@
                     cursor: pointer;
 
                     &__icon {
-
                         display: inline-flex;
                         align-items: center;
                         justify-content: center;
                         margin-right: 10px;
                     }
                 }
-
             }
-
         }
-
-
-        // &_
 
         table {
             font-size: 14px;
             border-collapse: collapse;
             width: 100%;
 
-
-
             @include RWD(sm) {
-
                 display: none;
             }
 
-
-
             thead {
-
                 color: $deep-blue;
-                ;
-                background-color: rgba(219, 245, 255, 0.7137254902);
                 width: 100%;
                 position: sticky;
                 top: 0;
@@ -237,23 +188,11 @@
 
                 tr {
                     border: none;
-
                 }
-
             }
 
-
-
-
-
-
-
             tr {
-
                 border-bottom: 1px solid $gray;
-
-
-
 
                 th {
                     padding: 10px;
@@ -261,28 +200,21 @@
                     text-align: left;
                     min-width: 250px;
 
-
                     &:first-of-type {
                         min-width: 100px;
                     }
-
-
                 }
 
                 td {
-
                     padding: 20px 10px;
                     text-align: left;
                     white-space: pre-line;
                     vertical-align: text-top;
                     min-width: 200px;
 
-
                     &:first-of-type {
                         min-width: 100px;
                     }
-
-
 
                     a {
                         padding: 2px 10px;
@@ -295,23 +227,15 @@
                         cursor: pointer;
                         color: $deep-blue;
 
-
-
                         &:hover {
                             background: $deep-blue;
                             color: $white;
                         }
                     }
-
-
-
-
                 }
             }
         }
     }
-
-
 
     &__buttonWrapper {
         display: flex;
