@@ -131,9 +131,32 @@ export default function Table({ header, data, type }) {
                                   }
                                 }
                               }}
+                              role="button"
+                              tabIndex="0"
+                              aria-label={`Delete ${type}`}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                  switch (type) {
+                                    case "account": {
+                                      return handleDeleteAccount(item.memberId);
+                                    }
+                                    case "article": {
+                                      return handleDeleteArticle(item.pageUuid);
+                                    }
+                                    case "banner": {
+                                      return handleDeleteBanner(item.bannerId);
+                                    }
+                                    default: {
+                                      console.warn(`Unhandled type: ${type}`);
+                                      break;
+                                    }
+                                  }
+                                }
+                              }}
                             >
                               <BsTrash3 />
                             </div>
+
                           </div>
                         );
 

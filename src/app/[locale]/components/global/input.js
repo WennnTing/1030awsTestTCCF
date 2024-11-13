@@ -158,10 +158,19 @@ const Input = forwardRef(
               <span
                 className="inputWrapper__icon"
                 onClick={togglePasswordVisibility}
+                role="button"
+                tabIndex="0"
+                aria-label="Toggle password visibility"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    togglePasswordVisibility();
+                  }
+                }}
               >
                 {inputType === "password" ? <LuEyeOff /> : <LuEye />}
               </span>
             )}
+
           </div>
         )}
       </div>

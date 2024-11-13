@@ -33,7 +33,6 @@ export default function AnnouncementCard({ data, locale, index }) {
       )}
 
       <div
-        href={data?.function === "article" ? "/home" : ""}
         onClick={() => handleNavigate(data.function, data.article?.fieldValue)}
         className={styles.announcementTypeTemplate__cardWrapper_card}
         key={index}
@@ -46,6 +45,21 @@ export default function AnnouncementCard({ data, locale, index }) {
               : "none",
           backgroundSize: "cover",
           border: data.function === "article" ? "1px solid #F8F9FAFF" : "none",
+        }}
+        role="button"
+        tabIndex="0"
+        aria-label={
+          data.function === "article"
+            ? "Navigate to article"
+            : data.function === "link"
+              ? "Open link"
+              : "Interactive card"
+        }
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleNavigate(data.function, data.article?.fieldValue);
+          }
         }}
       >
         {data.function === "link" && (

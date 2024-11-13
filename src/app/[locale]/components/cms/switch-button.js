@@ -9,7 +9,7 @@ export default function SwitchButton({ value, name }) {
         defaultChecked={value}
         hidden="hidden"
       />
-      <label htmlFor="switch-button"></label>
+      <label htmlFor="switch-button" aria-label="Toggle switch"></label>
     </div>
   );
 }

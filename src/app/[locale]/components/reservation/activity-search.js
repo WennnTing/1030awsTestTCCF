@@ -9,7 +9,6 @@ import { useLocale } from "next-intl";
 import { LuSearchX } from "react-icons/lu";
 import useWindowSize from "@/tool/useWindowSize";
 import { useFormState } from "react-dom";
-import { searchEntityList } from "@/actions/reservation";
 import { LuSearch } from "react-icons/lu";
 import { LuListRestart } from "react-icons/lu";
 import { LuFilter } from "react-icons/lu";
@@ -127,8 +126,16 @@ export default function ActivitySearch({ activites }) {
   return (
     <>
       <div
-        className={styles.reservationActivitySearchBtn}
+        className={styles.reservationPortfolioSearchBtn}
         onClick={() => setSlide(!slide)}
+        role="button"
+        tabIndex="0"
+        aria-label="Toggle menu"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setSlide(!slide);
+          }
+        }}
       >
         <HiOutlineMenuAlt2 />
       </div>
@@ -144,8 +151,16 @@ export default function ActivitySearch({ activites }) {
           <div className={styles.reservationActivitySearch__search}>
             <div className={styles.reservationActivitySearch__search_container}>
               <div
-                className={styles.reservationActivitySearch__search_filter}
+                className={styles.reservationPortfolioSearch__search_filter}
                 onClick={() => setSlide(!slide)}
+                role="button"
+                tabIndex="0"
+                aria-label="Toggle filter panel"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setSlide(!slide);
+                  }
+                }}
               >
                 <HiChevronDoubleLeft />
               </div>
@@ -160,12 +175,16 @@ export default function ActivitySearch({ activites }) {
               />
 
               <div
-                className={styles.reservationActivitySearch__search_filter}
+                className={styles.reservationPortfolioSearch__search_filter}
                 onClick={() => setOpen(!open)}
-                // style={{
-                //   background: open ? "rgba(81, 186, 151, 0.1)" : "#f8f9fa",
-                //   color: open ? "#51BA97" : "black",
-                // }}
+                role="button"
+                tabIndex="0"
+                aria-label="Toggle filter"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setOpen(!open);
+                  }
+                }}
               >
                 {open ? <LuFilterX /> : <LuFilter />}
               </div>
@@ -180,6 +199,14 @@ export default function ActivitySearch({ activites }) {
               <div
                 onClick={handleReset}
                 className={styles.reservationActivitySearch__reset_button}
+                role="button"
+                tabIndex="0"
+                aria-label="Clear All Filters"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleReset();
+                  }
+                }}
               >
                 Clear All Filters
                 <div
@@ -190,6 +217,7 @@ export default function ActivitySearch({ activites }) {
                   <LuListRestart />
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -231,6 +259,14 @@ export default function ActivitySearch({ activites }) {
                         styles.reservationActivitySearch__filter_mainList__item_title
                       }
                       onClick={() => handleFilterSlide(data?.type?.[0]?.en)}
+                      role="button"
+                      tabIndex="0"
+                      aria-label={`Toggle filter for ${data?.type?.[0]?.[optionLocale] || 'item'}`}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          handleFilterSlide(data?.type?.[0]?.en);
+                        }
+                      }}
                     >
                       <div
                         className={
@@ -245,12 +281,13 @@ export default function ActivitySearch({ activites }) {
                           styles.reservationActivitySearch__filter_mainList__item_title__icon
                         }
                         style={{
-                          transform: data.isOpen ? "scaleY(-1) " : "scaleY(1)",
+                          transform: data.isOpen ? "scaleY(-1)" : "scaleY(1)",
                         }}
                       >
                         <IoIosArrowDown />
                       </div>
                     </div>
+
 
                     <div
                       className={styles.reservationActivitySearch__filter_slide}
@@ -289,17 +326,15 @@ export default function ActivitySearch({ activites }) {
                                   <div key={index}>
                                     <input
                                       type="checkbox"
-                                      id={`${field.title[0][optionLocale]}_${
-                                        option[`label_${optionLocale}`]
-                                      }`}
+                                      id={`${field.title[0][optionLocale]}_${option[`label_${optionLocale}`]
+                                        }`}
                                       name={"location"}
                                       value={option[`label_${optionLocale}`]}
                                       hidden
                                     />
                                     <label
-                                      htmlFor={`${
-                                        field.title[0][optionLocale]
-                                      }_${option[`label_${optionLocale}`]}`}
+                                      htmlFor={`${field.title[0][optionLocale]
+                                        }_${option[`label_${optionLocale}`]}`}
                                     >
                                       {option[`label_${optionLocale}`]}
                                     </label>
@@ -337,11 +372,9 @@ export default function ActivitySearch({ activites }) {
                                         <div key={index}>
                                           <input
                                             type="checkbox"
-                                            id={`${
-                                              subgroup.title[0][optionLocale]
-                                            }_${
-                                              option[`label_${optionLocale}`]
-                                            }`}
+                                            id={`${subgroup.title[0][optionLocale]
+                                              }_${option[`label_${optionLocale}`]
+                                              }`}
                                             name={field.key}
                                             value={
                                               option[`label_${optionLocale}`]
@@ -349,11 +382,9 @@ export default function ActivitySearch({ activites }) {
                                             hidden
                                           />
                                           <label
-                                            htmlFor={`${
-                                              subgroup.title[0][optionLocale]
-                                            }_${
-                                              option[`label_${optionLocale}`]
-                                            }`}
+                                            htmlFor={`${subgroup.title[0][optionLocale]
+                                              }_${option[`label_${optionLocale}`]
+                                              }`}
                                           >
                                             {option[`label_${optionLocale}`]}
                                           </label>

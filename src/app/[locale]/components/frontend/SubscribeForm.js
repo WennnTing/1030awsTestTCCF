@@ -106,7 +106,19 @@ const SubscribeForm = () => {
                     </div>
                 )}
             </div>
-            <div className={styles.modal__overlay} onClick={handleClose}></div>
+            <div
+                className={styles.modal__overlay}
+                onClick={handleClose}
+                role="button"
+                tabIndex="0"
+                aria-label="Close modal"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        handleClose();
+                    }
+                }}
+            ></div>
+
         </div>
     );
 

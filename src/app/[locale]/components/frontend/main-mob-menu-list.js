@@ -95,6 +95,20 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                     ? handleToggle("header", header.headerId)
                     : handleRedirect(header.routerName)
                 }
+                role="button"
+                tabIndex="0"
+                aria-label={
+                  header.sidebars.length > 0
+                    ? `Toggle ${header[`headerName${localeToUpperCase(locale)}`]}`
+                    : `Navigate to ${header[`headerName${localeToUpperCase(locale)}`]}`
+                }
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    header.sidebars.length > 0
+                      ? handleToggle("header", header.headerId)
+                      : handleRedirect(header.routerName);
+                  }
+                }}
               >
                 <div
                   className={
@@ -112,14 +126,13 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                   >
                     <IoIosArrowForward
                       style={{
-                        transform: header.isOpen
-                          ? "rotate(90deg) "
-                          : "rotate(0deg)",
+                        transform: header.isOpen ? "rotate(90deg)" : "rotate(0deg)",
                       }}
                     />
                   </div>
                 )}
               </div>
+
 
               <ul
                 className={styles.mainMobMenu__container_sidebarList}
@@ -138,6 +151,14 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                       className={
                         styles.mainMobMenu__container_sidebarList__item_mainItem
                       }
+                      role="button"
+                      tabIndex="0"
+                      aria-label={`Navigate to ${header[`headerName${localeToUpperCase(locale)}`]}`}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          handleRedirect(`${header.routerName}`);
+                        }
+                      }}
                     >
                       <div
                         className={
@@ -147,6 +168,7 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                         {header[`headerName${localeToUpperCase(locale)}`]}
                       </div>
                     </div>
+
                   </li>
 
                   {header.sidebars.map((sidebar) => (
@@ -155,13 +177,19 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                       onClick={() =>
                         sidebar.branches.length > 0
                           ? handleToggle("sidebar", sidebar.sidebarId)
-                          : handleRedirect(
-                              `${header.routerName}/${sidebar.routerName}`
-                            )
+                          : handleRedirect(`${header.routerName}/${sidebar.routerName}`)
                       }
-                      className={
-                        styles.mainMobMenu__container_sidebarList__item
-                      }
+                      className={styles.mainMobMenu__container_sidebarList__item}
+                      role="button"
+                      tabIndex="0"
+                      aria-label={`Toggle ${sidebar[`sidebarName${localeToUpperCase(locale)}`]}`}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          sidebar.branches.length > 0
+                            ? handleToggle("sidebar", sidebar.sidebarId)
+                            : handleRedirect(`${header.routerName}/${sidebar.routerName}`);
+                        }
+                      }}
                     >
                       <div
                         className={
@@ -210,13 +238,17 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                             >
                               <div
                                 onClick={() =>
-                                  handleRedirect(
-                                    `${header.routerName}/${sidebar.routerName}`
-                                  )
+                                  handleRedirect(`${header.routerName}/${sidebar.routerName}`)
                                 }
-                                className={
-                                  styles.mainMobMenu__container_branchList__item_mainItem
-                                }
+                                className={styles.mainMobMenu__container_branchList__item_mainItem}
+                                role="button"
+                                tabIndex="0"
+                                aria-label={`Navigate to ${sidebar[`sidebarName${localeToUpperCase(locale)}`]}`}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter' || e.key === ' ') {
+                                    handleRedirect(`${header.routerName}/${sidebar.routerName}`);
+                                  }
+                                }}
                               >
                                 <div
                                   className={
@@ -225,7 +257,7 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                                 >
                                   {
                                     sidebar[
-                                      `sidebarName${localeToUpperCase(locale)}`
+                                    `sidebarName${localeToUpperCase(locale)}`
                                     ]
                                   }
                                 </div>
@@ -257,7 +289,7 @@ export default function MainMobMenuList({ headers, sidebars, branches }) {
                                 >
                                   {
                                     branch[
-                                      `branchName${localeToUpperCase(locale)}`
+                                    `branchName${localeToUpperCase(locale)}`
                                     ]
                                   }
                                 </div>

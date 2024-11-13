@@ -105,10 +105,12 @@ export default async function MainHeader() {
         <div className={styles.mainHeader__container_hambugerWrapper}>
           <input type="checkbox" id="hambuger-menu" hidden />
           <label className="hambugerWrapper" htmlFor="hambuger-menu">
+            <span className="sr-only">Toggle menu</span>
             <span></span>
             <span></span>
             <span></span>
           </label>
+
           <MainMobMenu />
         </div>
       </div>

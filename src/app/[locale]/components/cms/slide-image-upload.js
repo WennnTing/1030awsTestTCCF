@@ -117,10 +117,19 @@ export default function SlideImageUpload({
                   styles.cmsSlideImageUpload__container_box__upload_preview__delete
                 }
                 onClick={() => handleDeleteImage(data.id)}
+                role="button"
+                tabIndex="0"
+                aria-label="Delete image"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleDeleteImage(data.id);
+                  }
+                }}
               >
                 <RxCross2 />
               </div>
             )}
+
 
             <label
               htmlFor={
@@ -177,6 +186,14 @@ export default function SlideImageUpload({
           <div
             className={styles.cmsSlideImageUpload__container_add}
             onClick={handleAddImage}
+            role="button"
+            tabIndex="0"
+            aria-label="Add carousel image"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleAddImage();
+              }
+            }}
           >
             <div className={styles.cmsSlideImageUpload__container_icon}>
               <IoAddOutline />
