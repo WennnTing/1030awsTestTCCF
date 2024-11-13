@@ -561,7 +561,6 @@ export const articleRequiredCheck = (templateId, formData) => {
 
     case "5":
       return checkRequiredFields(eventKeysFilter, formData);
-      break;
 
     default:
       console.log("No matching templateId");

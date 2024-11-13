@@ -10,8 +10,13 @@ export default function GoBackButton() {
     router.back();
   };
   return (
-    <div className={styles.reservationGoBackButton} onClick={handleRouterBack}>
+    <button
+      className={styles.reservationGoBackButton}
+      onClick={handleRouterBack}
+      aria-label={t("Appointments.SettingsPage.button.back")}
+      style={{ border: "none" }}
+    >
       {t("Appointments.SettingsPage.button.back")}
-    </div>
+    </button>
   );
 }

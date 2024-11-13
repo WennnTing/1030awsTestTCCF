@@ -30,7 +30,7 @@ export default async function MeetingPage() {
 
           <div className={styles.reservationMeeting__calendar_header__buttons}>
             <MeetingExportButton events={events} />
-            {/* <div
+            <div
               className={
                 styles.reservationMeeting__calendar_header__buttons_button
               }
@@ -45,7 +45,7 @@ export default async function MeetingPage() {
                 </div>
                 {t("Appointments.AppointmentsPage.button.setting")}
               </Link>
-            </div> */}
+            </div>
             <div className={styles.reservationMeeting__btnContainer}>
               <div className={styles.reservationMeeting__btnBlock}>
                 <div

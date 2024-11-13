@@ -46,12 +46,19 @@ export default function AuthForm() {
                 name="password"
                 type={showPassword ? "text" : "password"}
               />
-
               <div
                 className={
                   styles.authForm__container_form__inputWrapper_container__icon
                 }
                 onClick={() => setShowPassword(!showPassword)}
+                role="button"
+                tabIndex="0"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setShowPassword(!showPassword);
+                  }
+                }}
               >
                 {showPassword ? <LuEye /> : <LuEyeOff />}
               </div>

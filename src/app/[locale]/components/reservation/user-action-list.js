@@ -19,16 +19,20 @@ export default function UserActionList({ data, type }) {
 
   return (
     <div className={styles.reservationMainHeader__function_list__item_user}>
+
       {type !== "mob" && (
-        <div
+        <button
           className={
             styles.reservationMainHeader__function_list__item_user__icon
           }
           onClick={() => setOpen(!open)}
+          aria-label="Toggle user menu"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <span>{data?.email?.charAt(0).toUpperCase()}</span>
-        </div>
+        </button>
       )}
+
 
       {type !== "mob" && (
         <div
@@ -48,10 +52,19 @@ export default function UserActionList({ data, type }) {
           </ul>
         </div>
       )}
+
       {type === "mob" && (
         <div
           className={styles.reservationMainHeader__hamLogOut}
           onClick={() => formAction()}
+          role="button"
+          tabIndex={0}
+          aria-label="Log out"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              formAction();
+            }
+          }}
         >
           <div className={styles.reservationMainHeader__hamLogOut_icon}>
             <IoLogOutOutline />
@@ -59,6 +72,7 @@ export default function UserActionList({ data, type }) {
           <div>{t("logout")}</div>
         </div>
       )}
+
     </div>
   );
 }

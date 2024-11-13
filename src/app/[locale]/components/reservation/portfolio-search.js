@@ -455,9 +455,18 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
       <div
         className={styles.reservationPortfolioSearchBtn}
         onClick={() => setSlide(!slide)}
+        role="button"
+        tabIndex="0"
+        aria-label="Toggle menu"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setSlide(!slide);
+          }
+        }}
       >
         <HiOutlineMenuAlt2 />
       </div>
+
 
       <div
         className={styles.reservationPortfolioSearch}
@@ -474,9 +483,18 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
               <div
                 className={styles.reservationPortfolioSearch__search_filter}
                 onClick={() => setSlide(!slide)}
+                role="button"
+                tabIndex="0"
+                aria-label="Toggle filter panel"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setSlide(!slide);
+                  }
+                }}
               >
                 <HiChevronDoubleLeft />
               </div>
+
               <input
                 type="text"
                 placeholder={t("Search.placeholder")}
@@ -490,13 +508,18 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
               <div
                 className={styles.reservationPortfolioSearch__search_filter}
                 onClick={() => setOpen(!open)}
-                // style={{
-                //   background: open ? "rgba(81, 186, 151, 0.1)" : "#f8f9fa",
-                //   color: open ? "#51BA97" : "black",
-                // }}
+                role="button"
+                tabIndex="0"
+                aria-label="Toggle filter"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setOpen(!open);
+                  }
+                }}
               >
                 {open ? <LuFilterX /> : <LuFilter />}
               </div>
+
 
               <button
                 className={styles.reservationPortfolioSearch__search_filter}
@@ -508,16 +531,21 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
               <div
                 onClick={handleReset}
                 className={styles.reservationPortfolioSearch__reset_button}
+                role="button"
+                tabIndex="0"
+                aria-label="Clear all filters"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleReset();
+                  }
+                }}
               >
                 Clear All Filters
-                <div
-                  className={
-                    styles.reservationPortfolioSearch__reset_button__icon
-                  }
-                >
+                <div className={styles.reservationPortfolioSearch__reset_button__icon}>
                   <LuListRestart />
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -561,6 +589,14 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                         styles.reservationPortfolioSearch__filter_mainList__item_title
                       }
                       onClick={() => handleFilterSlide(data.type[0].en)}
+                      role="button"
+                      tabIndex="0"
+                      aria-label={`Toggle filter for ${data.type[0][optionLocale]}`}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          handleFilterSlide(data.type[0].en);
+                        }
+                      }}
                     >
                       <div
                         className={
@@ -581,6 +617,7 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                         <IoIosArrowDown />
                       </div>
                     </div>
+
 
                     <div
                       className={
@@ -621,9 +658,8 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                                   <div key={index}>
                                     <input
                                       type="checkbox"
-                                      id={`${field.title[0][optionLocale]}_${
-                                        option[`label_${optionLocale}`]
-                                      }`}
+                                      id={`${field.title[0][optionLocale]}_${option[`label_${optionLocale}`]
+                                        }`}
                                       name={field.key}
                                       value={(() => {
                                         switch (option.label_en) {
@@ -640,9 +676,8 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                                       hidden
                                     />
                                     <label
-                                      htmlFor={`${
-                                        field.title[0][optionLocale]
-                                      }_${option[`label_${optionLocale}`]}`}
+                                      htmlFor={`${field.title[0][optionLocale]
+                                        }_${option[`label_${optionLocale}`]}`}
                                     >
                                       {option[`label_${optionLocale}`]}
                                     </label>
@@ -680,11 +715,9 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                                         <div key={index}>
                                           <input
                                             type="checkbox"
-                                            id={`${
-                                              subgroup.title[0][optionLocale]
-                                            }_${
-                                              option[`label_${optionLocale}`]
-                                            }`}
+                                            id={`${subgroup.title[0][optionLocale]
+                                              }_${option[`label_${optionLocale}`]
+                                              }`}
                                             name={field.key}
                                             value={
                                               option[`label_${optionLocale}`]
@@ -692,11 +725,9 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                                             hidden
                                           />
                                           <label
-                                            htmlFor={`${
-                                              subgroup.title[0][optionLocale]
-                                            }_${
-                                              option[`label_${optionLocale}`]
-                                            }`}
+                                            htmlFor={`${subgroup.title[0][optionLocale]
+                                              }_${option[`label_${optionLocale}`]
+                                              }`}
                                           >
                                             {option[`label_${optionLocale}`]}
                                           </label>
@@ -724,19 +755,18 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                   className={
                     data.type === "entity"
                       ? pathname.split("/")[3] ===
-                          data.entiryOverviewType?.toLowerCase() &&
+                        data.entiryOverviewType?.toLowerCase() &&
                         pathname.split("/")[4] == data.entityId
                         ? `${styles.reservationPortfolioSearch__container_box} ${styles.active}`
                         : `${styles.reservationPortfolioSearch__container_box}`
                       : pathname.split("/")[4] == data.memberId
-                      ? `${styles.reservationPortfolioSearch__container_box} ${styles.active}`
-                      : `${styles.reservationPortfolioSearch__container_box}`
+                        ? `${styles.reservationPortfolioSearch__container_box} ${styles.active}`
+                        : `${styles.reservationPortfolioSearch__container_box}`
                   }
                   href={
                     data.type === "entity"
-                      ? `/exhibition/${currentPath}/${data.entiryOverviewType?.toLowerCase()}/${
-                          data.entityId
-                        }`
+                      ? `/exhibition/${currentPath}/${data.entiryOverviewType?.toLowerCase()}/${data.entityId
+                      }`
                       : `/exhibition/${currentPath}/badge/${data.memberId}`
                   }
                 >
@@ -762,9 +792,9 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                       <div>
                         {data.type === "entity"
                           ? `${data?.[`description${locale}`].substring(
-                              0,
-                              40
-                            )}... `
+                            0,
+                            40
+                          )}... `
                           : data?.jobTitle}
                       </div>
                     </div>
@@ -794,15 +824,13 @@ export default function PortfolioSearch({ overviewList, meetingMemberList }) {
                           }
                         >
                           {data.pitchingMainCategoryEn === "Taicca School" ? (
-                            <span>{`${
-                              data[`pitchingMainCategory${locale}`]
-                            }`}</span>
+                            <span>{`${data[`pitchingMainCategory${locale}`]
+                              }`}</span>
                           ) : (
                             <span>
                               {data.type === "entity"
-                                ? `${data[`pitchingMainCategory${locale}`]} | ${
-                                    data[`pitchingCategory${locale}`]
-                                  }`
+                                ? `${data[`pitchingMainCategory${locale}`]} | ${data[`pitchingCategory${locale}`]
+                                }`
                                 : data?.roleName}
                             </span>
                           )}

@@ -64,7 +64,9 @@ export default function ReserveLocationForm({
                 <label
                   className={styles.reservationReserve__container_crew__box}
                   htmlFor={`crew_${data.memberId}`}
+                  aria-label={`Select member ${data.nameEN || data.nameZH}`}
                 >
+
                   <div
                     className={
                       styles.reservationReserve__container_crew__box_item

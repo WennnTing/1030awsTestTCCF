@@ -43,6 +43,7 @@ export default async function MainHeader() {
         <label
           className="reservationHambugerWrapper"
           htmlFor="reservation-hambuger-menu"
+          aria-label="Toggle hamburger menu"
         >
           <span></span>
           <span></span>

@@ -113,12 +113,15 @@ export default function BusyForm({ timeLimit }) {
       {busyDateAndTimeFormStatus.pending && <LoadingScreen />}
       <div className={styles.reservationSetting__container_increase}>
         <h2>{t("Appointments.SettingsPage.subTitle")}</h2>
-        <div
+        <button
           className={styles.reservationSetting__header_icon}
           onClick={handleIncreaseBusyDate}
+          aria-label="Add busy date"
+          style={{ border: "none", fontSize: "1rem" }}
         >
           <RxPlus />
-        </div>
+        </button>
+
       </div>
 
       <form action={formAction}>
@@ -156,12 +159,15 @@ export default function BusyForm({ timeLimit }) {
               name={`busy_endTime_${data.id}`}
               defaultValue={data.endTime}
             />
-            <div
+            <button
               className={styles.reservationSetting__container_icon}
               onClick={() => handleDeleteBusyDate(data.id)}
+              aria-label="Delete busy date"
+              style={{ border: "none", fontSize: "1rem" }}
             >
               <BsTrash3 />
-            </div>
+            </button>
+
           </div>
         ))}
         {state?.errors && (
